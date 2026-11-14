@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
 
-import { PageBodyPlaceholder } from "@/components/PageBodyPlaceholder";
 import { PageHeader } from "@/components/PageHeader";
+
+import { getCards, getTransactions } from "./_src/apis/cards.api";
+import { AddCardDialog } from "./_src/components/AddCardDialog";
+import { CardsWorkspace } from "./_src/components/CardsWorkspace";
 
 export const metadata: Metadata = { title: "카드" };
 
-export default function Page() {
+export default async function Page() {
+  const [{ items: cards }, { items: transactions }] = await Promise.all([
+    getCards(),
+    getTransactions(),
+  ]);
+
   return (
     <>
       <PageHeader
         title="카드"
         description="내 카드와 거래 내역을 봅니다."
         breadcrumbs={[{ label: "개요", href: "/" }, { label: "카드" }]}
+        actions={<AddCardDialog />}
       />
-      <PageBodyPlaceholder ticket="06" />
+      <CardsWorkspace cards={cards} transactions={transactions} />
     </>
   );
 }
