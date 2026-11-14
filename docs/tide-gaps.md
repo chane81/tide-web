@@ -1,0 +1,11 @@
+# tide 부족한 점
+
+tide 패키지로 대시보드를 만들면서 부족했던 점을 모은다. tide 저장소에 이슈로 옮길 후보다.
+
+항목마다: 무엇이 없었나 / 어떻게 우회했나(파일 경로) / tide에 바라는 것.
+
+| 항목 | 우회 | 바라는 것 |
+|---|---|---|
+| 차트 컴포넌트 없음 | Recharts + tide CSS 변수 (ADR 0002) | 차트용 색 순서(categorical palette) 토큰 |
+| Sidebar 내비게이션 없음 | (작업 예정) `src/components/Sidebar/` | — |
+| DatePicker·DateRangePicker 없음 | (작업 예정) | — |
