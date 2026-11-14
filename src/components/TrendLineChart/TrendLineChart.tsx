@@ -1,6 +1,6 @@
 "use client";
 
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
+import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
 
 import { CHART_THEME, SERIES_COLORS, type SeriesColor } from "@/constants/chartTheme";
 
@@ -30,6 +30,11 @@ export interface TrendLineChartProps {
   /** 스크린 리더용 차트 이름 */
   title: string;
   height?: number;
+}
+
+/** 범례 글자. 계열색 대신 tide 본문 보조색으로 쓴다. */
+function renderLegendText(value: string) {
+  return <span style={{ color: CHART_THEME.axisText }}>{value}</span>;
 }
 
 /**
@@ -93,6 +98,17 @@ export function TrendLineChart({
           labelStyle={{ color: CHART_THEME.tooltipText }}
           itemStyle={{ color: CHART_THEME.tooltipText }}
         />
+        {series.length > 1 && (
+          // 계열이 둘 이상이면 어느 선이 무엇인지 범례로 알린다.
+          <Legend
+            verticalAlign="top"
+            align="right"
+            height={32}
+            iconType="plainline"
+            wrapperStyle={{ fontFamily: CHART_THEME.fontFamily, fontSize: CHART_THEME.fontSize }}
+            formatter={renderLegendText}
+          />
+        )}
         {series.map((s) => (
           <Line
             key={s.dataKey}

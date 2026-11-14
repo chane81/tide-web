@@ -11,6 +11,8 @@ export const CHART_THEME = {
   tooltipText: "var(--tide-text-default)",
   tooltipShadow: "var(--tide-shadow-md)",
   dotFill: "var(--tide-bg-surface)",
+  barFill: "var(--tide-bg-primary-solid)",
+  barCursor: "var(--tide-bg-hover)",
   fontFamily: "var(--tide-font-sans)",
   fontSize: 12,
 } as const;
