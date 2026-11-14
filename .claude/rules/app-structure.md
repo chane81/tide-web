@@ -19,7 +19,7 @@ Next.js(App Router) 단일 앱의 **콜로케이션** 구조 규칙. 파일·폴
 │   └── {apis,components,hooks,libs,constants,types}/   # 앱 전역
 ├── docs/
 ├── package.json
-└── pnpm-workspace.yaml             # catalog, 설치 정책
+└── pnpm-workspace.yaml             # pnpm 설치 정책(단일 앱이라 catalog 없음)
 ```
 
 스택: Next.js(Turbopack), pnpm, TypeScript, Tailwind CSS v4, oxlint, oxfmt, Vitest + React Testing Library. UI는 `@tide-design/components`·`@tide-design/icons`, 차트는 Recharts.

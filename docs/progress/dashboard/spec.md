@@ -102,7 +102,7 @@ npm에 배포된 tide 패키지를 설치한 Next.js 앱으로 SaaS형 대시보
 
 ## Implementation Decisions
 
-- **앱 형태**: Next.js App Router 단일 앱(ADR 0001). 패키지 매니저 pnpm, 외부 의존성 버전은 `pnpm-workspace.yaml` catalog로 관리한다. Node는 `.node-version`(26).
+- **앱 형태**: Next.js App Router 단일 앱(ADR 0001). 패키지 매니저 pnpm, 외부 의존성은 `package.json`에 고정 버전으로 적는다(단일 앱이라 catalog를 쓰지 않는다). Node는 `.node-version`(26).
 - **tide 설치**: `@tide-design/components`·`@tide-design/icons` npm 배포본(작성 시점 0.11.4). 전역 CSS는 설치 안내 그대로 `tailwindcss` + tide `styles.css` 두 줄. Tailwind CSS v4 + `@tailwindcss/postcss`.
 - **도구**: oxlint(경고도 실패), oxfmt, TypeScript strict, Vitest + React Testing Library + jsdom. 스크립트 `dev`·`build`·`typecheck`·`test`·`lint`·`format`·`format:check`. 앱 `typecheck`는 `next typegen` 뒤 `tsc --noEmit`. 에디터 설정(`.vscode`)은 워크스페이스 TypeScript 사용, oxfmt 저장 시 포맷, 권장 확장(oxc, Tailwind CSS IntelliSense)을 둔다.
 - **구조**: `.claude/rules/app-structure.md`를 따른다. 라우트 전용 코드는 라우트 `_src`, 여러 라우트가 쓰면 `src/`로 승격.

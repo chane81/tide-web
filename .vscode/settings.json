@@ -1,5 +1,5 @@
 {
-  // 에디터도 워크스페이스에 설치된 TypeScript(catalog 버전)를 쓴다.
+  // 에디터도 프로젝트에 설치된 TypeScript를 쓴다.
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
 

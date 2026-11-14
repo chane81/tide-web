@@ -58,3 +58,7 @@ pnpm 12.11.2(`packageManager`), Node 26.
 - 확인: `typecheck`·`lint`·`format:check`·`test`·`build` 모두 통과. `next start` 응답 CSS에 tide Button class(`bg-accent-solid`, `text-label-md` 등)와 `bg-canvas`가 들어 있음을 확인.
 - tide 부족한 점: npm 배포본에 README가 없어 설치 안내를 패키지에서 볼 수 없다 → `docs/tide-gaps.md`에 추가.
 - 커밋: `a4b4601`(스캐폴드), `c2be289`(기존 규칙 문서 oxfmt 포맷).
+
+### 2026-11-14 변경: catalog 제거
+
+단일 앱이라 catalog가 필요 없다는 결정에 따라, 버전을 `package.json`에 같은 고정 버전으로 옮기고 `pnpm-workspace.yaml`에서 `catalog`를 지웠다. 이 파일은 pnpm 설정(`minimumReleaseAgeExclude`)을 담는 곳이라 남긴다. 다시 설치하면서 next의 하위 의존성 postcss 8.5.32가 8.5.33으로 합쳐졌다.
