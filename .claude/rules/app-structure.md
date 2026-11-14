@@ -61,12 +61,12 @@ Next.js(App Router) 단일 앱의 **콜로케이션** 구조 규칙. 파일·폴
 
 ## 위치 표
 
-| 코드 | 라우트 하나 | 여러 라우트 |
-|---|---|---|
-| 컴포넌트 (`TransactionTable`) | `app/<route>/_src/components` | `src/components` |
-| 훅 (`useTableSelection`) | `app/<route>/_src/hooks` | `src/hooks` |
-| 순수 함수 (`formatCurrency`) | `app/<route>/_src/libs` | `src/libs` |
-| 데이터 읽기 (`getTransactions`) | `app/<route>/_src/apis` | `src/apis` |
+| 코드                            | 라우트 하나                   | 여러 라우트      |
+| ------------------------------- | ----------------------------- | ---------------- |
+| 컴포넌트 (`TransactionTable`)   | `app/<route>/_src/components` | `src/components` |
+| 훅 (`useTableSelection`)        | `app/<route>/_src/hooks`      | `src/hooks`      |
+| 순수 함수 (`formatCurrency`)    | `app/<route>/_src/libs`       | `src/libs`       |
+| 데이터 읽기 (`getTransactions`) | `app/<route>/_src/apis`       | `src/apis`       |
 
 - 컴포넌트 하나만 쓰면 `<C>/hooks`·`<C>/libs`처럼 컴포넌트 폴더 안이 먼저다.
 
@@ -91,8 +91,8 @@ Next.js(App Router) 단일 앱의 **콜로케이션** 구조 규칙. 파일·폴
 - **배럴:** 컴포넌트 폴더마다 `index.ts` 하나, **대표 컴포넌트만** 네임드로 재수출한다. 내부 `components/`·`hooks/`·`libs/`에는 배럴을 두지 않고, 조각은 파일 경로로 import한다.
   - 이유: 배럴은 재수출한 모듈을 모두 소비자 청크와 client reference manifest에 싣는다. 조각 경로를 여러 곳이 쓰면 그 조각은 이미 그 컴포넌트의 것이 아니다 → 승격(3번).
   ```ts
-  export { X } from './X';
-  export type { XProps } from './X';   // 타입은 값과 다른 줄
+  export { X } from "./X";
+  export type { XProps } from "./X"; // 타입은 값과 다른 줄
   ```
 - **`'use client'`는 파일 단위다. 배럴은 디렉티브를 전달하지 않는다.** 경계가 필요한 파일이 자기 머리에 적고, 그 코드를 다른 파일로 옮길 때 디렉티브도 같이 옮긴다. 배럴에는 적지 않는다.
   - tide 컴포넌트는 서버 컴포넌트에서 바로 import된다. `'use client'`는 앱 코드가 상태·이벤트·브라우저 API를 쓸 때, 그리고 Recharts를 감싸는 파일에만 적는다.

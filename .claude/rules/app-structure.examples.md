@@ -41,7 +41,7 @@ export function KpiBadge({ value }: { value: number }) {
 }
 
 // ✅ tide Badge를 그대로 쓴다
-import { Badge } from '@tide-design/components';
+import { Badge } from "@tide-design/components";
 <Badge color="success">{value}%</Badge>;
 ```
 
@@ -51,10 +51,10 @@ tide에 없는 사이드바는 tide `Link`·`Avatar`·`Menu`로 조립해 `src/c
 
 ```tsx
 // ❌ 컴포넌트가 목업을 직접 import
-import { transactions } from '../apis/transactions.mock';
+import { transactions } from "../apis/transactions.mock";
 
 // ✅ apis 함수를 거친다
-import { getTransactions } from '../apis/transactions.api';
+import { getTransactions } from "../apis/transactions.api";
 const { items } = await getTransactions({ page: 1 });
 ```
 
@@ -90,7 +90,7 @@ export default function Page() {
 
 ```tsx
 // ✅ src/app/sales/page.tsx — 셸과 경계만
-import { SalesKpis } from './_src/components/SalesKpis';
+import { SalesKpis } from "./_src/components/SalesKpis";
 
 export default function Page() {
   return (
@@ -107,8 +107,8 @@ export default function Page() {
 ```tsx
 // ❌ src/app/page.tsx — 정책 하나 + 컴포넌트 하나인데 래퍼를 둠
 async function CachedMembers() {
-  'use cache';
-  cacheLife('hours');
+  "use cache";
+  cacheLife("hours");
   return <TopMembers />;
 }
 ```
@@ -116,8 +116,8 @@ async function CachedMembers() {
 ```tsx
 // ✅ src/components/TopMembers.tsx — 정책을 주인 안에
 export async function TopMembers() {
-  'use cache';
-  cacheLife('hours');
+  "use cache";
+  cacheLife("hours");
   const members = await getTopMembers();
   return <MemberList items={members} />;
 }
@@ -125,11 +125,11 @@ export async function TopMembers() {
 
 ## 9. 서버 껍데기(Slot)는 조건이 맞을 때만
 
-| 껍데기 | 판단 | 이유 |
-|---|---|---|
-| `SettingsSlot` | ❌ 접는다 | 소비자는 `/settings` 하나뿐이고, page가 경계 없이 `return <SettingsSlot />`만 함 |
-| `CurrencySlot` | ✅ 둔다 | ① `/sales`와 `/cards`가 같은 쿠키(표시 통화) 읽기를 함 |
-| `SidebarUserSlot` | ✅ 둔다 | ② layout 본문에서 읽으면 `<Suspense>` 밖이 되어 모든 라우트가 프리렌더에서 빠짐 |
+| 껍데기            | 판단      | 이유                                                                             |
+| ----------------- | --------- | -------------------------------------------------------------------------------- |
+| `SettingsSlot`    | ❌ 접는다 | 소비자는 `/settings` 하나뿐이고, page가 경계 없이 `return <SettingsSlot />`만 함 |
+| `CurrencySlot`    | ✅ 둔다   | ① `/sales`와 `/cards`가 같은 쿠키(표시 통화) 읽기를 함                           |
+| `SidebarUserSlot` | ✅ 둔다   | ② layout 본문에서 읽으면 `<Suspense>` 밖이 되어 모든 라우트가 프리렌더에서 빠짐  |
 
 ```tsx
 // ❌ src/app/settings/page.tsx
@@ -186,11 +186,11 @@ export default async function SettingsPage() {
 
 ```tsx
 // ❌ src/app/sales/page.tsx
-'use client';
+"use client";
 // 페이지 전체가 client 번들로 간다. 차트 하나 때문에.
 
 // ✅ src/app/sales/_src/components/SalesChart.tsx
-'use client';
-import { LineChart, Line } from 'recharts';
+"use client";
+import { LineChart, Line } from "recharts";
 // page.tsx와 나머지 카드는 서버 컴포넌트로 남는다.
 ```
