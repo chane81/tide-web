@@ -1,12 +1,13 @@
-import { AccessSection } from "@/components/AccessSection";
-import { ComponentsSection } from "@/components/ComponentsSection";
-import { FaqSection } from "@/components/FaqSection";
-import { Hero } from "@/components/Hero";
-import { InstallSection } from "@/components/InstallSection";
-import { PrinciplesSection } from "@/components/PrinciplesSection";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
-import { ThemeSection } from "@/components/ThemeSection";
+
+import { AccessSection } from "./_src/components/AccessSection";
+import { ComponentsSection } from "./_src/components/ComponentsSection";
+import { FaqSection } from "./_src/components/FaqSection";
+import { Hero } from "./_src/components/Hero";
+import { InstallSection } from "./_src/components/InstallSection";
+import { PrinciplesSection } from "./_src/components/PrinciplesSection";
+import { ThemeSection } from "./_src/components/ThemeSection";
 
 /*
   design-taste-frontend 배정(plan 2줄): hero centred, nav nav-centre(nav-cards가 나왔으나 사진이 없어 다시 배정),
