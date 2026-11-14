@@ -1,8 +1,7 @@
 import { Card, Typography } from "@tide-design/components";
 
-import type { MetricValue } from "@/apis/overview.types";
-
-import { ChangeBadge } from "./ChangeBadge";
+import { ChangeBadge } from "@/components/ChangeBadge";
+import type { MetricValue } from "@/types/metric";
 
 export interface SecondaryMetricCardProps {
   label: string;

@@ -1,3 +1,5 @@
+import { seededRandom } from "@/libs/seededRandom";
+
 import type {
   GetOverviewMetricsResponse,
   OverviewPeriod,
@@ -13,19 +15,6 @@ const CURRENT_MRR = 48_230;
 
 const HOUR = 60 * 60 * 1000;
 const DAY = 24 * HOUR;
-
-/** 시드 고정 난수(mulberry32). 같은 시드면 늘 같은 수열이다. */
-function seededRandom(seed: number) {
-  let t = seed;
-
-  return () => {
-    t = (t + 0x6d2b79f5) | 0;
-    let r = Math.imul(t ^ (t >>> 15), 1 | t);
-    r = (r + Math.imul(r ^ (r >>> 7), 61 | r)) ^ r;
-
-    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
-  };
-}
 
 /** 시작값에서 조금씩 오르내리는 시계열(점 `count`개, 마지막 점이 ANCHOR) */
 function buildSeries(

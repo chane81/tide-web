@@ -1,11 +1,12 @@
 import { Card, Typography } from "@tide-design/components";
 
 import type { OverviewPeriod, OverviewPeriodMetrics } from "@/apis/overview.types";
+import { ChangeBadge } from "@/components/ChangeBadge";
 import { TrendLineChart } from "@/components/TrendLineChart";
 import { formatCurrency } from "@/libs/formatCurrency";
+import { formatSeriesLabel } from "@/libs/formatSeriesLabel";
 
-import { formatSeriesLabel } from "../libs/formatSeriesLabel";
-import { ChangeBadge } from "./ChangeBadge";
+import { PERIOD_UNIT } from "../constants/periods";
 
 export interface MrrCardProps {
   period: OverviewPeriod;
@@ -18,7 +19,7 @@ const formatAxis = (value: number) => formatCurrency(value, { compact: true });
 /** 핵심 지표 MRR: 큰 숫자, 증감률, 추이 차트 */
 export function MrrCard({ period, metrics, compareLabel }: MrrCardProps) {
   const data = metrics.mrrSeries.map((point) => ({
-    label: formatSeriesLabel(point.at, period),
+    label: formatSeriesLabel(point.at, PERIOD_UNIT[period]),
     mrr: point.value,
   }));
 

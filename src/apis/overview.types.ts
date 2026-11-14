@@ -1,11 +1,7 @@
+import type { MetricValue } from "@/types/metric";
+
 /** 개요 화면 기간 탭 */
 export type OverviewPeriod = "12m" | "30d" | "7d" | "24h";
-
-/** 이번 값과 비교 기준(지난 기간) 값 */
-export interface MetricValue {
-  current: number;
-  previous: number;
-}
 
 /** 시계열의 점 하나. `at`은 ISO 8601(UTC)이다. */
 export interface SeriesPoint {

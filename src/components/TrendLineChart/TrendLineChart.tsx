@@ -2,7 +2,7 @@
 
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
 
-import { CHART_THEME, SERIES_COLORS, type SeriesColor } from "./constants/chartTheme";
+import { CHART_THEME, SERIES_COLORS, type SeriesColor } from "@/constants/chartTheme";
 
 /** 선 하나 */
 export interface TrendLineSeries {
