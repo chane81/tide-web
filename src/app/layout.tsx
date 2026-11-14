@@ -3,7 +3,10 @@ import type { Metadata } from "next";
 import { getCurrentUser } from "@/apis/currentUser.api";
 import { AppShell } from "@/components/AppShell";
 import { Sidebar } from "@/components/Sidebar";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { FOOTER_NAV_ITEMS, NAV_ITEMS } from "@/constants/navItems";
+import { THEME_STORAGE_KEY } from "@/constants/theme";
+import { createThemeInitScript } from "@/libs/createThemeInitScript";
 
 import "./globals.css";
 
@@ -16,10 +19,21 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   const user = await getCurrentUser();
 
   return (
-    <html lang="ko">
+    // 인라인 스크립트가 hydration 전에 data-theme을 붙이므로 <html> 속성 차이는 경고하지 않는다.
+    <html lang="ko" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: createThemeInitScript(THEME_STORAGE_KEY) }} />
+      </head>
       <body className="bg-canvas text-default">
         <AppShell
-          sidebar={<Sidebar items={NAV_ITEMS} footerItems={FOOTER_NAV_ITEMS} user={user} />}
+          sidebar={
+            <Sidebar
+              items={NAV_ITEMS}
+              footerItems={FOOTER_NAV_ITEMS}
+              user={user}
+              footerActions={<ThemeToggle />}
+            />
+          }
         >
           {children}
         </AppShell>

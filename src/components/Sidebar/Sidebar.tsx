@@ -1,6 +1,7 @@
 import { Separator } from "@tide-design/components";
 import { DropletsIcon } from "@tide-design/icons";
 import NextLink from "next/link";
+import type { ReactNode } from "react";
 
 import { SidebarAnnouncement } from "./components/SidebarAnnouncement";
 import { SidebarNavItem } from "./components/SidebarNavItem";
@@ -15,13 +16,15 @@ export interface SidebarProps {
   /** 아래쪽 보조 메뉴(지원, 설정 등) */
   footerItems: NavItem[];
   user: SidebarUser;
+  /** 아래쪽 보조 메뉴 밑에 둘 앱 동작(테마 전환 등) */
+  footerActions?: ReactNode;
 }
 
 /**
  * 앱 내비게이션 사이드바. tide에 Sidebar가 없어 tide Input·Badge·Card·Avatar·Menu로 조립한다.
  * 서버 컴포넌트이고, 상태가 필요한 조각(메뉴 활성, 공지 닫기, 계정 메뉴)만 client다.
  */
-export function Sidebar({ items, footerItems, user }: SidebarProps) {
+export function Sidebar({ items, footerItems, user, footerActions }: SidebarProps) {
   return (
     <div className="flex h-full flex-col gap-5 overflow-y-auto p-4">
       <NextLink
@@ -50,6 +53,7 @@ export function Sidebar({ items, footerItems, user }: SidebarProps) {
             ))}
           </ul>
         </nav>
+        {footerActions && <div className="px-3">{footerActions}</div>}
         <SidebarAnnouncement />
         <Separator />
         <SidebarUserMenu user={user} />
