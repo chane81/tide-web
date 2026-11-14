@@ -5,6 +5,7 @@ import NextLink from "next/link";
 import { SidebarAnnouncement } from "./components/SidebarAnnouncement";
 import { SidebarNavItem } from "./components/SidebarNavItem";
 import { SidebarSearch } from "./components/SidebarSearch";
+import { SidebarTideVersion } from "./components/SidebarTideVersion";
 import { SidebarUserMenu } from "./components/SidebarUserMenu";
 import type { NavItem, SidebarUser } from "./types";
 
@@ -52,6 +53,7 @@ export function Sidebar({ items, footerItems, user }: SidebarProps) {
         <SidebarAnnouncement />
         <Separator />
         <SidebarUserMenu user={user} />
+        <SidebarTideVersion />
       </div>
     </div>
   );
