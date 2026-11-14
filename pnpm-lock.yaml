@@ -342,6 +342,79 @@ importers:
         specifier: 'catalog:'
         version: 5.1.0(@types/node@26.6.6)(jsdom@31.0.1)(vite@8.3.8(@types/node@26.6.6)(jiti@2.7.0))
 
+  apps/tide-site:
+    dependencies:
+      '@tide-design/components':
+        specifier: 'catalog:'
+        version: 0.11.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)
+      '@tide-design/icons':
+        specifier: 'catalog:'
+        version: 0.11.4(react@19.3.1)
+      '@tide-web/components':
+        specifier: workspace:*
+        version: link:../../packages/shared/components
+      '@tide-web/libs':
+        specifier: workspace:*
+        version: link:../../packages/shared/libs
+      next:
+        specifier: 'catalog:'
+        version: 16.4.6(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      react:
+        specifier: 'catalog:'
+        version: 19.3.1
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.3.1(react@19.3.1)
+    devDependencies:
+      '@tailwindcss/postcss':
+        specifier: 'catalog:'
+        version: 4.3.5
+      '@testing-library/dom':
+        specifier: 'catalog:'
+        version: 10.4.2
+      '@testing-library/jest-dom':
+        specifier: 'catalog:'
+        version: 7.0.1(@testing-library/dom@10.4.2)(vitest@5.1.0(@types/node@26.6.6)(jsdom@31.0.1)(vite@8.3.8(@types/node@26.6.6)(jiti@2.7.0)))
+      '@testing-library/react':
+        specifier: 'catalog:'
+        version: 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      '@testing-library/user-event':
+        specifier: 'catalog:'
+        version: 14.6.10(@testing-library/dom@10.4.2)
+      '@tide-web/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/config/typescript
+      '@types/node':
+        specifier: 'catalog:'
+        version: 26.6.6
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.3.0(@types/react@19.3.0)
+      '@vitejs/plugin-react':
+        specifier: 'catalog:'
+        version: 6.3.0(vite@8.3.8(@types/node@26.6.6)(jiti@2.7.0))
+      jsdom:
+        specifier: 'catalog:'
+        version: 31.0.1
+      postcss:
+        specifier: 'catalog:'
+        version: 8.5.33
+      tailwindcss:
+        specifier: 'catalog:'
+        version: 4.3.5
+      typescript:
+        specifier: 'catalog:'
+        version: 7.0.2
+      vite:
+        specifier: 'catalog:'
+        version: 8.3.8(@types/node@26.6.6)(jiti@2.7.0)
+      vitest:
+        specifier: 'catalog:'
+        version: 5.1.0(@types/node@26.6.6)(jsdom@31.0.1)(vite@8.3.8(@types/node@26.6.6)(jiti@2.7.0))
+
   packages/config/typescript: {}
 
   packages/shared/components:

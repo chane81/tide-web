@@ -1,0 +1,25 @@
+{
+  "moments": [
+    {
+      "id": "iris-opens",
+      "at": "2026-11-14T09:06:56.213Z",
+      "seed": "2f6494af"
+    },
+    {
+      "id": "letters-assemble",
+      "at": "2026-11-14T09:06:56.213Z",
+      "seed": "2f6494af"
+    }
+  ],
+  "palettes": [
+    "graphite-safety-orange"
+  ],
+  "types": [
+    "funnel"
+  ],
+  "dealt": [
+    "funnel",
+    "sora",
+    "onest"
+  ]
+}

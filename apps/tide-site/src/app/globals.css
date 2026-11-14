@@ -1,0 +1,464 @@
+/* 키트(design-taste-frontend) CSS는 public/kit.css가 kit layer로 읽는다. tide 유틸리티가 키트보다 이기도록 순서를 정한다. */
+@layer theme, base, kit, components, utilities;
+
+@import "tailwindcss";
+@import "@tide-design/components/styles.css";
+
+/* 내부 패키지(dist)의 Tailwind class도 스캔한다. */
+@source "../../../../packages/shared/components/dist";
+
+/* design-taste-frontend 검사 산출물(크롬 프로필 소켓 등)은 스캔하지 않는다. 소켓 파일을 읽으려다 빌드가 깨진다. */
+@source not "../../.taste-skill";
+
+/* 키트 그리드 class(start-7 등)와 이름이 같은 Tailwind 유틸리티(inset-inline-start)는 만들지 않는다(Tailwind 4.1+ `@source not inline`). */
+@source not inline("start-{1,2,3,4,5,6,7,8,9,10,11,12}");
+
+/*
+  키트의 색·글꼴 변수를 tide 토큰에 잇는다. 스킬이 배정한 팔레트·글꼴 대신 tide를 쓴다(.claude/rules 8번).
+  [data-theme]에도 다시 적어, 한 구역만 반대 테마로 둔 곳(어두운 띠)에서 그 구역의 tide 값으로 다시 계산되게 한다.
+  반대 바탕(--p-inv-*)은 그 구역에 반대 data-theme을 붙여 만들므로 같은 값을 가리킨다.
+*/
+:root,
+[data-theme] {
+  --p-bg: var(--tide-bg-canvas);
+  --p-surface: var(--tide-bg-neutral-faint);
+  --p-ink: var(--tide-text-default);
+  --p-muted: var(--tide-text-muted);
+  --p-accent: var(--tide-bg-primary-solid);
+  --p-accent-ink: var(--tide-text-on-solid);
+  --p-action: var(--tide-bg-primary-solid);
+  --p-action-ink: var(--tide-text-on-solid);
+  --p-inv-bg: var(--p-bg);
+  --p-inv-surface: var(--p-surface);
+  --p-inv-ink: var(--p-ink);
+  --p-inv-muted: var(--p-muted);
+  --p-inv-accent: var(--p-accent);
+  --p-inv-accent-ink: var(--p-accent-ink);
+  --p-inv-action: var(--p-action);
+  --p-inv-action-ink: var(--p-action-ink);
+  --font-display: var(--tide-font-sans);
+  --font-text: var(--tide-font-sans);
+  --font-mono: var(--tide-font-mono);
+  --display-weight: 500;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+}
+
+/* 키트의 「밝힌 바탕」(UI 뒤 바탕, 효과 색)도 tide primary 계열로 잇는다. 키트 기본값은 모래색 hex다. */
+:root,
+[data-theme] {
+  --ground-bg: var(--tide-bg-primary-subtle);
+  --ground-surface: var(--tide-bg-primary-faint);
+  --ground-ink: var(--tide-text-default);
+  --ground-muted: var(--tide-text-muted);
+  --ground-accent: var(--tide-bg-primary-solid);
+}
+
+[data-theme="dark"] {
+  /* dark에서는 neutral-faint가 canvas와 같아 패널이 묻힌다. 한 단계 밝은 raised를 쓴다. */
+  --p-surface: var(--tide-bg-raised);
+}
+
+/* ── 히어로 창: tide Component를 담는 앱 창 틀. 키트 layout.css의 .hero__window가 크기·흐림을 맡는다. ── */
+.hero-win {
+  position: relative;
+  z-index: 1;
+  margin: 32px auto 0;
+  width: min(100% - 48px, 960px);
+  overflow: hidden;
+  border: 1px solid var(--tide-border-default);
+  border-radius: var(--radius-xl);
+  background: var(--tide-bg-canvas);
+  color: var(--tide-text-default);
+  box-shadow: var(--tide-shadow-lg);
+  text-align: start;
+}
+.hero-win__bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--tide-border-default);
+}
+.hero-win__dots {
+  display: flex;
+  gap: 6px;
+}
+.hero-win__dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tide-border-strong);
+}
+.hero-win__body {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+}
+.hero-win__side {
+  margin: 0;
+  padding: 12px;
+  list-style: none;
+  border-inline-end: 1px solid var(--tide-border-default);
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  font: var(--tide-font-medium) 14px / 1 var(--tide-font-sans);
+  color: var(--tide-text-muted);
+}
+.hero-win__side li {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+}
+.hero-win__side li[data-on] {
+  background: var(--tide-bg-active);
+  color: var(--tide-text-default);
+}
+/* 키트의 .grid(12칸)와 겹치지 않게 Tailwind grid 대신 자체 class를 쓴다. */
+.hero-win__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.hero-mark {
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: -0.06em;
+}
+.hero-win__main {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+@media (max-width: 639px) {
+  .hero-win {
+    width: calc(100% - 32px);
+  }
+  .hero-win__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-win__side {
+    display: none;
+  }
+  .hero-win__metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ── Component 창(app-frame): 목록 + 열린 Component. 키트 .fill이 구역의 남은 높이를 준다. ── */
+.app-frame {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  margin-top: var(--s-7);
+  overflow: hidden;
+  border: 1px solid var(--tide-border-default);
+  border-radius: var(--radius-xl);
+  background: var(--tide-bg-canvas);
+  color: var(--tide-text-default);
+}
+.app-frame__list {
+  min-height: 0;
+  overflow: hidden;
+  border-inline-end: 1px solid var(--tide-border-default);
+}
+.app-frame__list ul {
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+}
+.app-frame__head {
+  margin: 0;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--tide-border-default);
+}
+.app-frame__item {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  text-align: start;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease);
+}
+.app-frame__item:hover {
+  background: var(--tide-bg-hover);
+}
+.app-frame__item[aria-pressed="true"] {
+  background: var(--tide-bg-active);
+}
+.app-frame__open {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.app-frame__stage {
+  padding: 32px;
+}
+.preview-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.preview-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.preview-narrow {
+  align-items: stretch;
+  max-width: 360px;
+}
+.preview-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 420px;
+}
+/* 태블릿까지는 목록과 열린 Component를 나란히 둔다. 목록을 위로 올리면 창이 짧아져 구역이 빈다. */
+@media (max-width: 639px) {
+  .app-frame {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .app-frame__list {
+    border-inline-end: 0;
+    border-bottom: 1px solid var(--tide-border-default);
+  }
+  .app-frame__list ul {
+    display: flex;
+    overflow-x: auto;
+  }
+  .app-frame__item span + span {
+    display: none;
+  }
+}
+@media (max-width: 639px) {
+  .app-frame__stage {
+    padding: 20px;
+  }
+}
+
+/* ── 테마 구역 ── */
+.facts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.facts li {
+  padding-block: 8px;
+  border-bottom: 1px solid var(--tide-border-default);
+}
+.theme-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 48px;
+  background: var(--tide-bg-neutral-faint);
+  border-radius: inherit;
+  height: 100%;
+}
+[data-theme="dark"] .theme-demo {
+  background: var(--tide-bg-raised);
+}
+@media (max-width: 639px) {
+  .theme-demo {
+    padding: 24px;
+  }
+}
+
+/* ── 접근성 구역 패널 ── */
+.access-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 32px;
+  list-style: none;
+  height: 100%;
+  background: var(--tide-bg-canvas);
+  color: var(--tide-text-default);
+}
+.kbd {
+  display: inline-flex;
+  min-width: 28px;
+  justify-content: center;
+  padding: 2px 8px;
+  border: 1px solid var(--tide-border-strong);
+  border-radius: var(--radius-sm);
+  font: var(--tide-font-medium) 13px / 1.5 var(--tide-font-mono);
+  color: var(--tide-text-default);
+}
+.contrast-swatch {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  font-weight: var(--tide-font-semibold);
+}
+
+/* ── 원칙 구역 ── */
+.principles {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+.principles li {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--tide-border-default);
+}
+@media (max-width: 1023px) {
+  .principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 639px) {
+  .principles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ── 설치 구역 ── */
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.code-block {
+  margin: 0;
+  /* 긴 코드 줄은 카드 밖으로 밀지 않고 pre 안에서 가로로 스크롤한다. */
+  grid-template-columns: minmax(0, 1fr);
+  padding: 20px 24px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  background: var(--tide-bg-canvas);
+  flex: 1;
+}
+.code-block pre {
+  margin: 0;
+  overflow-x: auto;
+  font: 13px / 1.7 var(--tide-font-mono);
+  color: var(--tide-text-default);
+  white-space: pre;
+}
+.code-result {
+  padding: 0 24px 20px;
+  background: var(--tide-bg-canvas);
+}
+
+/* ── 마무리 큰 버튼: 키트 close-type은 .wrap 너비의 큰 버튼이다. tide Button lg를 너비만 늘린다. ── */
+.close-button {
+  width: 100%;
+}
+
+/* ── 키트 패널 위에 놓는 내용: 키트 .panel::before(가운데 그늘)보다 위에 그린다. 패널 높이는 내용에 맞게 줄인다. ── */
+.access-panel,
+.code-block,
+.code-result {
+  position: relative;
+  z-index: 1;
+}
+#access .panel {
+  --p-h: 264px;
+}
+#install .panel {
+  --p-h: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 원칙 문장: 키트 기본(최대 208px, 13ch)은 한글 14자가 세 줄이 되어 두 줄로 줄인다. ── */
+#principles .mo-la__type {
+  font-size: clamp(44px, 8vw, 120px);
+  max-width: none;
+}
+#principles .principles {
+  margin-top: var(--s-8);
+}
+
+/* ── 질문: 질문 오른쪽 칸에 주제 아이콘(tide icons 24px). 질문·답 글자는 열의 왼쪽 선에서 시작한다. ── */
+.faq > .faq__item {
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--s-4);
+}
+/* 질문 여섯 개가 한 화면의 아래 여백 위에서 끝나도록 줄 사이를 키트(24px)보다 좁힌다. */
+.faq > .faq__item:not(:first-child) {
+  padding-block: var(--s-4);
+}
+.faq > .faq__item > h3 {
+  grid-column: 1;
+}
+/* 답은 아이콘 칸 밑까지 써서 줄 수를 늘리지 않는다. */
+.faq > .faq__item > p {
+  grid-column: 1 / -1;
+}
+.faq__icon {
+  grid-column: 2;
+  grid-row: 1;
+  color: var(--tide-text-muted);
+}
+
+/* ── 태블릿·폰: Component 창은 내용만큼 자란다. 남은 높이만 주면(키트 .fill) 열린 Component의 아래가 잘린다. ── */
+@media (max-width: 1023px) {
+  #components .app-frame.fill {
+    flex: 1 0 auto;
+  }
+}
+
+/* ── 태블릿: 설치 구역은 한 화면을 넘으므로 두 화면으로 센다. 남는 높이는 단계 사이에 나눈다. ── */
+@media (min-width: 640px) and (max-width: 1279px) {
+  #install {
+    --h: 2;
+  }
+  #install .steps {
+    flex: 1 0 auto;
+    align-content: space-between;
+  }
+}
+
+/* ── 폰: 두 화면 구역(#access)의 패널을 낮춰 네 카드가 두 화면 안에 들어가게 한다(키트 system.css의 폰 패널 규칙과 같은 뜻). ── */
+@media (max-width: 639px) {
+  #access .panel {
+    --p-h: 160px;
+  }
+  .access-panel {
+    gap: 12px;
+    padding: 16px 20px;
+  }
+  .contrast-swatch {
+    width: 32px;
+    height: 32px;
+  }
+  /* 설치 구역은 폰에서 한 화면을 넘으므로 두 화면으로 센다(키트 --hm). 남는 높이는 단계 사이에 나눠 구역 끝이 비지 않게 한다. */
+  #install {
+    --hm: 2;
+  }
+  #install .steps {
+    flex: 1 0 auto;
+    align-content: space-between;
+  }
+  /* 히어로 창: 폰 폭에서는 메일 주소를 빼 표가 창 안에 들어가게 한다. */
+  .hero-win .text-caption {
+    display: none;
+  }
+}
+
+/* ── 카드 본문: 키트는 ink를 카드 바탕과 16% 섞어 흐리게 쓴다. tide text-default는 키트 ink보다 이미 옅어,
+   섞으면 light에서 본문 대비가 7:1 밑으로 떨어진다. 카드 본문도 tide text-default를 그대로 쓴다. ── */
+.card {
+  --c-text: var(--ink);
+}
