@@ -56,8 +56,10 @@ describe("CustomerTable", () => {
     expect(bodyRows()).toHaveLength(CUSTOMERS_PAGE_SIZE);
     const row = bodyRows()[0]!;
     expect(within(row).getByText("고객25")).toBeInTheDocument();
-    expect(within(row).getByText("user25@example.com")).toBeInTheDocument();
-    expect(within(row).getByText("활성")).toBeInTheDocument();
+    // 이메일은 넓은 화면용 열과 좁은 화면용 이름 아래 두 곳에 있고 CSS로 하나만 보인다.
+    expect(within(row).getAllByText("user25@example.com")).toHaveLength(2);
+    // 상태도 좁은 화면용(이름 옆)과 넓은 화면용(열) 두 곳에 있다.
+    expect(within(row).getAllByText("활성")).toHaveLength(2);
     expect(within(row).getByText("$250")).toBeInTheDocument();
   });
 
@@ -80,7 +82,7 @@ describe("CustomerTable", () => {
     await user.click(screen.getByRole("option", { name: "휴면" }));
 
     expect(bodyRows()).toHaveLength(4);
-    for (const row of bodyRows()) expect(within(row).getByText("휴면")).toBeInTheDocument();
+    for (const row of bodyRows()) expect(within(row).getAllByText("휴면")).toHaveLength(2);
   });
 
   it("열 머리를 누르면 오름·내림으로 정렬한다", async () => {
@@ -128,7 +130,7 @@ describe("CustomerTable", () => {
   it("행을 누르면 고객 상세가 열린다", async () => {
     const user = setup();
 
-    await user.click(within(bodyRows()[0]!).getByText("user25@example.com"));
+    await user.click(within(bodyRows()[0]!).getByText("$250"));
 
     const dialog = screen.getByRole("dialog", { name: "고객25" });
     expect(within(dialog).getByText("누적 결제 금액")).toBeInTheDocument();

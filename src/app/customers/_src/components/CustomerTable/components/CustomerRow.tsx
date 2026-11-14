@@ -37,23 +37,35 @@ export function CustomerRow({ customer, selected, onToggle, onOpen }: CustomerRo
       </TableCell>
       <TableCell>
         <div className="flex items-center gap-3">
-          <Avatar alt="" size="sm" color={customer.avatarColor} />
-          <Link
-            color="neutral"
-            render={<button type="button" aria-label={`${customer.name} 상세 보기`} />}
-            className="cursor-pointer text-label-md"
-          >
-            {customer.name}
-          </Link>
+          <Avatar alt="" size="sm" color={customer.avatarColor} className="hidden sm:inline-flex" />
+          <div className="flex min-w-0 flex-col items-start">
+            <div className="flex items-center gap-2">
+              <Link
+                color="neutral"
+                render={<button type="button" aria-label={`${customer.name} 상세 보기`} />}
+                className="cursor-pointer text-label-md"
+              >
+                {customer.name}
+              </Link>
+              {/* 아주 좁은 화면에서는 상태 열을 숨기고 이름 옆에 보인다. */}
+              <Badge color={status.color} size="sm" className="sm:hidden">
+                {status.label}
+              </Badge>
+            </div>
+            {/* 좁은 화면에서는 이메일 열을 숨기고 이름 아래에 보인다. 아주 좁으면 말줄임(전체는 상세에서). */}
+            <span className="max-w-32 truncate text-caption text-muted sm:max-w-none xl:hidden">
+              {customer.email}
+            </span>
+          </div>
         </div>
       </TableCell>
-      <TableCell className="text-muted">{customer.email}</TableCell>
-      <TableCell>
+      <TableCell className="hidden text-muted xl:table-cell">{customer.email}</TableCell>
+      <TableCell className="hidden sm:table-cell">
         <Badge color={status.color} size="sm">
           {status.label}
         </Badge>
       </TableCell>
-      <TableCell className="whitespace-nowrap">
+      <TableCell className="hidden whitespace-nowrap md:table-cell">
         <time dateTime={customer.joinedAt}>{formatDate(customer.joinedAt)}</time>
       </TableCell>
       <TableCell className="text-end tabular-nums">{formatCurrency(customer.totalSpent)}</TableCell>

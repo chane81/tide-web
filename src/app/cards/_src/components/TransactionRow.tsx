@@ -19,10 +19,14 @@ export function TransactionRow({ transaction }: TransactionRowProps) {
       <TableCell>
         <div className="flex flex-col">
           <span className="text-label-md">{transaction.merchant}</span>
-          <span className="text-caption text-muted">{CATEGORY_LABELS[transaction.category]}</span>
+          <span className="text-caption text-muted">
+            {CATEGORY_LABELS[transaction.category]}
+            {/* 좁은 화면에서는 날짜 열을 숨기고 여기에 보인다. */}
+            <span className="sm:hidden"> · {formatDate(transaction.occurredAt)}</span>
+          </span>
         </div>
       </TableCell>
-      <TableCell className="whitespace-nowrap">
+      <TableCell className="hidden whitespace-nowrap sm:table-cell">
         <time dateTime={transaction.occurredAt}>{formatDate(transaction.occurredAt)}</time>
       </TableCell>
       <TableCell className="text-end tabular-nums">{formatCurrency(transaction.amount)}</TableCell>

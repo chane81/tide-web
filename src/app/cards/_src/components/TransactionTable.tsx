@@ -46,7 +46,7 @@ export function TransactionTable({ transactions }: TransactionTableProps) {
           <TableHead>
             <TableRow>
               <TableHeaderCell>가맹점</TableHeaderCell>
-              <TableHeaderCell>날짜</TableHeaderCell>
+              <TableHeaderCell className="hidden sm:table-cell">날짜</TableHeaderCell>
               <TableHeaderCell className="text-end">금액</TableHeaderCell>
               <TableHeaderCell>상태</TableHeaderCell>
             </TableRow>

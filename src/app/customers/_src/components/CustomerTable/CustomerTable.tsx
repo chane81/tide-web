@@ -99,9 +99,11 @@ export function CustomerTable({ customers }: CustomerTableProps) {
                 />
               </TableHeaderCell>
               <SortableHeaderCell {...sortProps("name")}>이름</SortableHeaderCell>
-              <TableHeaderCell>이메일</TableHeaderCell>
-              <TableHeaderCell>상태</TableHeaderCell>
-              <SortableHeaderCell {...sortProps("joinedAt")}>가입일</SortableHeaderCell>
+              <TableHeaderCell className="hidden xl:table-cell">이메일</TableHeaderCell>
+              <TableHeaderCell className="hidden sm:table-cell">상태</TableHeaderCell>
+              <SortableHeaderCell {...sortProps("joinedAt")} className="hidden md:table-cell">
+                가입일
+              </SortableHeaderCell>
               <SortableHeaderCell {...sortProps("totalSpent")} align="end">
                 결제 금액
               </SortableHeaderCell>

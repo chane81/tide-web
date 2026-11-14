@@ -11,6 +11,8 @@ export interface SortableHeaderCellProps {
   onSort: () => void;
   /** 숫자 열처럼 끝에 맞출 때 */
   align?: "start" | "end";
+  /** 머리 칸 class(좁은 화면에서 열 숨기기 등) */
+  className?: string;
 }
 
 /**
@@ -22,6 +24,7 @@ export function SortableHeaderCell({
   direction,
   onSort,
   align = "start",
+  className,
 }: SortableHeaderCellProps) {
   const Icon =
     direction === "asc" ? ArrowUpIcon : direction === "desc" ? ArrowDownIcon : ArrowUpDownIcon;
@@ -31,12 +34,12 @@ export function SortableHeaderCell({
       aria-sort={
         direction === "asc" ? "ascending" : direction === "desc" ? "descending" : undefined
       }
-      className={align === "end" ? "text-end" : undefined}
+      className={[align === "end" ? "text-end" : "", className ?? ""].join(" ").trim() || undefined}
     >
       <button
         type="button"
         onClick={onSort}
-        className={`inline-flex cursor-pointer items-center gap-1 rounded-sm focus-visible:focus-ring ${
+        className={`inline-flex cursor-pointer items-center whitespace-nowrap gap-1 rounded-sm focus-visible:focus-ring ${
           direction ? "text-default" : ""
         }`}
       >
