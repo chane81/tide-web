@@ -463,10 +463,70 @@
   --c-text: var(--ink);
 }
 
+/* ── /stats 히어로: npm 현황 창(키트 hero--collage의 ly-piece--main)과 합계 카드(ly-piece). 위치는 키트가, 모양은 tide 토큰이 맡는다. ── */
+.stats-win {
+  overflow: hidden;
+  border: 1px solid var(--tide-border-default);
+  border-radius: var(--radius-xl);
+  background: var(--tide-bg-canvas);
+  color: var(--tide-text-default);
+  box-shadow: var(--tide-shadow-lg);
+}
+/* 키트 규칙: 창은 틀 오른쪽 끝을 --ly-cut만큼 지나가므로, 내용 오른쪽에 그만큼 빈 자리를 두어 잘리는 곳이 글자가 아니게 한다. */
+.stats-win__body {
+  padding: 16px var(--ly-cut-room, 48px) 24px 16px;
+}
+.stats-win__loading {
+  display: grid;
+  gap: 12px;
+}
+/* 폰: 창 틀 막대를 빼고 여백을 줄여 표 세 줄이 잘리지 않고 창 안에 들어가게 한다(검사기 cut-text). */
+@media (max-width: 639px) {
+  .stats-win .hero-win__bar {
+    display: none;
+  }
+  .stats-win__body {
+    padding: 8px var(--ly-cut-room, 48px) 8px 8px;
+  }
+}
+/* /stats 출처 카드 그림: 요청 한 줄과 읽는 필드. 키트 패널(.panel) 위에 그린다. */
+.stats-fragment {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--tide-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--tide-bg-canvas);
+  color: var(--tide-text-default);
+  overflow-wrap: anywhere;
+}
+.stats-note {
+  left: var(--s-6);
+  bottom: var(--s-6);
+  width: 300px;
+  display: grid;
+  gap: 4px;
+  padding: 20px;
+  border: 1px solid var(--tide-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--tide-bg-canvas);
+  color: var(--tide-text-default);
+  box-shadow: var(--tide-shadow-lg);
+}
+.stats-note__total {
+  font: var(--tide-font-semibold) 32px / 1.2 var(--tide-font-sans);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ── 히어로 창 바탕: 사용자가 고른 참고 사이트처럼 흰 바탕 위 옅은 파랑~하늘색 빛. tide primary·info 역할 토큰이라 dark에서도 따라간다.
    스킬 효과 gradient-mesh(WebGL)를 먼저 붙였으나, 키트 셰이더가 이 창처럼 4:1로 넓은 틀에서 seed에 따라 검은 구멍을 그려
    (색 점 가중치가 0에 가까워짐) 정지된 CSS 빛으로 바꿨다. 보라·라벤더는 쓰지 않는다(스킬 하우스 룰). ── */
-.hero--centred .hero__window {
+.hero--centred .hero__window,
+.hero--collage .hero__art,
+.hero--triptych .ly-collage {
   background:
     radial-gradient(45% 80% at 18% 20%, var(--tide-bg-info-faint), transparent 70%),
     radial-gradient(40% 90% at 82% 30%, var(--tide-bg-primary-subtle), transparent 70%),
@@ -500,4 +560,169 @@
     radial-gradient(60% 50% at 12% 0%, var(--tide-bg-primary-faint), transparent 70%),
     radial-gradient(50% 45% at 92% 100%, var(--tide-bg-info-faint), transparent 70%),
     var(--p-surface);
+}
+
+/* 콜라주 바탕은 틀처럼 둥글게(키트 .hero__art와 같은 반경). */
+.hero--triptych .ly-collage {
+  border-radius: var(--r-lg);
+}
+
+/* ── /catalog 히어로 콜라주 조각(키트 .ly-collage .ly-piece가 자리·모서리·그림자를 맡는다). 안은 tide Component다. ── */
+.cat-piece {
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--ph, auto);
+  padding: 16px;
+  background: var(--tide-bg-canvas);
+  color: var(--tide-text-default);
+}
+/* 조각 안에 tide Card·Alert를 그대로 넣을 때는 그쪽이 테두리·여백을 그리므로 조각 여백을 뺀다. */
+.cat-piece--bare {
+  padding: 0;
+}
+/* 폰: 키트처럼 첫 벌만 두고(layout.js가 폰에서는 돌리지 않는다), 첫 조각 하나를 틀 너비로 보인다. 좁은 틀에서 조각이 길어져 버튼을 덮지 않게 한다. */
+@media (max-width: 1023px) {
+  .ly-collage .cat-piece:not(:first-child) {
+    display: none;
+  }
+  .ly-collage .cat-piece:first-child {
+    --x: 4%;
+    --y: 8%;
+    --w: 92%;
+  }
+}
+/* 마지막 조각(키트 멈춤 단추가 앉는 모서리): 옅은 primary 바탕에 코드 한 줄을 왼쪽 위에 둔다. */
+.cat-piece--fill {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--tide-bg-primary-faint);
+  color: var(--tide-text-primary-on-subtle);
+}
+.cat-count {
+  font: var(--tide-font-semibold) 40px / 1.1 var(--tide-font-sans);
+  color: var(--tide-text-default);
+}
+.cat-icons {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  justify-items: center;
+  color: var(--tide-text-default);
+}
+.cat-swatches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.cat-swatch {
+  display: grid;
+  gap: 6px;
+}
+.cat-swatch > i {
+  display: block;
+  height: 32px;
+  border-radius: var(--radius-md);
+}
+
+/* ── /catalog 패키지 카드: 위쪽 그림 판(옅은 primary·info 빛), 설치 명령 한 줄 ── */
+.cat-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(70% 70% at 15% 0%, var(--tide-bg-info-faint), transparent 70%),
+    radial-gradient(70% 80% at 100% 100%, var(--tide-bg-primary-subtle), transparent 70%),
+    var(--tide-bg-primary-faint);
+}
+.cat-icons--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+.cat-swatches--row {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.cat-install {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--tide-bg-neutral-faint);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.cat-package .link {
+  margin-top: auto;
+}
+
+/* ── /catalog 묶음 판(pinned-chapters 그림): 그 묶음 Component 이름을 Badge로 늘어놓는다. ── */
+.cat-board__count {
+  flex-basis: 100%;
+  font: var(--tide-font-semibold) 64px / 1 var(--tide-font-sans);
+  color: var(--tide-text-primary);
+}
+.cat-board {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  background:
+    radial-gradient(70% 60% at 20% 10%, var(--tide-bg-primary-faint), transparent 70%),
+    radial-gradient(60% 60% at 90% 100%, var(--tide-bg-info-faint), transparent 70%),
+    var(--tide-bg-canvas);
+}
+
+/* ── 폰: 사진 카드 세 장이 쌓이면 한 화면을 넘으므로 #steps(/showcase)는 두 화면으로 센다(키트 --hm). 남는 높이는 카드 사이에 나눈다. ── */
+@media (max-width: 639px) {
+  #steps {
+    --hm: 2;
+  }
+  #steps .grid {
+    flex: 1 0 auto;
+    align-content: space-between;
+  }
+}
+
+/* 폰: 묶음 판을 낮춰 네 단계가 두 화면 안에 들어가게 한다. */
+@media (max-width: 639px) {
+  /* 두 화면을 채우도록 판 높이를 정한다. 비어 있는 아래쪽이 구역 사이 간격을 들쭉날쭉하게 만들지 않게(검사기 section-gaps). */
+  .cat-board {
+    min-height: 228px;
+    padding: 16px;
+    gap: 8px;
+  }
+  .cat-board__count {
+    font-size: 32px;
+  }
+}
+
+/* /stats 출처 카드의 패널은 요청 한 줄만 담아 낮게 둔다(큰 문장과 카드 세 장이 한 화면에 들어가게). */
+#source .panel {
+  --p-h: 112px;
+}
+
+/* 폰: /catalog 패키지 카드 세 장과 묶음 네 단계는 두 화면으로 센다(키트 --hm). 패키지 그림 판은 낮춰 두 화면 안에 넣는다. */
+@media (max-width: 639px) {
+  #packages {
+    --hm: 2;
+  }
+  /* pinned-chapters가 폰에서 멈추지 않을 때 키트 moment.css는 구역을 한 화면(min-height 100svh)으로 둔다.
+     네 단계는 한 화면을 넘고 두 화면에는 못 미쳐 푸터가 비치므로 두 화면으로 센다. */
+  main > #groups[data-moment]:not(.is-live) {
+    min-height: 200svh;
+  }
+  .cat-panel {
+    min-height: 188px;
+  }
+}
+
+/* /stats 큰 문장(liquid-type)은 키트 데모처럼 머리 폭 제한을 풀어 두 줄로 둔다(세 줄이면 카드 세 장과 한 화면에 들어가지 않는다). */
+#source .section-head {
+  max-width: none;
 }

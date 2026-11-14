@@ -1,0 +1,49 @@
+{
+  "note": "Credits for the photographs in this folder: photos.mjs credits prints the footer block for the ones the pages use.",
+  "photos": [
+    {
+      "file": "photo-f61361651.jpg",
+      "files": ["photo-f61361651-500.jpg", "photo-f61361651-960.jpg", "photo-f61361651.jpg"],
+      "id": "f61361651",
+      "alt": "Designer sketching Wireframes (Unsplash)",
+      "by": "Green Chameleon craftedbygc",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Designer_sketching_Wireframes_(Unsplash).jpg",
+      "source": "Wikimedia Commons"
+    },
+    {
+      "file": "photo-f39636530.jpg",
+      "files": ["photo-f39636530-500.jpg", "photo-f39636530-960.jpg", "photo-f39636530.jpg"],
+      "id": "f39636530",
+      "alt": "Paper prototype of website user interface, 2015-04-16",
+      "by": "Sage Ross",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Paper_prototype_of_website_user_interface,_2015-04-16.jpg",
+      "source": "Wikimedia Commons"
+    },
+    {
+      "file": "photo-f186238644.jpg",
+      "files": ["photo-f186238644-500.jpg", "photo-f186238644-960.jpg", "photo-f186238644.jpg"],
+      "id": "f186238644",
+      "alt": "White keyboard on a modern desk closeup",
+      "by": "Shixart1985",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:White_keyboard_on_a_modern_desk_closeup.jpg",
+      "source": "Wikimedia Commons"
+    },
+    {
+      "file": "photo-f95306325.jpg",
+      "files": ["photo-f95306325-500.jpg", "photo-f95306325-960.jpg", "photo-f95306325.jpg"],
+      "id": "f95306325",
+      "alt": "Laptop and coffee on a desk",
+      "by": "Lauren Mancke",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Laptop_and_coffee_on_a_desk.jpg",
+      "source": "Wikimedia Commons"
+    }
+  ]
+}

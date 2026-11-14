@@ -7,15 +7,9 @@ import { DEFAULT_THEME, THEME_STORAGE_KEY } from "@/constants/theme";
 
 import "./globals.css";
 
-const TITLE = "tide: Next.js 앱을 위한 React 디자인 시스템";
-const DESCRIPTION =
-  "Component 35종과 아이콘 2,029개를 토큰 하나로 칠하고, light·dark 대비를 WCAG 2.2 AA로 검사하는 React 디자인 시스템입니다.";
-
+/** 모든 페이지에 같은 것. 제목·설명·공유 정보는 페이지마다 `createPageMetadata`로 적는다. */
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
   icons: { icon: { url: "/favicon.svg", type: "image/svg+xml" } },
-  openGraph: { type: "website", title: TITLE, description: DESCRIPTION, images: ["/share.jpg"] },
   twitter: { card: "summary_large_image" },
   // design-taste-frontend 검사가 읽는 페이지 종류(SKILL.md 1절): 개발 도구 = software
   other: { "site-kind": "software", "page-type": "software" },
@@ -57,10 +51,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* 키트 CSS(public/kit.css)는 public/assets를 layer(kit)로 @import하는 파일 그대로 읽는다. 키트 파일은 번들하거나 고치지 않는다. */}
         {/* oxlint-disable-next-line nextjs/no-css-tags */}
         <link rel="stylesheet" href="/kit.css" />
+        {/* 페이지마다 moment가 달라 공통 로더만 미리 읽는다. 각 moment 파일은 키트 로더가 가져온다. */}
         <link rel="modulepreload" href="/assets/moments/moments.js" />
         <link rel="modulepreload" href="/assets/moments/lib.js" />
-        <link rel="modulepreload" href="/assets/moments/iris-opens/moment.js" />
-        <link rel="modulepreload" href="/assets/moments/letters-assemble/moment.js" />
       </head>
       <body className="bg-canvas text-default">
         {children}
