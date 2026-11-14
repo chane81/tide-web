@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { CollagePiece } from "./CollagePiece";
 import { CountPiece } from "./CountPiece";
 
 /** 색 Role 여섯 개. foundation README 「Role」에 적힌 이름이고, 칸 색은 tide 유틸리티(bg-*-solid)다. */
@@ -15,10 +15,7 @@ const ROLES = [
 export function TokensSet() {
   return (
     <div className="ly-collage__set" aria-hidden="true">
-      <div
-        className="ly-piece cat-piece"
-        style={{ "--x": "4%", "--y": "6%", "--w": "54%" } as CSSProperties}
-      >
+      <CollagePiece x="4%" y="6%" w="54%">
         <div className="cat-swatches">
           {ROLES.map((role) => (
             <span key={role.name} className="cat-swatch">
@@ -27,23 +24,17 @@ export function TokensSet() {
             </span>
           ))}
         </div>
-      </div>
-      <div
-        className="ly-piece cat-piece"
-        style={{ "--x": "62%", "--y": "10%", "--w": "34%" } as CSSProperties}
-      >
+      </CollagePiece>
+      <CollagePiece x="62%" y="10%" w="34%">
         <span className="flex flex-col gap-1">
           <span className="text-heading-md">Aa</span>
           <span className="text-body-sm text-muted">Pretendard</span>
         </span>
-      </div>
+      </CollagePiece>
       <CountPiece count="Role 6개" label="색 Token" />
-      <div
-        className="ly-piece cat-piece cat-piece--fill"
-        style={{ "--x": "36%", "--y": "70%", "--w": "60%", "--ph": "26%" } as CSSProperties}
-      >
+      <CollagePiece x="36%" y="70%" w="60%" h="26%">
         <span className="font-mono text-body-sm">--tide-bg-primary-solid</span>
-      </div>
+      </CollagePiece>
     </div>
   );
 }

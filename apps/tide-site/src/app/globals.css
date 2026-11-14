@@ -63,8 +63,9 @@
 .hero-win {
   position: relative;
   z-index: 1;
-  margin: 32px auto 0;
-  width: min(100% - 48px, 960px);
+  /* 판이 빠진 뒤로는 창이 컨테이너 좌우 선에 맞게 틀 폭을 다 쓴다(검사기 container-edges). */
+  margin: 32px 0 0;
+  width: 100%;
   overflow: hidden;
   border: 1px solid var(--tide-border-default);
   border-radius: var(--radius-xl);
@@ -472,9 +473,9 @@
   color: var(--tide-text-default);
   box-shadow: var(--tide-shadow-lg);
 }
-/* 키트 규칙: 창은 틀 오른쪽 끝을 --ly-cut만큼 지나가므로, 내용 오른쪽에 그만큼 빈 자리를 두어 잘리는 곳이 글자가 아니게 한다. */
+/* 창 안 여백. 판이 없어 창은 칸 폭 안에 있고 잘리지 않는다. */
 .stats-win__body {
-  padding: 16px var(--ly-cut-room, 48px) 24px 16px;
+  padding: 16px 16px 24px;
 }
 .stats-win__loading {
   display: grid;
@@ -486,7 +487,7 @@
     display: none;
   }
   .stats-win__body {
-    padding: 8px var(--ly-cut-room, 48px) 8px 8px;
+    padding: 8px;
   }
 }
 /* /stats 출처 카드 그림: 요청 한 줄과 읽는 필드. 키트 패널(.panel) 위에 그린다. */
@@ -633,22 +634,32 @@ main > .section:not(.ground-surface):nth-of-type(3n + 1) {
     radial-gradient(60% 70% at 50% 100%, var(--tide-bg-primary-faint), transparent 75%);
 }
 
-/* ── 히어로 창 바탕: 사용자가 고른 참고 사이트처럼 흰 바탕 위 옅은 파랑~하늘색 빛. tide primary·info 역할 토큰이라 dark에서도 따라간다.
-   스킬 효과 gradient-mesh(WebGL)를 먼저 붙였으나, 키트 셰이더가 이 창처럼 4:1로 넓은 틀에서 seed에 따라 검은 구멍을 그려
-   (색 점 가중치가 0에 가까워짐) 정지된 CSS 빛으로 바꿨다. 보라·라벤더는 쓰지 않는다(스킬 하우스 룰). ── */
+/* ── 히어로 판 없음: 네 라우트 히어로 모두 판 없이 라우트 메시 위에 창·카드·조각이 바로 뜬다(사용자 요청).
+   키트 .hero__window·.ly-collage·.hero__art는 자리·높이(·아래 흐림)만 맡고 키트 바탕·반경은 지운다.
+   스킬 효과 gradient-mesh(WebGL)는 4:1로 넓은 틀에서 검은 구멍을 그려 쓰지 않는다. ── */
 .hero--centred .hero__window,
-.hero--collage .hero__art,
-.hero--triptych .ly-collage {
-  background: var(--glow-ground), var(--tide-bg-canvas);
+.hero--triptych .ly-collage,
+.hero--collage .hero__art {
+  background: none;
+  border-radius: 0;
+}
+/* /stats: 판이 없으니 창을 판 오른쪽 밖으로 잘라 내보내지 않고(키트 --ly-cut) 칸 폭 안에, 글 칸과 위를 맞춰(검사기 split-pair) 둔다. 그림자가 보이게 잘라냄도 끈다. */
+.hero--collage .hero__art {
+  overflow: visible;
+}
+.hero--collage .hero__art > .ly-piece--main {
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
-/* ── 히어로 보조 카드: 창 오른쪽 아래 모서리에 겹친다(키트 .at-over 자리). 창이 880px 가운데 정렬이라 그 오른 끝에서 24px 안쪽에 둔다(창 밖으로 내면 검사기 spill).
+/* ── 히어로 보조 카드: 창 오른쪽 아래 모서리에 겹친다(키트 .at-over 자리). 창 오른 끝에서 24px 안쪽에 둔다(창 밖으로 내면 검사기 spill).
    1280px 아래(1024~1279 분할, 폰)에서는 창을 가리므로 숨긴다(키트 layout-v4.md 「Below 1024 .at-over pieces hide」보다 한 단계 넓게: 사용자 요청). ── */
 .hero-over {
   position: absolute;
   z-index: 2;
   top: 196px;
-  right: calc(50% - 440px + 24px);
+  right: 24px;
   width: 248px;
   text-align: start;
 }
@@ -667,43 +678,32 @@ main > .section:not(.ground-surface):nth-of-type(3n + 1) {
   background: var(--mesh-soft-b), var(--glow-ground), var(--p-surface);
 }
 
-/* 콜라주 바탕은 틀처럼 둥글게(키트 .hero__art와 같은 반경). */
-.hero--triptych .ly-collage {
-  border-radius: var(--r-lg);
-}
-
-/* ── /catalog 히어로 콜라주 조각(키트 .ly-collage .ly-piece가 자리·모서리·그림자를 맡는다). 안은 tide Component다. ── */
-.cat-piece {
+/* ── /catalog 히어로 콜라주 조각: 키트 .ly-piece는 자리만 맡는다. 키트의 조각 반경(--r-md)·바탕·그림자·overflow hidden이
+   안의 tide Card(rounded-lg)·Alert 테두리를 모서리에서 잘라 한쪽만 진하게 보였다. 그 넷을 끄고, 모양은 tide Card·Alert 본래
+   테두리 그대로에 tide 그림자 하나(shadow-md)를 더한다(조각마다 같은 규칙, CollagePiece). ── */
+.ly-collage .ly-piece.cat-piece {
   left: var(--x);
   top: var(--y);
   width: var(--w);
   height: var(--ph, auto);
-  padding: 16px;
-  background: var(--tide-bg-canvas);
-  color: var(--tide-text-default);
+  overflow: visible;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
 }
-/* 조각 안에 tide Card·Alert를 그대로 넣을 때는 그쪽이 테두리·여백을 그리므로 조각 여백을 뺀다. */
-.cat-piece--bare {
-  padding: 0;
+.ly-collage .cat-piece > * {
+  box-shadow: var(--tide-shadow-md);
 }
 /* 폰: 키트처럼 첫 벌만 두고(layout.js가 폰에서는 돌리지 않는다), 첫 조각 하나를 틀 너비로 보인다. 좁은 틀에서 조각이 길어져 버튼을 덮지 않게 한다. */
 @media (max-width: 1023px) {
-  .ly-collage .cat-piece:not(:first-child) {
+  .ly-collage .ly-piece.cat-piece:not(:first-child) {
     display: none;
   }
-  .ly-collage .cat-piece:first-child {
+  .ly-collage .ly-piece.cat-piece:first-child {
     --x: 4%;
     --y: 8%;
     --w: 92%;
   }
-}
-/* 마지막 조각(키트 멈춤 단추가 앉는 모서리): 옅은 primary 바탕에 코드 한 줄을 왼쪽 위에 둔다. */
-.cat-piece--fill {
-  display: flex;
-  align-items: flex-start;
-  padding: 20px;
-  background: var(--tide-bg-primary-faint);
-  color: var(--tide-text-primary-on-subtle);
 }
 .cat-count {
   font: var(--tide-font-semibold) 40px / 1.1 var(--tide-font-sans);
@@ -827,7 +827,7 @@ main > .section:not(.ground-surface):nth-of-type(3n + 1) {
 }
 
 /* ── /showcase 빛 번짐 판과 흰 카드(사용자 참고: 밝은 B2B 사이트의 후기 카드 장면, 느낌만 가져옴).
-   색 덩어리·고리·큰 글자는 tide 색 계열 토큰(purple·blue·cyan, theme마다 값이 바뀜)과 text 토큰을 color-mix로 묽힌 정지 CSS다.
+   색 덩어리는 tide 색 계열 토큰(purple·blue·cyan, theme마다 값이 바뀜)과 text 토큰을 color-mix로 묽힌 정지 CSS다.
    보라는 사용자가 스킬의 「never violet」에 예외를 둬서 쓴다(2026-11-14). 셰이더·blur 필터는 쓰지 않는다. ── */
 .glow-stage {
   position: relative;
@@ -845,19 +845,8 @@ main > .section:not(.ground-surface):nth-of-type(3n + 1) {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  /* 앞에서부터: 오른쪽 고리(얇은 띠), 위 하늘색(옅게), 왼쪽 아래 보라, 오른쪽 아래 파랑(진하게) */
+  /* 앞에서부터: 위 하늘색(옅게), 왼쪽 아래 보라, 오른쪽 아래 파랑(진하게) */
   background:
-    radial-gradient(
-      circle 92px at 92% 46%,
-      transparent 88px,
-      color-mix(in oklab, var(--tide-purple-solid) 26%, transparent) 89px 90px,
-      transparent 91px
-    ),
-    radial-gradient(
-      circle 90px at 92% 46%,
-      color-mix(in oklab, var(--tide-purple-solid) 10%, transparent),
-      transparent
-    ),
     radial-gradient(
       30% 30% at 50% 0%,
       color-mix(in oklab, var(--tide-cyan-solid) 16%, transparent),
@@ -874,12 +863,43 @@ main > .section:not(.ground-surface):nth-of-type(3n + 1) {
       transparent
     );
 }
-/* 히어로: 키트 .hero__window(빛 바탕 틀)이 판이다. 카드는 창처럼 위에서 32px 아래에 가운데로 뜬다. */
+/* 카드 아래쪽이 바탕으로 녹아 사라지게 한다(판이 있던 때처럼 아래 테두리·모서리·그림자가 안 보이게).
+   그림자까지 담도록 감싼 상자(.scene-float)에 40px 여백을 두고 그 상자에 mask를 건다: 카드 아래 72px가 사라지는 구간이고,
+   글자(출처 라벨·보조 줄)는 그 위에서 끝나게 카드 아래 여백을 그만큼 더 둔다. */
+.hero__window--bare .scene-float {
+  margin-top: -24px;
+  padding: 40px 40px 0;
+  width: min(640px, 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 72px), transparent);
+  mask-image: linear-gradient(to bottom, black calc(100% - 72px), transparent);
+}
+.hero__window--bare .scene-card {
+  gap: 16px;
+  padding: 24px 28px 80px;
+  box-shadow:
+    0 2px 8px color-mix(in oklab, var(--tide-text-default) 8%, transparent),
+    0 40px 90px -36px color-mix(in oklab, var(--tide-bg-primary-solid) 45%, transparent);
+}
+/* 폰: 감싼 상자 여백을 줄여 카드 폭을 지키고, 보조 줄은 빼서 출처 라벨이 사라지는 구간 위에서 끝나게 한다. */
+@media (max-width: 639px) {
+  .hero__window--bare .scene-float {
+    margin-top: -8px;
+    padding: 16px 8px 0;
+    -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 48px), transparent);
+    mask-image: linear-gradient(to bottom, black calc(100% - 48px), transparent);
+  }
+  .hero__window--bare .scene-card {
+    padding: 20px 20px 56px;
+  }
+  .hero__window--bare .scene-card__note {
+    display: none;
+  }
+}
 .scene-float {
   position: relative;
   z-index: 1;
   width: min(560px, 100% - 32px);
-  margin: 32px auto 0;
+  margin: 16px auto 0;
   text-align: start;
 }
 .scene-card {

@@ -4,12 +4,11 @@ import { MailIcon } from "@tide-design/icons";
 import { ButtonLink } from "@/components/ButtonLink";
 import { MAIN_ACTION } from "@/constants/sections";
 
-import { GlowDecor } from "./GlowDecor";
 import { SceneCard } from "./SceneCard";
 
 /**
  * 첫 화면(design-taste-frontend `centred` 히어로, 사진이 빠져 film 대신 다시 배정): 가운데 제목과 버튼,
- * 그 아래 빛 번짐 판(키트 .hero__window) 위에 뜬 흰 카드. 카드 안은 실제 tide Field·Input이다(소개 페이지 히어로 창처럼 그림으로 알리고 inert로 포커스를 막는다). 카드 발(출처 라벨)이 틀 아래 흐림(82%부터) 위에서 끝나게 짧게 둔다.
+ * 그 아래 라우트 메시 배경 위에 바로 뜬 흰 카드(키트 .hero__window는 자리·높이만 맡고 판은 그리지 않는다). 카드 안은 실제 tide Field·Input이다(소개 페이지 히어로 창처럼 그림으로 알리고 inert로 포커스를 막는다). 카드 발(출처 라벨)이 틀 아래 흐림(82%부터) 위에서 끝나게 짧게 둔다.
  */
 export function ShowcaseHero() {
   return (
@@ -32,13 +31,12 @@ export function ShowcaseHero() {
             </div>
           </div>
           <div
-            className="hero__window"
-            // 빛 바탕 위의 카드 한 장이 그림이다. 카드 안 tide Field는 누를 수 없는 견본(inert)이라 창 전체를 그림 하나로 알린다.
+            className="hero__window hero__window--bare"
+            // 히어로 메시 위에 뜬 카드 한 장이 그림이다(판·고리 없음). 카드 안 tide Field는 누를 수 없는 견본(inert)이라 창 전체를 그림 하나로 알린다.
             // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
             role="img"
             aria-label="빛 번짐 바탕 위에 뜬 흰 카드: tide Field로 그린 메일 주소 입력 칸"
           >
-            <GlowDecor />
             <div className="scene-float" inert>
               <SceneCard
                 as="p"
@@ -49,7 +47,7 @@ export function ShowcaseHero() {
                 <span className="scene-card__icon">
                   <MailIcon size={20} aria-hidden="true" />
                 </span>
-                <Field label="받을 메일 주소" description="알림을 받을 주소입니다.">
+                <Field label="받을 메일 주소">
                   <Input defaultValue="haneul.kim@example.com" />
                 </Field>
               </SceneCard>
