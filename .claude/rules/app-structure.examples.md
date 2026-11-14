@@ -123,7 +123,37 @@ export async function TopMembers() {
 }
 ```
 
-## 9. `app/_src`는 만들지 않는다
+## 9. 서버 껍데기(Slot)는 조건이 맞을 때만
+
+| 껍데기 | 판단 | 이유 |
+|---|---|---|
+| `SettingsSlot` | ❌ 접는다 | 소비자는 `/settings` 하나뿐이고, page가 경계 없이 `return <SettingsSlot />`만 함 |
+| `CurrencySlot` | ✅ 둔다 | ① `/sales`와 `/cards`가 같은 쿠키(표시 통화) 읽기를 함 |
+| `SidebarUserSlot` | ✅ 둔다 | ② layout 본문에서 읽으면 `<Suspense>` 밖이 되어 모든 라우트가 프리렌더에서 빠짐 |
+
+```tsx
+// ❌ src/app/settings/page.tsx
+export default function SettingsPage() {
+  return <SettingsSlot />;
+}
+// src/app/settings/_src/components/SettingsSlot.tsx
+export async function SettingsSlot() {
+  const profile = await getProfile();
+  return <SettingsForm initialProfile={profile} />;
+}
+```
+
+```tsx
+// ✅ src/app/settings/page.tsx — page도 서버 컴포넌트라 직접 읽는다
+export default async function SettingsPage() {
+  const profile = await getProfile();
+  return <SettingsForm initialProfile={profile} />;
+}
+```
+
+둘째 라우트가 생기면 그때 Slot으로 올린다.
+
+## 10. `app/_src`는 만들지 않는다
 
 루트 라우트(`app/page.tsx`)에서만 쓰는 `MrrChart`를 둘 곳.
 
@@ -133,7 +163,7 @@ export async function TopMembers() {
 ✅ src/app/sales/_src/components/...      # 루트가 아닌 세그먼트의 _src는 정상
 ```
 
-## 10. 파일 하나에 컴포넌트 하나
+## 11. 파일 하나에 컴포넌트 하나
 
 ```
 ❌ Sidebar/Sidebar.tsx   # Sidebar, SidebarNavItem, SidebarUserCard, SidebarContext, useSidebarContext
