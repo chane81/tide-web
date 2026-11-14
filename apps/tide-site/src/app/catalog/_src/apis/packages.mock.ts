@@ -1,6 +1,6 @@
 import type { TidePackage } from "./packages.types";
 
-/** tide 패키지 세 개. 사실은 tide README와 node_modules/@tide-design/*의 package.json·dist에서 확인했다(0.11.4). */
+/** tide 패키지 세 개. 사실은 tide README와 node_modules/@tide-design/*의 package.json·dist에서 확인했다(0.12.0). */
 export const packagesMock: TidePackage[] = [
   {
     id: "components",

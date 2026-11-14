@@ -16,7 +16,7 @@ export function Hero() {
         <div className="hero-text">
           <div className="hero__c">
             <a className="pill" href={NPM_URL}>
-              <span>0.11.4</span>
+              <span>0.12.0</span>
               <span className="muted">npm에 배포된 버전 보기</span>
             </a>
             <h1 id="hero-h">

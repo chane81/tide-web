@@ -7,7 +7,7 @@
   {
     "check": "text-contrast",
     "target": "nav__actions > a.inline-flex.shrink-0",
-    "reason": "The label is tide Button's own pair, text-on-solid on bg-primary-solid (blue-600 in light and dark, 4.36:1). tide's contrast policy sets text on solid at 4:1 (foundation contrast.d.ts ContrastMinRatio); the user ruled tide tokens and Components first, so the colour is not ours to change. Logged in docs/tide-gaps.md."
+    "reason": "The label is tide Button's own pair, text-on-solid on bg-primary-solid (blue-600 #1e7bd8 in light and dark since tide 0.12.0, 4.30:1). tide's contrast policy sets text on solid at 4:1 (foundation contrast.d.ts ContrastMinRatio); the user ruled tide tokens and Components first, so the colour is not ours to change. Logged in docs/tide-gaps.md."
   },
   {
     "check": "hero-lines",

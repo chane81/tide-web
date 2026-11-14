@@ -19,7 +19,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  // tide light canvas(`--tide-bg-canvas` = `--tide-color-white`, foundation 0.11.4 tokens.css). 기본 테마가 light다.
+  // tide light canvas(`--tide-bg-canvas` = `--tide-color-white`, foundation 0.12.0 tokens.css). 기본 테마가 light다.
   // theme-color는 CSS 변수를 받지 않아 값으로 적는다.
   themeColor: "#ffffff",
 };

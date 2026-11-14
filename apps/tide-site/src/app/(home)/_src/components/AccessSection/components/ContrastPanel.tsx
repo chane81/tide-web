@@ -1,8 +1,11 @@
-/** 대비 등급(tide docs/standards/accessibility.md, ADR 0023): 무엇에 몇 대 1을 지키는지 */
+/**
+ * 대비 등급(tide docs/standards/accessibility.md, ADR 0023): 무엇에 몇 대 1을 지키는지.
+ * 0.12.0부터 포커스 halo는 3:1 예외라(ADR 0032, light 약 1.5:1) 셋째 등급에 포커스 표시를 적지 않는다.
+ */
 const TIERS = [
   { label: "정지 상태 글자", ratio: "4.5:1", sample: "text-default bg-canvas" },
   { label: "solid 위 글자, hover·누름", ratio: "4.0:1", sample: "text-on-solid bg-primary-solid" },
-  { label: "입력 테두리·포커스 표시", ratio: "3:1", sample: "border-2 border-strong bg-canvas" },
+  { label: "입력 테두리·아이콘", ratio: "3:1", sample: "border-2 border-strong bg-canvas" },
 ] as const;
 
 /** 대비 견본: 등급마다 실제 tide 토큰 쌍을 칠해 보인다. */

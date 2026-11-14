@@ -1,4 +1,4 @@
-/** 창 왼쪽 목록. tide 0.11.4에 있는 Component만 적는다. 한 줄 설명은 그 Component가 하는 일이다. */
+/** 창 왼쪽 목록. tide 0.12.0에 있는 Component만 적는다. 한 줄 설명은 그 Component가 하는 일이다. */
 export const COMPONENT_LIST = [
   { name: "Button", summary: "주요 행동을 누릅니다" },
   { name: "Badge", summary: "상태를 짧은 글자로 보입니다" },
