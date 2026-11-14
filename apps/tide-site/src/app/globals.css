@@ -521,6 +521,61 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* ── 메시 배경(공통): 경계 없이 녹아드는 다색 빛. 사용자 참고(밝은 에이전시 사이트의 주황·코랄·노랑·파랑 메시)의 느낌만 가져온다.
+   색은 tide 원색 Token(코랄 red-400, 주황 = red-400과 amber-400을 반씩, 노랑 amber-400, 파랑 blue-400, 보라 purple-400)을
+   color-mix로 묽힌다. tide에는 밝은 노랑이 없어 amber-400(겨자색)이 가장 가깝다. 보라는 사용자 예외(2026-11-14).
+   원색 Token은 theme에 따라 바뀌지 않으므로 dark에서는 같은 색을 더 묽게 섞는다(--mesh-k).
+   - 히어로: 진하게. 글자 뒤(가운데 위)에 바탕색 빛을 깔아 가장 밝게 해 글자 대비를 지킨다.
+   - 그 아래 구역: 같은 계열을 훨씬 옅게, 구역마다 위치·조합을 바꿔(a·b·c) 되풀이하지 않는다.
+   셰이더는 쓰지 않는다(gradient-mesh는 넓은 틀에서 검은 구멍). ── */
+:root,
+[data-theme] {
+  --mesh-k: 1;
+  --mesh-coral: color-mix(in oklab, var(--tide-color-red-400) calc(var(--mesh-k) * 34%), transparent);
+  --mesh-orange: color-mix(
+    in oklab,
+    color-mix(in oklab, var(--tide-color-red-400), var(--tide-color-amber-400)) calc(var(--mesh-k) * 34%),
+    transparent
+  );
+  --mesh-yellow: color-mix(in oklab, var(--tide-color-amber-400) calc(var(--mesh-k) * 30%), transparent);
+  --mesh-blue: color-mix(in oklab, var(--tide-color-blue-400) calc(var(--mesh-k) * 36%), transparent);
+  --mesh-purple: color-mix(in oklab, var(--tide-color-purple-400) calc(var(--mesh-k) * 22%), transparent);
+  /* 글자 뒤 빛: 바탕색을 진하게 */
+  --mesh-light: color-mix(in oklab, var(--tide-bg-canvas) 92%, transparent);
+  --mesh-hero:
+    radial-gradient(42% 46% at 50% 34%, var(--mesh-light), transparent 72%),
+    radial-gradient(48% 60% at 0% 0%, var(--mesh-coral), transparent 70%),
+    radial-gradient(38% 50% at 10% 55%, var(--mesh-orange), transparent 70%),
+    radial-gradient(60% 45% at 42% 108%, var(--mesh-yellow), transparent 72%),
+    radial-gradient(46% 64% at 102% 42%, var(--mesh-blue), transparent 70%),
+    radial-gradient(34% 40% at 86% -4%, var(--mesh-purple), transparent 70%);
+  /* 옅은 구역 바탕: 원색을 1/4 농도로 */
+  --mesh-soft-a:
+    radial-gradient(40% 50% at 100% 10%, color-mix(in oklab, var(--mesh-blue) 30%, transparent), transparent 70%),
+    radial-gradient(36% 46% at 0% 100%, color-mix(in oklab, var(--mesh-coral) 26%, transparent), transparent 70%);
+  --mesh-soft-b:
+    radial-gradient(44% 50% at 0% 0%, color-mix(in oklab, var(--mesh-yellow) 30%, transparent), transparent 70%),
+    radial-gradient(40% 54% at 100% 90%, color-mix(in oklab, var(--mesh-purple) 34%, transparent), transparent 70%);
+  --mesh-soft-c:
+    radial-gradient(50% 44% at 50% 0%, color-mix(in oklab, var(--mesh-orange) 24%, transparent), transparent 72%),
+    radial-gradient(38% 50% at 100% 100%, color-mix(in oklab, var(--mesh-blue) 28%, transparent), transparent 70%);
+}
+[data-theme="dark"] {
+  --mesh-k: 0.55;
+}
+main > .hero {
+  background: var(--mesh-hero), var(--tide-bg-canvas);
+}
+main > .section:not(.ground-surface):nth-of-type(3n + 2) {
+  background: var(--mesh-soft-a), var(--tide-bg-canvas);
+}
+main > .section:not(.ground-surface):nth-of-type(3n) {
+  background: var(--mesh-soft-b), var(--tide-bg-canvas);
+}
+main > .section:not(.ground-surface):nth-of-type(3n + 1) {
+  background: var(--mesh-soft-c), var(--tide-bg-canvas);
+}
+
 /* ── 빛 바탕(공통): 흰 바탕 위 옅은 파랑~하늘색 빛. 히어로 창·콜라주·#access 띠·패키지 판·묶음 판·/showcase 판이 같이 쓴다.
    tide primary·info 역할 토큰이라 dark에서도 따라간다. 보라·라벤더는 쓰지 않는다(스킬 하우스 룰). 바탕색은 쓰는 곳이 뒤에 붙인다. ── */
 :root,
@@ -562,7 +617,7 @@
 /* ── #access 띠(surface-pairs): 기본 회색 띠(neutral-faint) 위에 primary·info 토큰의 옅은 빛을 정지된 CSS로 깐다.
    스킬 card grounds 배정(painterly-landscape)은 패널 네 개에 WebGL 맥락을 더 열고 풍경화 느낌이라 참고 사이트와 맞지 않아 쓰지 않았다. ── */
 #access.ground-surface {
-  background: var(--glow-ground), var(--p-surface);
+  background: var(--mesh-soft-b), var(--glow-ground), var(--p-surface);
 }
 
 /* 콜라주 바탕은 틀처럼 둥글게(키트 .hero__art와 같은 반경). */
