@@ -11,10 +11,11 @@ import {
 } from "@tide-design/components";
 import { useState } from "react";
 
+import { PageNavigation } from "@/components/PageNavigation";
+import { paginate } from "@/libs/paginate";
+
 import type { Transaction } from "../apis/cards.types";
 import { TRANSACTIONS_PAGE_SIZE } from "../constants/transactions";
-import { paginate } from "../libs/paginate";
-import { TransactionPagination } from "./TransactionPagination";
 import { TransactionRow } from "./TransactionRow";
 
 export interface TransactionTableProps {
@@ -58,7 +59,8 @@ export function TransactionTable({ transactions }: TransactionTableProps) {
         </Table>
       </div>
       {current.pageCount > 1 && (
-        <TransactionPagination
+        <PageNavigation
+          aria-label="거래 내역 페이지"
           page={current.page}
           pageCount={current.pageCount}
           onPageChange={setPage}
