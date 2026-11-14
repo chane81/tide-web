@@ -1,7 +1,12 @@
-import { PageBodyPlaceholder } from "@/components/PageBodyPlaceholder";
+import { getOverviewMetrics } from "@/apis/overview.api";
+import { OverviewMetrics } from "@/components/OverviewMetrics";
 import { PageHeader } from "@/components/PageHeader";
+import { QuickActions } from "@/components/QuickActions";
+import { TopMembers } from "@/components/TopMembers";
 
-export default function Page() {
+export default async function Page() {
+  const metrics = await getOverviewMetrics();
+
   return (
     <>
       <PageHeader
@@ -9,7 +14,13 @@ export default function Page() {
         description="핵심 지표와 최근 활동을 한눈에 봅니다."
         breadcrumbs={[{ label: "개요" }]}
       />
-      <PageBodyPlaceholder ticket="04" />
+      <div className="flex flex-col gap-8">
+        <OverviewMetrics metrics={metrics} />
+        <div className="grid gap-6 xl:grid-cols-[2fr_1fr]">
+          <QuickActions />
+          <TopMembers />
+        </div>
+      </div>
     </>
   );
 }
