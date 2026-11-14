@@ -537,15 +537,32 @@
 :root,
 [data-theme] {
   --mesh-k: 1;
-  --mesh-coral: color-mix(in oklab, var(--tide-color-red-400) calc(var(--mesh-k) * 34%), transparent);
-  --mesh-orange: color-mix(
+  --mesh-coral: color-mix(
     in oklab,
-    color-mix(in oklab, var(--tide-color-red-400), var(--tide-color-amber-400)) calc(var(--mesh-k) * 34%),
+    var(--tide-color-red-400) calc(var(--mesh-k) * 34%),
     transparent
   );
-  --mesh-yellow: color-mix(in oklab, var(--tide-color-amber-400) calc(var(--mesh-k) * 30%), transparent);
-  --mesh-blue: color-mix(in oklab, var(--tide-color-blue-400) calc(var(--mesh-k) * 36%), transparent);
-  --mesh-purple: color-mix(in oklab, var(--tide-color-purple-400) calc(var(--mesh-k) * 22%), transparent);
+  --mesh-orange: color-mix(
+    in oklab,
+    color-mix(in oklab, var(--tide-color-red-400), var(--tide-color-amber-400))
+      calc(var(--mesh-k) * 34%),
+    transparent
+  );
+  --mesh-yellow: color-mix(
+    in oklab,
+    var(--tide-color-amber-400) calc(var(--mesh-k) * 30%),
+    transparent
+  );
+  --mesh-blue: color-mix(
+    in oklab,
+    var(--tide-color-blue-400) calc(var(--mesh-k) * 36%),
+    transparent
+  );
+  --mesh-purple: color-mix(
+    in oklab,
+    var(--tide-color-purple-400) calc(var(--mesh-k) * 22%),
+    transparent
+  );
   /* 글자 뒤 빛: 바탕색을 진하게 */
   --mesh-light: color-mix(in oklab, var(--tide-bg-canvas) 92%, transparent);
   --mesh-hero:
@@ -557,14 +574,38 @@
     radial-gradient(34% 40% at 86% -4%, var(--mesh-purple), transparent 70%);
   /* 옅은 구역 바탕: 원색을 1/4 농도로 */
   --mesh-soft-a:
-    radial-gradient(40% 50% at 100% 10%, color-mix(in oklab, var(--mesh-blue) 30%, transparent), transparent 70%),
-    radial-gradient(36% 46% at 0% 100%, color-mix(in oklab, var(--mesh-coral) 26%, transparent), transparent 70%);
+    radial-gradient(
+      40% 50% at 100% 10%,
+      color-mix(in oklab, var(--mesh-blue) 30%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      36% 46% at 0% 100%,
+      color-mix(in oklab, var(--mesh-coral) 26%, transparent),
+      transparent 70%
+    );
   --mesh-soft-b:
-    radial-gradient(44% 50% at 0% 0%, color-mix(in oklab, var(--mesh-yellow) 30%, transparent), transparent 70%),
-    radial-gradient(40% 54% at 100% 90%, color-mix(in oklab, var(--mesh-purple) 34%, transparent), transparent 70%);
+    radial-gradient(
+      44% 50% at 0% 0%,
+      color-mix(in oklab, var(--mesh-yellow) 30%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      40% 54% at 100% 90%,
+      color-mix(in oklab, var(--mesh-purple) 34%, transparent),
+      transparent 70%
+    );
   --mesh-soft-c:
-    radial-gradient(50% 44% at 50% 0%, color-mix(in oklab, var(--mesh-orange) 24%, transparent), transparent 72%),
-    radial-gradient(38% 50% at 100% 100%, color-mix(in oklab, var(--mesh-blue) 28%, transparent), transparent 70%);
+    radial-gradient(
+      50% 44% at 50% 0%,
+      color-mix(in oklab, var(--mesh-orange) 24%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      38% 50% at 100% 100%,
+      color-mix(in oklab, var(--mesh-blue) 28%, transparent),
+      transparent 70%
+    );
 }
 [data-theme="dark"] {
   --mesh-k: 0.55;
