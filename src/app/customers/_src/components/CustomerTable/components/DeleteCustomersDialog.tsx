@@ -28,7 +28,7 @@ export function DeleteCustomersDialog({ count, onConfirm }: DeleteCustomersDialo
       <DialogContent size="sm">
         <DialogTitle>고객 {count}명을 삭제할까요?</DialogTitle>
         <DialogDescription>삭제한 고객은 목록에서 사라지고 되돌릴 수 없습니다.</DialogDescription>
-        <DialogFooter className="mt-6">
+        <DialogFooter>
           <DialogClose render={<Button variant="outline" color="neutral" />}>취소</DialogClose>
           <DialogClose render={<Button color="danger" />} onClick={onConfirm}>
             삭제

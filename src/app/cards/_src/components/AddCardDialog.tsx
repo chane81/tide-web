@@ -38,7 +38,7 @@ export function AddCardDialog() {
       <DialogContent>
         <DialogTitle>카드 추가</DialogTitle>
         <DialogDescription>결제에 쓸 카드 정보를 입력하세요.</DialogDescription>
-        <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Field label="카드 별칭">
             <Input name="nickname" placeholder="예: 업무용" />
           </Field>

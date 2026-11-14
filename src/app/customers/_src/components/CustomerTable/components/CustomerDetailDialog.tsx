@@ -38,7 +38,7 @@ export function CustomerDetailDialog({ customer, onClose }: CustomerDetailDialog
               <DialogDescription>{customer.email}</DialogDescription>
             </div>
           </div>
-          <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 text-body-sm">
+          <dl className="mt-2 grid grid-cols-2 gap-x-6 gap-y-4 text-body-sm">
             <div className="flex flex-col gap-1">
               <dt className="text-muted">상태</dt>
               <dd>

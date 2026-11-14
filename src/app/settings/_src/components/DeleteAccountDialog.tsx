@@ -21,7 +21,7 @@ export function DeleteAccountDialog() {
         <DialogDescription>
           프로필, 설정, 고객 데이터가 모두 지워지고 되돌릴 수 없습니다.
         </DialogDescription>
-        <DialogFooter className="mt-6">
+        <DialogFooter>
           <DialogClose render={<Button variant="outline" color="neutral" />}>취소</DialogClose>
           <DialogClose
             render={<Button color="danger" />}
