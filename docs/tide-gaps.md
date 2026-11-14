@@ -4,8 +4,9 @@ tide 패키지로 대시보드를 만들면서 부족했던 점을 모은다. ti
 
 항목마다: 무엇이 없었나 / 어떻게 우회했나(파일 경로) / tide에 바라는 것.
 
-| 항목 | 우회 | 바라는 것 |
-|---|---|---|
-| 차트 컴포넌트 없음 | Recharts + tide CSS 변수 (ADR 0002) | 차트용 색 순서(categorical palette) 토큰 |
-| Sidebar 내비게이션 없음 | (작업 예정) `src/components/Sidebar/` | — |
-| DatePicker·DateRangePicker 없음 | (작업 예정) | — |
+| 항목                                       | 우회                                                                         | 바라는 것                                                        |
+| ------------------------------------------ | ---------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| 차트 컴포넌트 없음                         | Recharts + tide CSS 변수 (ADR 0002)                                          | 차트용 색 순서(categorical palette) 토큰                         |
+| Sidebar 내비게이션 없음                    | (작업 예정) `src/components/Sidebar/`                                        | —                                                                |
+| DatePicker·DateRangePicker 없음            | (작업 예정)                                                                  | —                                                                |
+| npm 배포본에 README 없음(설치 안내 미포함) | 설치 방법을 `styles.css` 첫 줄 주석과 tide 저장소 `apps/smoke-next`에서 확인 | `@tide-design/components`·`icons` 패키지에 설치 안내 README 동봉 |
