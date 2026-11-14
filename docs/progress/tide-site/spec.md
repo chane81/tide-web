@@ -37,6 +37,8 @@ tide 디자인 시스템을 처음 보는 개발자에게 무엇을 주는지(Co
 - `/showcase`: 사진(대역 4장)과 `/credits`를 빼고 빛 번짐 판 위 흰 카드 구성으로 바꿨다(사용자 요청, 참고: 밝은 B2B 사이트의 후기 카드 장면). 후기·인물 이름 대신 출처 라벨(패키지 이름·문서 항목).
 - 보라 사용: 사용자가 스킬의 「never violet」 규칙에 예외를 뒀다(2026-11-14). tide `--tide-purple-*` 토큰만 쓴다.
 
+- 전 라우트 배경: 흰 바탕만 쓰지 않고 다색 메시(코랄·주황·노랑·파랑·보라)를 정지 CSS로 깐다(사용자 요청, 참고: 밝은 에이전시 사이트). 히어로는 진하게, 아래 구역은 옅게 a·b·c 세 조합을 돌려 쓴다. 공통 CSS는 `globals.css`의 `--mesh-*`·`--glow-ground` 한 곳.
+
 ## 검사
 
 design-taste-frontend gate(`apps/tide-site/.taste-skill/`): `next build && next start --port 3021`에 URL로 돌린다(`gate.mjs --start http://localhost:3021/<route> --new` 후 `gate.mjs <url>`). 네 페이지 모두 `GATE: PASS`, 면제 5개(`waivers.json`, 이유 포함). 면제는 키트 규칙과 tide 우선 결정이 부딪히는 곳이다.
