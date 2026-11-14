@@ -1,4 +1,4 @@
-import { ThemeToggle } from "@tide-web/components";
+import { InlineScript, ThemeToggle } from "@tide-web/components";
 import { createThemeInitScript } from "@tide-web/libs";
 import type { Metadata } from "next";
 
@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     // 인라인 스크립트가 hydration 전에 data-theme을 붙이므로 <html> 속성 차이는 경고하지 않는다.
     <html lang="ko" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: createThemeInitScript(THEME_STORAGE_KEY) }} />
+        <InlineScript html={createThemeInitScript(THEME_STORAGE_KEY)} />
         {/* Pretendard 가변 동적 subset(tide 「폰트 로드」 안내). 페이지에 쓰인 글자 조각만 내려받는다. 버전은 고정한다. */}
         <link
           rel="stylesheet"
