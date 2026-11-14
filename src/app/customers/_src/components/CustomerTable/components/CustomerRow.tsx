@@ -43,7 +43,8 @@ export function CustomerRow({ customer, selected, onToggle, onOpen }: CustomerRo
               <Link
                 color="neutral"
                 render={<button type="button" aria-label={`${customer.name} 상세 보기`} />}
-                className="cursor-pointer text-label-md"
+                // 표 안 이름은 문장 속 링크가 아니라 행마다 밑줄이 줄지어 시끄럽다. 가리킬 때만 밑줄을 보인다.
+                className="cursor-pointer text-label-md no-underline hover:underline"
               >
                 {customer.name}
               </Link>

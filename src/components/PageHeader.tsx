@@ -26,7 +26,7 @@ export interface PageHeaderProps {
 /** 화면 위쪽 머리: Breadcrumb, 제목, 설명, 액션. 서버 컴포넌트다. */
 export function PageHeader({ title, description, breadcrumbs, actions }: PageHeaderProps) {
   return (
-    <header className="mb-8 flex flex-col gap-3">
+    <header className="mb-6 flex flex-col gap-3">
       {breadcrumbs && breadcrumbs.length > 0 && (
         <Breadcrumb>
           {breadcrumbs.map((crumb) => (
@@ -44,7 +44,7 @@ export function PageHeader({ title, description, breadcrumbs, actions }: PageHea
       )}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="flex min-w-0 flex-col gap-1">
-          <Typography variant="heading-lg" level={1}>
+          <Typography variant="heading-md" level={1}>
             {title}
           </Typography>
           {description && <Typography className="text-muted">{description}</Typography>}

@@ -18,7 +18,7 @@ export function AppShell({ sidebar, children }: AppShellProps) {
       <aside className="sticky top-0 hidden h-dvh w-72 shrink-0 border-e border-default bg-surface lg:block">
         {sidebar}
       </aside>
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-w-0 flex-1 flex-col bg-neutral-faint">
         <header className="sticky top-0 z-sticky flex h-14 items-center gap-2 border-b border-default bg-surface px-3 lg:hidden">
           <MobileSidebar>{sidebar}</MobileSidebar>
           <NextLink

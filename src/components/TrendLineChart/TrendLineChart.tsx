@@ -1,6 +1,7 @@
 "use client";
 
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
+import { useId } from "react";
+import { Area, AreaChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
 
 import { CHART_THEME, SERIES_COLORS, type SeriesColor } from "@/constants/chartTheme";
 
@@ -38,7 +39,8 @@ function renderLegendText(value: string) {
 }
 
 /**
- * Recharts 라인 차트 래퍼. 색·격자·축·툴팁을 tide CSS 변수로 칠하고 부모 폭을 따라 늘어난다.
+ * Recharts 추이 차트 래퍼. 실선 계열은 아래를 같은 색으로 옅게 채우고, 점선(비교) 계열은 선만 그린다.
+ * 색·격자·축·툴팁을 tide CSS 변수로 칠하고 부모 폭을 따라 늘어난다.
  * tide에 차트가 없어 만든 것이다(docs/tide-gaps.md).
  */
 export function TrendLineChart({
@@ -50,6 +52,9 @@ export function TrendLineChart({
   title,
   height = 260,
 }: TrendLineChartProps) {
+  // 한 화면에 차트가 여럿이어도 그라디언트 id가 겹치지 않게 한다.
+  // useId 값의 특수 문자는 url(#id) 참조를 깨뜨릴 수 있어 걸러 낸다.
+  const gradientPrefix = `trend${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const tick = {
     fill: CHART_THEME.axisText,
     fontSize: CHART_THEME.fontSize,
@@ -58,7 +63,7 @@ export function TrendLineChart({
 
   return (
     <figure aria-label={title} className="m-0">
-      <LineChart
+      <AreaChart
         responsive
         width="100%"
         height={height}
@@ -66,6 +71,27 @@ export function TrendLineChart({
         margin={{ top: 8, right: 8, bottom: 0, left: 0 }}
         title={title}
       >
+        <defs>
+          {series.map((s) => (
+            <linearGradient
+              key={s.dataKey}
+              id={`${gradientPrefix}-${s.dataKey}`}
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
+              <stop
+                offset="0%"
+                style={{ stopColor: SERIES_COLORS[s.color ?? "primary"], stopOpacity: 0.24 }}
+              />
+              <stop
+                offset="100%"
+                style={{ stopColor: SERIES_COLORS[s.color ?? "primary"], stopOpacity: 0 }}
+              />
+            </linearGradient>
+          ))}
+        </defs>
         <CartesianGrid stroke={CHART_THEME.grid} strokeDasharray="3 3" vertical={false} />
         <XAxis
           dataKey={xKey}
@@ -110,7 +136,7 @@ export function TrendLineChart({
           />
         )}
         {series.map((s) => (
-          <Line
+          <Area
             key={s.dataKey}
             type="monotone"
             dataKey={s.dataKey}
@@ -118,6 +144,7 @@ export function TrendLineChart({
             stroke={SERIES_COLORS[s.color ?? "primary"]}
             strokeWidth={2}
             strokeDasharray={s.dashed ? "4 4" : undefined}
+            fill={s.dashed ? "none" : `url(#${gradientPrefix}-${s.dataKey})`}
             dot={false}
             activeDot={{
               r: 4,
@@ -127,7 +154,7 @@ export function TrendLineChart({
             }}
           />
         ))}
-      </LineChart>
+      </AreaChart>
     </figure>
   );
 }

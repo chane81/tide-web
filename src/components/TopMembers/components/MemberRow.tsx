@@ -16,7 +16,8 @@ export function MemberRow({ member }: MemberRowProps) {
         <span className="truncate text-label-md">{member.name}</span>
         <span className="truncate text-caption text-muted">{member.email}</span>
       </div>
-      <span className="hidden text-body-sm text-muted sm:inline">
+      {/* xl~2xl에서는 오른쪽 좁은 열에 놓여 이메일이 너무 잘리므로 가입일을 숨긴다. */}
+      <span className="hidden text-body-sm text-muted sm:inline xl:hidden 2xl:inline">
         <span className="sr-only">가입일 </span>
         <time dateTime={member.joinedAt}>{formatDate(member.joinedAt)}</time>
       </span>

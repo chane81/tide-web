@@ -43,12 +43,19 @@ export function OverviewMetrics({ metrics }: OverviewMetricsProps) {
                 label="전체 회원"
                 metric={m.totalMembers}
                 format={formatNumber}
+                compareLabel={period.compareLabel}
               />
-              <SecondaryMetricCard label="유료 회원" metric={m.paidMembers} format={formatNumber} />
+              <SecondaryMetricCard
+                label="유료 회원"
+                metric={m.paidMembers}
+                format={formatNumber}
+                compareLabel={period.compareLabel}
+              />
               <SecondaryMetricCard
                 label="메일 열람률"
                 metric={m.emailOpenRate}
                 format={formatRate}
+                compareLabel={period.compareLabel}
               />
             </div>
           </TabPanel>

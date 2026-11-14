@@ -40,7 +40,8 @@ describe("OverviewMetrics", () => {
     expect(screen.getByText("+1.3%")).toBeInTheDocument();
     expect(screen.queryByText("+52.4%")).not.toBeInTheDocument();
     expect(screen.getByText("MRR 추이: 점 7개")).toBeInTheDocument();
-    expect(screen.getByText("7일 전 대비")).toBeInTheDocument();
+    // MRR과 보조 지표 세 칸이 모두 같은 비교 기준을 보인다.
+    expect(screen.getAllByText("7일 전 대비")).toHaveLength(4);
   });
 
   it("증감률을 부호와 방향 글자로 보인다", () => {
