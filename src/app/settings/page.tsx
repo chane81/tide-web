@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 
-import { PageBodyPlaceholder } from "@/components/PageBodyPlaceholder";
 import { PageHeader } from "@/components/PageHeader";
+
+import { getSettings } from "./_src/apis/settings.api";
+import { SettingsTabs } from "./_src/components/SettingsTabs";
 
 export const metadata: Metadata = { title: "설정" };
 
-export default function Page() {
+export default async function Page() {
+  const settings = await getSettings();
+
   return (
     <>
       <PageHeader
@@ -13,7 +17,7 @@ export default function Page() {
         description="프로필, 알림, 보안 설정을 바꿉니다."
         breadcrumbs={[{ label: "개요", href: "/" }, { label: "설정" }]}
       />
-      <PageBodyPlaceholder ticket="08" />
+      <SettingsTabs initialSettings={settings} />
     </>
   );
 }
