@@ -24,3 +24,4 @@
 - 두 앱이 함께 쓰는 범용 코드는 `packages/shared/*`(Rslib로 `dist` 빌드)에 둔다.
 - 검사 명령은 루트에서 돌린다: `pnpm typecheck`·`lint`·`format:check`·`test`·`build`.
 - 문서(`docs/tide-gaps.md`, ADR, 트래커)는 저장소 루트 `docs/`에 그대로 둔다. tide-gaps의 코드 경로는 앱 이름부터 적는다.
+- 렌더 정책은 앱 전역 설정(`output: "export"`)이 아니라 라우트마다 그 주인 안에 적는다: 두 앱 모두 `cacheComponents`·`partialPrefetching`을 켜고, 정적은 `'use cache'`+`cacheLife()` 또는 기본 프리렌더, 요청마다는 `connection()`+`<Suspense>`(tide-site `/stats`).

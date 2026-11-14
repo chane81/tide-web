@@ -171,13 +171,18 @@ export async function TopMembers() {
 
 둘째 라우트가 생기면 그때 Slot으로 올린다.
 
-## 15. `app/_src`는 만들지 않는다
+## 15. 루트 라우트는 `(home)` 그룹, `app/_src`는 만들지 않는다
 
 ```
-❌ apps/tide-site/src/app/_src/components/Hero.tsx   # 모든 라우트가 import할 수 있는 자리 = 앱 전역
-✅ apps/tide-site/src/components/Hero.tsx
-✅ apps/tide-site/src/app/components/_src/...        # 루트가 아닌 세그먼트의 _src는 정상
+❌ apps/tide-site/src/app/_src/components/Hero.tsx        # 모든 라우트가 import할 수 있는 자리 = 앱 전역
+❌ apps/tide-site/src/components/Hero.tsx                 # 홈만 쓰는데 앱 전역에 둠
+✅ apps/tide-site/src/app/(home)/page.tsx                  # URL은 그대로 `/`
+✅ apps/tide-site/src/app/(home)/_src/components/Hero/     # 홈 전용
+✅ apps/tide-site/src/components/SiteNav.tsx               # 여러 라우트가 씀 → 앱 전역
+✅ apps/tide-site/src/app/catalog/_src/apis/...            # 루트가 아닌 세그먼트의 _src는 그대로
 ```
+
+- `/catalog`가 `(home)/_src`의 코드를 쓰고 싶어지면 import하지 않고 공통 부모(`src/`)로 승격한다(3번).
 
 ## 16. 파일 하나에 컴포넌트 하나
 

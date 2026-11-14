@@ -14,6 +14,10 @@ tide-web 모노레포(Next.js App Router 앱 여럿 + 내부 패키지)의 **콜
 │   ├── tide-dashboard/src/
 │   └── tide-site/src/
 │       ├── app/                        # App Router
+│       │   ├── layout.tsx
+│       │   ├── (home)/                 # 루트 라우트 `/`(URL에 안 나오는 그룹)
+│       │   │   ├── page.tsx
+│       │   │   └── _src/               # `/` 전용
 │       │   └── <route>/
 │       │       ├── page.tsx
 │       │       └── _src/               # 이 라우트(와 하위 라우트) 전용
@@ -70,7 +74,7 @@ tide-web 모노레포(Next.js App Router 앱 여럿 + 내부 패키지)의 **콜
     - **13-2.** 캐시 선언(`'use cache'`, `cacheLife()`, `connection()`)은 정책의 주인 안에 적는다. 컴포넌트·데이터의 성질이면 그 컴포넌트나 `apis/` 함수 안이다.
     - **13-3. 예외:** 공용 컴포넌트 하나를 라우트마다 다른 정책으로 쓰면, 라우트 파일에 "디렉티브 + 컴포넌트 반환"만 하는 래퍼를 둔다. 래퍼에 마크업·데이터 읽기가 섞이면 그 부분은 `_src/components`로 내린다.
 14. **Slot(서버에서 쿠키·헤더를 읽어 client 컴포넌트에 넘기는 껍데기)은 두 경우에만 만든다.** ① 라우트 둘 이상이 같은 읽기를 한다. ② 읽기가 `<Suspense>` 안쪽이어야 한다(layout 본문에서 읽으면 프리렌더가 깨진다). 그 밖에는 `page.tsx`가 직접 읽는다.
-15. **루트 라우트 전용 코드는 `src/`에 둔다.** `app/_src`는 모든 라우트가 import할 수 있어 앱 전역과 같은 뜻이다. `_src`는 루트가 아닌 세그먼트에만 둔다.
+15. **루트 라우트(`/`)는 `(home)` 그룹으로 두고 그 전용 코드는 `app/(home)/_src`에 둔다. 그룹 밖 `app/_src`는 만들지 않는다.** `app/_src`는 모든 라우트가 import할 수 있어 앱 전역과 같은 뜻이다. `(home)`은 URL에 나오지 않으므로 `/`는 그대로이고, 다른 라우트는 `(home)/_src`를 import하지 않는다(형제 라우트 규칙). 두 앱 모두에 적용한다.
 
 ## 파일 하나의 범위
 
@@ -91,6 +95,7 @@ tide-web 모노레포(Next.js App Router 앱 여럿 + 내부 패키지)의 **콜
 | 여러 리소스 조합 (`Sidebar`, Header) | `packages/widgets/src/<Widget>`   | `src/components`             |
 
 - hooks·libs·constants는 범위대로 내려간다: 컴포넌트 하나 → `<C>/hooks` · 라우트 하나 → `_src/hooks` · 앱 전역 → `src/hooks`.
+- 라우트 하나의 `_src`: 루트 라우트(`/`)는 `app/(home)/_src`, 나머지는 `app/<route>/_src`(15번).
 
 ## 이름
 

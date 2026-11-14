@@ -8,7 +8,7 @@ tide 디자인 시스템을 처음 보는 개발자에게 무엇을 주는지(Co
 
 ## Solution
 
-`apps/tide-site`에 Next.js(App Router, `output: "export"`) 한 페이지 사이트를 만든다. 구성(구역·히어로 배치)·카피·모션·검사는 design-taste-frontend 스킬에서 가져오고, 색·글꼴·반경·버튼은 tide 토큰과 tide Component를 쓴다. 화면 속 견본 UI도 그림이 아니라 실제 tide Component다. 카피는 tide README·`docs/standards`에서 온 사실만 쓴다.
+`apps/tide-site`에 Next.js(App Router, Cache Components) 사이트를 만든다. 처음엔 정적 내보내기 한 페이지였고, 지금은 라우트마다 렌더 정책을 정한다(`/`·`/showcase`·`/catalog`·`/credits` 정적, `/stats` 요청마다). 구성(구역·히어로 배치)·카피·모션·검사는 design-taste-frontend 스킬에서 가져오고, 색·글꼴·반경·버튼은 tide 토큰과 tide Component를 쓴다. 화면 속 견본 UI도 그림이 아니라 실제 tide Component다. 카피는 tide README·`docs/standards`에서 온 사실만 쓴다.
 
 ## 구성
 
@@ -19,11 +19,28 @@ tide 디자인 시스템을 처음 보는 개발자에게 무엇을 주는지(Co
 - `#principles`: tide 원칙(moment letters-assemble)
 - `#install`: Next.js 설치 3단계, `#faq`: 질문, 마무리 + 푸터
 
+## 페이지
+
+| 주소        | 내용                                                                                        | 렌더(빌드 표시)                                        |
+| ----------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `/`         | 소개(`app/(home)`), 위 구성                                                                 | ○ 기본 프리렌더                                        |
+| `/showcase` | 작업 장면 사진(Wikimedia Commons 대역 4장, 출처는 `/credits`), moment word-highlight        | ○ 기본 프리렌더                                        |
+| `/catalog`  | 패키지 3종 카드 + Component 35종 네 묶음(moment pinned-chapters), 데이터는 `_src/apis` 목업 | ○ `'use cache'` + `cacheLife('days')`(api 함수 안)     |
+| `/stats`    | npm 최신 버전·지난 7일 다운로드(moment liquid-type)                                         | ◐ `connection()`(api 함수 안) + `<Suspense>`(Skeleton) |
+| `/credits`  | 사진 출처 목록(스킬 copy.md: 푸터는 한 줄, 목록은 따로)                                     | ○                                                      |
+
+## 바뀐 결정
+
+- 기본 테마 dark → **light**(사용자 요청). `themeColor`는 tide light canvas(`#ffffff`).
+- `#access` 띠 rhythm dark-band → **surface-pairs**(사용자 요청): 반대 테마로 뒤집지 않고 `ground-surface` + tide primary·info 토큰의 옅은 빛. 반대 테마 스크립트·`InverseThemeSync`는 지웠다. moment iris-opens는 `from: base` 그대로.
+- 히어로 바탕: 배정 효과 silk-folds → 사용자 참고 사이트(밝은 바탕 위 파랑~하늘색 빛)에 맞춰 gradient-mesh를 시도했으나, 키트 셰이더가 4:1로 넓은 히어로 창에서 seed에 따라 검은 구멍을 그려 효과 없이 tide 토큰의 정지 CSS 빛으로 바꿨다. 창 오른쪽 아래에 tide Progress·Badge로 만든 보조 카드(1280px 미만 숨김).
+
 ## 검사
 
-design-taste-frontend gate(`apps/tide-site/.taste-skill/`): 1라운드 `GATE: PASS`, 면제 5개(`waivers.json`, 이유 포함). 면제는 키트 규칙과 tide 우선 결정이 부딪히는 곳이다.
+design-taste-frontend gate(`apps/tide-site/.taste-skill/`): `next build && next start --port 3021`에 URL로 돌린다(`gate.mjs --start http://localhost:3021/<route> --new` 후 `gate.mjs <url>`). 네 페이지 모두 `GATE: PASS`, 면제 5개(`waivers.json`, 이유 포함). 면제는 키트 규칙과 tide 우선 결정이 부딪히는 곳이다.
 
 ## 사용자가 채울 것
 
 - 배포 도메인: `metadataBase`(canonical·공유 이미지 절대 주소)가 없다. 빌드 경고가 난다.
-- 공유 이미지: `public/share.jpg`는 히어로 화면 캡처(1440×900)다. 전용 이미지로 바꿀 수 있다.
+- 공유 이미지: `public/share.jpg`는 예전(dark) 히어로 화면 캡처(1440×900)다. light 기본에 맞는 전용 이미지로 바꿀 수 있다. 모든 페이지가 같은 그림을 쓴다.
+- `/showcase` 사진 네 장은 대역(stand-in)이다: 실제 작업 장면(스케치, 코드 편집, 키보드 검사, 히어로용 작업대) 사진으로 바꿀 자리(`apps/tide-site/src/app/showcase/_src/constants/photos.ts`, 출처 `/credits`).
