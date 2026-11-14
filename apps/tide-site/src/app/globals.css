@@ -462,3 +462,42 @@
 .card {
   --c-text: var(--ink);
 }
+
+/* ── 히어로 창 바탕: 사용자가 고른 참고 사이트처럼 흰 바탕 위 옅은 파랑~하늘색 빛. tide primary·info 역할 토큰이라 dark에서도 따라간다.
+   스킬 효과 gradient-mesh(WebGL)를 먼저 붙였으나, 키트 셰이더가 이 창처럼 4:1로 넓은 틀에서 seed에 따라 검은 구멍을 그려
+   (색 점 가중치가 0에 가까워짐) 정지된 CSS 빛으로 바꿨다. 보라·라벤더는 쓰지 않는다(스킬 하우스 룰). ── */
+.hero--centred .hero__window {
+  background:
+    radial-gradient(45% 80% at 18% 20%, var(--tide-bg-info-faint), transparent 70%),
+    radial-gradient(40% 90% at 82% 30%, var(--tide-bg-primary-subtle), transparent 70%),
+    radial-gradient(60% 70% at 50% 100%, var(--tide-bg-primary-faint), transparent 75%),
+    var(--tide-bg-canvas);
+}
+
+/* ── 히어로 보조 카드: 창 오른쪽 아래 모서리에 겹친다(키트 .at-over 자리). 창이 880px 가운데 정렬이라 그 오른 끝에서 24px 안쪽에 둔다(창 밖으로 내면 검사기 spill).
+   1280px 아래(1024~1279 분할, 폰)에서는 창을 가리므로 숨긴다(키트 layout-v4.md 「Below 1024 .at-over pieces hide」보다 한 단계 넓게: 사용자 요청). ── */
+.hero-over {
+  position: absolute;
+  z-index: 2;
+  top: 196px;
+  right: calc(50% - 440px + 24px);
+  width: 248px;
+  text-align: start;
+}
+.hero-over > * {
+  box-shadow: var(--tide-shadow-lg);
+}
+@media (max-width: 1279px) {
+  .hero-over {
+    display: none;
+  }
+}
+
+/* ── #access 띠(surface-pairs): 기본 회색 띠(neutral-faint) 위에 primary·info 토큰의 옅은 빛을 정지된 CSS로 깐다.
+   스킬 card grounds 배정(painterly-landscape)은 패널 네 개에 WebGL 맥락을 더 열고 풍경화 느낌이라 참고 사이트와 맞지 않아 쓰지 않았다. ── */
+#access.ground-surface {
+  background:
+    radial-gradient(60% 50% at 12% 0%, var(--tide-bg-primary-faint), transparent 70%),
+    radial-gradient(50% 45% at 92% 100%, var(--tide-bg-info-faint), transparent 70%),
+    var(--p-surface);
+}

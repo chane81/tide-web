@@ -2,11 +2,12 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { NPM_URL, STORYBOOK_URL } from "@/constants/links";
 import { MAIN_ACTION } from "@/constants/sections";
 
+import { HeroOverCard } from "./components/HeroOverCard";
 import { HeroWindow } from "./components/HeroWindow";
 
 /**
  * 첫 화면(design-taste-frontend `centred` 히어로): 버전 알림, 가운데 제목, 설명, 버튼 둘, 그 아래 tide로 그린 대시보드 창.
- * 창은 바탕 효과(silk-folds) 위에 놓이고 아래 18%가 바탕으로 흐려진다(키트 layout.css).
+ * 창은 옅은 파랑~하늘색 빛 바탕(사용자가 고른 참고 사이트 느낌, tide primary·info 토큰의 정지 CSS, globals.css `.hero__window`) 위에 놓이고 아래 18%가 바탕으로 흐려진다(키트 layout.css).
  */
 export function Hero() {
   return (
@@ -37,14 +38,13 @@ export function Hero() {
           </div>
           <div
             className="hero__window"
-            data-fx="silk-folds"
-            data-fx-seed="7"
             // 실제 tide Component를 모은 창이라 <img>로 바꿀 수 없다. 창 전체를 그림 하나로 알린다.
             // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
             role="img"
             aria-label="tide Component로 그린 대시보드의 고객 화면: 지표 카드 세 장과 고객 표"
           >
             <HeroWindow />
+            <HeroOverCard />
           </div>
         </div>
       </div>

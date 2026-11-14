@@ -1,11 +1,7 @@
-import { InlineScript } from "@tide-web/components";
-
 import { ContrastPanel } from "./components/ContrastPanel";
-import { InverseThemeSync } from "./components/InverseThemeSync";
 import { KeyboardPanel } from "./components/KeyboardPanel";
 import { MotionPanel } from "./components/MotionPanel";
 import { TargetSizePanel } from "./components/TargetSizePanel";
-import { createInverseThemeScript } from "./libs/createInverseThemeScript";
 
 const CARDS = [
   {
@@ -31,20 +27,18 @@ const CARDS = [
 ] as const;
 
 /**
- * 4·5번 화면: 접근성 네 가지(features-2x2, 두 화면). 페이지와 반대 테마의 띠(dark-band)이고,
- * 들어올 때 원이 열리며 바탕이 바뀐다(moment iris-opens).
+ * 4·5번 화면: 접근성 네 가지(features-2x2, 두 화면). 한 단계 다른 바탕의 띠(surface-pairs, `ground-surface`)이고,
+ * 들어올 때 앞 구역 바탕(base)에서 원이 열리며 띠 바탕이 드러난다(moment iris-opens, from base).
+ * 띠 안 카드는 키트가 `--card`를 페이지 바탕(canvas)으로 돌려 회색 띠 위 흰 카드로 보인다.
  */
 export function AccessSection() {
   return (
     <section
-      className="section g2 ground-inverse"
+      className="section g2 ground-surface"
       id="access"
       aria-labelledby="access-h"
-      data-inverse-theme=""
-      data-theme="light"
       data-moment="iris-opens"
       data-moment-opts='{"from": "base"}'
-      suppressHydrationWarning
     >
       <div className="wrap">
         <div className="group">
@@ -74,8 +68,6 @@ export function AccessSection() {
           ))}
         </div>
       </div>
-      <InlineScript html={createInverseThemeScript()} />
-      <InverseThemeSync />
     </section>
   );
 }

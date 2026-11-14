@@ -17,7 +17,7 @@ const FAQ = [
   {
     icon: MoonIcon,
     q: "운영체제 다크 모드를 따르나요?",
-    a: "tide는 읽지 않습니다. <html>의 data-theme을 언제 바꿀지는 앱이 정합니다. 이 페이지는 처음에 어둡게 열립니다.",
+    a: "tide는 읽지 않습니다. <html>의 data-theme을 언제 바꿀지는 앱이 정합니다. 이 페이지는 처음에 밝게 열립니다.",
   },
   {
     icon: ServerIcon,

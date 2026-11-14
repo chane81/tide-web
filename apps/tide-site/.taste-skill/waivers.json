@@ -7,7 +7,7 @@
   {
     "check": "text-contrast",
     "target": "nav__actions > a.inline-flex.shrink-0",
-    "reason": "The label is tide Button's own pair, text-on-solid on bg-primary-solid in the dark theme (4.36:1). tide's contrast policy sets text on solid at 4:1 (foundation contrast.d.ts ContrastMinRatio); the user ruled tide tokens and Components first, so the colour is not ours to change. Logged in docs/tide-gaps.md."
+    "reason": "The label is tide Button's own pair, text-on-solid on bg-primary-solid (blue-600 in light and dark, 4.36:1). tide's contrast policy sets text on solid at 4:1 (foundation contrast.d.ts ContrastMinRatio); the user ruled tide tokens and Components first, so the colour is not ours to change. Logged in docs/tide-gaps.md."
   },
   {
     "check": "hero-lines",
@@ -20,8 +20,8 @@
     "reason": "Every extra style is in the Component window (marked as a mock): the product is the tide design system, and the Button item shows its real variants (subtle, danger, disabled) beside the page's one primary and one outline pair. The page's own buttons outside the window are one pair at one height."
   },
   {
-    "check": "dark-ground",
-    "target": "div.frame.frame--split",
-    "reason": "The theme demo shows tide's dark theme as it is: the toggle switches the whole page, and its ground is tide bg-raised behind a canvas Card. Lighting that ground to 3:1 would show a light panel inside the dark theme it demonstrates."
+    "check": "text-contrast",
+    "target": "p.hero__lead",
+    "reason": "The lead is tide text-muted (gray-700) on the light canvas, 6.33:1: past WCAG 2.2 AA (4.5:1) but under the kit 7:1 for body text. text-muted is tide own token for secondary text and the user ruled tide tokens first; the page switched to the light theme at the user request (dark-ground waiver dropped, it no longer fires)."
   }
 ]

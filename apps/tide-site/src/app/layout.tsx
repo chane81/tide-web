@@ -25,8 +25,9 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  // tide gray-950(dark canvas). theme-color는 CSS 변수를 받지 않아 값으로 적는다.
-  themeColor: "#28292c",
+  // tide light canvas(`--tide-bg-canvas` = `--tide-color-white`, foundation 0.11.4 tokens.css). 기본 테마가 light다.
+  // theme-color는 CSS 변수를 받지 않아 값으로 적는다.
+  themeColor: "#ffffff",
 };
 
 /** 키트가 첫 그림 전에 붙이는 표시: 히어로 등장 대기, moment 대기(설치 안내 그대로) */

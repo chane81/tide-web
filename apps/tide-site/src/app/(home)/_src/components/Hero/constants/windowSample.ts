@@ -44,3 +44,11 @@ export const SAMPLE_CUSTOMERS = [
 ] as const;
 
 export const SAMPLE_NAV = ["개요", "매출", "카드", "고객", "설정"] as const;
+
+/** 창 오른쪽 아래에 겹치는 보조 카드의 견본 값: MRR(위 SAMPLE_METRICS와 같은 값)과 목표 */
+export const SAMPLE_MRR_GOAL = {
+  value: "$48,230",
+  goal: "$60,000",
+  percent: 80,
+  change: "+25%",
+} as const;
