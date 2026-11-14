@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 
-import { PageBodyPlaceholder } from "@/components/PageBodyPlaceholder";
 import { PageHeader } from "@/components/PageHeader";
+
+import { getCustomers } from "./_src/apis/customers.api";
+import { CustomerTable } from "./_src/components/CustomerTable";
 
 export const metadata: Metadata = { title: "고객" };
 
-export default function Page() {
+export default async function Page() {
+  const { items } = await getCustomers();
+
   return (
     <>
       <PageHeader
@@ -13,7 +17,7 @@ export default function Page() {
         description="고객을 검색하고 상태별로 관리합니다."
         breadcrumbs={[{ label: "개요", href: "/" }, { label: "고객" }]}
       />
-      <PageBodyPlaceholder ticket="07" />
+      <CustomerTable customers={items} />
     </>
   );
 }
