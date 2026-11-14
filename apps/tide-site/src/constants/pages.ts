@@ -1,7 +1,7 @@
 /** 사이트의 페이지. 내비·푸터가 같은 목록을 쓴다. */
 export const SITE_PAGES = [
   { href: "/", label: "소개" },
-  { href: "/showcase", label: "작업 장면" },
+  { href: "/showcase", label: "쇼케이스" },
   { href: "/catalog", label: "패키지" },
   { href: "/stats", label: "npm 현황" },
 ] as const;

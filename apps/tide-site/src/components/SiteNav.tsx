@@ -27,8 +27,8 @@ function Chevron() {
 }
 
 export interface SiteNavProps {
-  /** 지금 보는 페이지. 그 링크에 `aria-current="page"`를 붙인다. 메뉴에 없는 페이지(/credits)는 넘기지 않는다. */
-  current?: SitePath;
+  /** 지금 보는 페이지. 그 링크에 `aria-current="page"`를 붙인다. */
+  current: SitePath;
 }
 
 /**

@@ -12,7 +12,7 @@ export function ShowcaseLayersSection() {
     >
       <div className="wrap">
         <h2 id="layers-h" className="t-label">
-          tide의 세 층
+          원칙·Token·Component 세 층
         </h2>
         <p className="mo-wh__text">
           원칙이 기준을 정하고, 기준을 통과한 값만 Token이 되며,{" "}

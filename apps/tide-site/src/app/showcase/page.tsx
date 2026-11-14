@@ -2,20 +2,20 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { createPageMetadata } from "@/libs/createPageMetadata";
 
-import { ShowcaseCredits } from "./_src/components/ShowcaseCredits";
 import { ShowcaseHero } from "./_src/components/ShowcaseHero";
 import { ShowcaseLayersSection } from "./_src/components/ShowcaseLayersSection";
-import { ShowcaseStepsSection } from "./_src/components/ShowcaseStepsSection";
+import { ShowcaseScenesSection } from "./_src/components/ShowcaseScenesSection";
 
 export const metadata = createPageMetadata({
-  title: "작업 장면: 화면을 만드는 팀의 디자인 시스템 tide",
+  title: "쇼케이스: 화면 조각으로 보는 React 디자인 시스템 tide",
   description:
-    "스케치, 코드, 키보드 검사까지 화면을 만드는 세 장면에서 tide Component 이름을 어떻게 이어 쓰는지 사진과 함께 보여 줍니다.",
+    "tide Component로 그린 화면 조각과 대비·색 기준을 빛 바탕 위 카드로 모았습니다. Component 35종, WCAG 2.2 AA.",
 });
 
 /*
-  design-taste-frontend 배정: hero film(영상이 없어 재생 단추 없이 사진 한 장), moment word-highlight(#layers).
-  사진 네 장은 Wikimedia Commons 대역(stand-in)이고 출처는 푸터 credits 한 줄에 있다.
+  design-taste-frontend 배정: hero centred(처음 배정 film은 사진이 필요해 사진을 빼며 다시 배정), moment word-highlight(#layers).
+  그림은 사진 대신 빛 번짐 판 위에 뜬 흰 카드(사용자 참고: 밝은 B2B 사이트의 후기 카드 장면). 카드에는 실제 tide 조각과
+  tide 사실만 넣고, 사람 이름·후기는 넣지 않는다.
   렌더: 요청 데이터가 없어 기본 프리렌더(○ Static).
 */
 export default function ShowcasePage() {
@@ -24,10 +24,10 @@ export default function ShowcasePage() {
       <SiteNav current="/showcase" />
       <main id="top">
         <ShowcaseHero />
-        <ShowcaseStepsSection />
+        <ShowcaseScenesSection />
         <ShowcaseLayersSection />
       </main>
-      <SiteFooter credits={<ShowcaseCredits />} />
+      <SiteFooter />
     </>
   );
 }
