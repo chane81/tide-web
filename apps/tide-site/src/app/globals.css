@@ -516,6 +516,12 @@
   color: var(--tide-text-default);
   box-shadow: var(--tide-shadow-lg);
 }
+/* 키트는 폰에서 보조 카드를 숨기지만(.hero__art > .ly-piece) 위 display가 kit layer보다 이겨 다시 보인다. 창을 덮지 않게 1024px 밑에서 숨긴다. */
+@media (max-width: 1023px) {
+  .stats-note {
+    display: none;
+  }
+}
 .stats-note__total {
   font: var(--tide-font-semibold) 32px / 1.2 var(--tide-font-sans);
   font-variant-numeric: tabular-nums;
