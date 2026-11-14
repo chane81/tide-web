@@ -1,12 +1,12 @@
+import { ThemeToggle } from "@tide-web/components";
+import { createThemeInitScript } from "@tide-web/libs";
 import type { Metadata } from "next";
 
 import { getCurrentUser } from "@/apis/currentUser.api";
 import { AppShell } from "@/components/AppShell";
 import { Sidebar } from "@/components/Sidebar";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { FOOTER_NAV_ITEMS, NAV_ITEMS } from "@/constants/navItems";
 import { THEME_STORAGE_KEY } from "@/constants/theme";
-import { createThemeInitScript } from "@/libs/createThemeInitScript";
 
 import "./globals.css";
 
@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
               items={NAV_ITEMS}
               footerItems={FOOTER_NAV_ITEMS}
               user={user}
-              footerActions={<ThemeToggle />}
+              footerActions={<ThemeToggle storageKey={THEME_STORAGE_KEY} />}
             />
           }
         >

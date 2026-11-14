@@ -24,5 +24,72 @@
       }
     ]
   },
-  "ignorePatterns": ["**/.next/**", "**/coverage/**", "next-env.d.ts"]
+  "ignorePatterns": [
+    "**/.next/**",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/out/**",
+    "apps/tide-site/public/assets/**",
+    "next-env.d.ts"
+  ],
+  "overrides": [
+    {
+      "files": ["packages/**"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["@/**"],
+                "message": "packages는 앱의 @/ alias를 import하지 않는다(.claude/rules/fe-monorepo-structure.md 9번)."
+              },
+              {
+                "group": [
+                  "tide-dashboard",
+                  "tide-dashboard/*",
+                  "tide-site",
+                  "tide-site/*",
+                  "**/apps/**"
+                ],
+                "message": "packages는 앱을 import하지 않는다(9번)."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["apps/tide-dashboard/**"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["**/tide-site/**", "tide-site"],
+                "message": "앱끼리 import하지 않는다. 함께 쓰면 packages로 승격한다(9번)."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["apps/tide-site/**"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["**/tide-dashboard/**", "tide-dashboard"],
+                "message": "앱끼리 import하지 않는다. 함께 쓰면 packages로 승격한다(9번)."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }

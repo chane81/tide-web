@@ -20,4 +20,9 @@ describe("resolveTheme", () => {
     expect(resolveTheme(null, false)).toBe("light");
     expect(resolveTheme("sepia", true)).toBe("dark");
   });
+
+  it("앱이 기본 테마를 정하면 운영체제 설정 대신 그것을 따른다", () => {
+    expect(resolveTheme(null, false, "dark")).toBe("dark");
+    expect(resolveTheme("light", true, "dark")).toBe("light");
+  });
 });

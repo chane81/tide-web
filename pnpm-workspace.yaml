@@ -5,6 +5,8 @@ packages:
 
 # 외부 의존성 버전은 여기서만 정한다. package.json에는 "catalog:"로 적는다.
 catalog:
+  "@rsbuild/plugin-react": 2.1.1
+  "@rslib/core": 1.0.7
   "@tailwindcss/postcss": 4.3.5
   "@testing-library/dom": 10.4.2
   "@testing-library/jest-dom": 7.0.1
