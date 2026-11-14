@@ -4,9 +4,14 @@ tide 패키지로 대시보드를 만들면서 부족했던 점을 모은다. ti
 
 항목마다: 무엇이 없었나 / 어떻게 우회했나(파일 경로) / tide에 바라는 것.
 
-| 항목                                       | 우회                                                                         | 바라는 것                                                        |
-| ------------------------------------------ | ---------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| 차트 컴포넌트 없음                         | Recharts + tide CSS 변수 (ADR 0002)                                          | 차트용 색 순서(categorical palette) 토큰                         |
-| Sidebar 내비게이션 없음                    | (작업 예정) `src/components/Sidebar/`                                        | —                                                                |
-| DatePicker·DateRangePicker 없음            | (작업 예정)                                                                  | —                                                                |
-| npm 배포본에 README 없음(설치 안내 미포함) | 설치 방법을 `styles.css` 첫 줄 주석과 tide 저장소 `apps/smoke-next`에서 확인 | `@tide-design/components`·`icons` 패키지에 설치 안내 README 동봉 |
+| 항목                                                              | 우회                                                                                                                                                | 바라는 것                                                        |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| 차트 컴포넌트 없음                                                | Recharts + tide CSS 변수 (ADR 0002)                                                                                                                 | 차트용 색 순서(categorical palette) 토큰                         |
+| Sidebar 내비게이션 없음                                           | `src/components/Sidebar/`: Input·Badge·Card·Avatar·Menu·Separator + Next `Link`로 조립. 활성 항목은 `aria-current`와 `bg-active` 토큰으로 직접 칠함 | 메뉴 항목(아이콘·이름·배지·활성 상태)을 갖춘 `Sidebar`/`NavList` |
+| DatePicker·DateRangePicker 없음                                   | (작업 예정)                                                                                                                                         | —                                                                |
+| npm 배포본에 README 없음(설치 안내 미포함)                        | 설치 방법을 `styles.css` 첫 줄 주석과 tide 저장소 `apps/smoke-next`에서 확인                                                                        | `@tide-design/components`·`icons` 패키지에 설치 안내 README 동봉 |
+| 내비게이션용 링크 모양 없음(`Link`는 항상 밑줄 있는 문장 속 링크) | 사이드바 메뉴는 tide `Link` 대신 Next `Link`에 토큰 class를 직접 적음(`SidebarNavItem.tsx`)                                                         | 블록형 내비게이션 링크(밑줄 없음, hover·active 배경)             |
+| Drawer·Sheet(가장자리에서 여는 오버레이) 없음                     | 네이티브 `<dialog>` `showModal()`로 왼쪽 패널을 직접 만듦(`AppShell/components/MobileSidebar.tsx`). `Dialog`는 가운데 고정 폭이라 못 씀             | 방향(start/end) 받는 `Drawer`                                    |
+| `Input`에 앞·뒤 장식 자리(아이콘, 단축키) 없음                    | 검색 아이콘·⌘K를 absolute로 겹치고 `className="ps-9 pe-12"`로 안쪽 여백을 덮어씀(`SidebarSearch.tsx`)                                               | `startAdornment`/`endAdornment`                                  |
+| 단축키 표시(`Kbd`) 없음                                           | `<kbd>`에 토큰 class를 직접 적음(`SidebarSearch.tsx`)                                                                                               | `Kbd` 컴포넌트                                                   |
+| `Card`에 점선(빈 자리) 모양 없음                                  | `className="border-dashed"`로 덮어씀(`PageBodyPlaceholder.tsx`)                                                                                     | 빈 상태용 variant 또는 `EmptyState`                              |
