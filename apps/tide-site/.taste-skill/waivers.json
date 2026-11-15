@@ -5,11 +5,6 @@
     "reason": "motion.css is loaded: public/kit.css imports assets/motion/motion.css into layer(kit) so tide utilities win over the kit. The probe reads only top-level stylesheet hrefs and rules, never a sheet pulled in by @import."
   },
   {
-    "check": "text-contrast",
-    "target": "nav__actions > a.inline-flex.shrink-0",
-    "reason": "The label is tide Button's own pair, text-on-solid on bg-primary-solid (blue-600 #1e7bd8 in light and dark since tide 0.12.0, 4.30:1). tide's contrast policy sets text on solid at 4:1 (foundation contrast.d.ts ContrastMinRatio); the user ruled tide tokens and Components first, so the colour is not ours to change. Logged in docs/tide-gaps.md."
-  },
-  {
     "check": "hero-lines",
     "target": "section.hero h1",
     "reason": "The stress fills the h1 to 36 characters, a length set for Latin type. 36 Hangul syllables carry about twice the words and cannot fit two lines of 880px at the hero's 72px; the page's own Korean h1 (27 characters) holds two lines at 1440 and 390."
@@ -18,5 +13,15 @@
     "check": "button-styles",
     "target": "(one screen)",
     "reason": "Every extra style is in the Component window (marked as a mock): the product is the tide design system, and the Button item shows its real variants (subtle, danger, disabled) beside the page's one primary and one outline pair. The page's own buttons outside the window are one pair at one height."
+  },
+  {
+    "check": "focus-visible",
+    "target": "div.app-frame__stage > div.preview-stack > div.preview-row:nth-of-type(1)",
+    "reason": "Component window (marked as a mock), Button item: \"취소\" is tide Button variant=outline color=neutral. tide 0.15.0 outline Button uses focus-field (ADR 0034): focus turns the border to the accent border, and for color=\"neutral\" that border is already the resting border-strong, so only the 3px halo is added. tide ADR 0034 lists outline buttons as its remaining limit, accepted by the user; the kit ring (system.css :focus-visible) is overridden by tide's outline:none and tide tokens and Components come first. Logged in docs/tide-gaps.md."
+  },
+  {
+    "check": "focus-visible",
+    "target": "div.theme-demo > div.rounded-lg.border",
+    "reason": "Theme demo card: \"취소\" is tide Button variant=outline color=neutral. tide 0.15.0 outline Button uses focus-field (ADR 0034): focus turns the border to the accent border, and for color=\"neutral\" that border is already the resting border-strong, so only the 3px halo is added. tide ADR 0034 lists outline buttons as its remaining limit, accepted by the user; the kit ring (system.css :focus-visible) is overridden by tide's outline:none and tide tokens and Components come first. Logged in docs/tide-gaps.md."
   }
 ]
