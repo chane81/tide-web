@@ -43,7 +43,11 @@ tide 디자인 시스템을 처음 보는 개발자에게 무엇을 주는지(Co
 
 ## 검사
 
-design-taste-frontend gate(`apps/tide-site/.taste-skill/`): `next build && next start --port 3021`에 URL로 돌린다(`gate.mjs --start http://localhost:3021/<route> --new` 후 `gate.mjs <url>`). 네 페이지 모두 `GATE: PASS`, 면제 4개(`waivers.json`, 이유 포함). 면제는 키트 규칙과 tide 우선 결정이 부딪히는 곳이다.
+design-taste-frontend gate(`apps/tide-site/.taste-skill/`): `next build && next start --port 3021`에 URL로 돌린다(`gate.mjs --start http://localhost:3021/<route> --new` 후 `gate.mjs <url>`). tide 0.15.0 빌드에서 네 페이지 모두 `GATE: PASS`, 면제 5개(`waivers.json`, 이유 포함, 2026-11-15). 면제는 키트 규칙과 tide 우선 결정이 부딪히는 곳이다.
+
+- 0.15.0 포커스 링(tide ADR 0034)으로 홈 푸터 `closing__cta`의 focus-visible FAIL(0.12.0 halo 1.46:1)이 풀렸고, primary 대비가 4.70:1이 되어 text-contrast 면제를 지웠다.
+- 새 면제 2개: 홈 Component 창·테마 견본의 `outline color="neutral"` 「취소」 Button은 포커스 때 halo만 더해져(1.43:1) focus-visible FAIL이다. tide ADR 0034가 남은 한계로 적었고 사용자가 수용한 것이다(`docs/tide-gaps.md`). 키트 자체 링(`system.css :focus-visible`)은 tide `focus-field`의 `outline: none`이 이겨 보이지 않는다.
+- `/catalog` h1을 「React 디자인 시스템 tide, 패키지 세 개」로 고쳤다(copy-headline: h1에 파는 것의 이름이 없다).
 
 ## 사용자가 채울 것
 
