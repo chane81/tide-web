@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@import "@tide-design/components/styles.css";
+
+/* 내부 패키지(dist)의 Tailwind class도 스캔한다. */
+@source "../../../../packages/shared/components/dist";

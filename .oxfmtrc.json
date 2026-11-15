@@ -1,4 +1,14 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": ["**/.next/**", "**/coverage/**", "next-env.d.ts", "pnpm-lock.yaml"]
+  "ignorePatterns": [
+    "**/.next/**",
+    "**/.taste-skill/**",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/out/**",
+    ".taste-skill/**",
+    "apps/tide-site/public/assets/**",
+    "next-env.d.ts",
+    "pnpm-lock.yaml"
+  ]
 }

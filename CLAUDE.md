@@ -1,24 +1,31 @@
 # tide-web
 
-npm에 배포된 tide 디자인 시스템(`@tide-design/components`, `@tide-design/icons`)으로 대시보드 웹을 만든다. 디자인 시스템을 실제 화면에 썼을 때 어떻게 보이는지, 무엇이 부족한지 확인하는 것이 목적이다.
+npm에 배포된 tide 디자인 시스템(`@tide-design/components`, `@tide-design/icons`)으로 웹을 만든다. 디자인 시스템을 실제 화면에 썼을 때 어떻게 보이는지, 무엇이 부족한지 확인하는 것이 목적이다.
 
-- 테크 스택: Next.js(App Router, Turbopack), pnpm, TypeScript, Tailwind CSS v4, oxlint, oxfmt, Vitest + React Testing Library, Recharts
-- 화면: 공통 셸(사이드바·헤더·다크 테마 전환) + `/`(개요) · `/sales` · `/cards` · `/customers` · `/settings`. 데이터는 목업이다.
+- 구조: pnpm workspace + Turborepo 모노레포(ADR 0003).
+  - `apps/tide-dashboard`: 대시보드. 공통 셸(사이드바·헤더·다크 테마 전환) + `/`(개요) · `/sales` · `/cards` · `/customers` · `/settings`. 데이터는 목업이다.
+  - `apps/tide-site`: tide 디자인 시스템 소개(마케팅) 사이트.
+  - `packages/shared/*`: 두 앱이 함께 쓰는 범용 코드. `packages/config/typescript`: `@tide-web/tsconfig`.
+- 테크 스택: Next.js(App Router, Turbopack), pnpm, Turborepo, TypeScript, Tailwind CSS v4, oxlint, oxfmt, Vitest + React Testing Library, Recharts
 - 문서와 주석은 한글로 작성한다.
-- 파일·폴더 배치는 `.claude/rules/app-structure.md`를 따른다(콜로케이션, 폴더 이름 `components`·`hooks`·`libs`·`constants`·`apis`, 파일 하나에 컴포넌트 하나).
+- 파일·폴더 배치는 `.claude/rules/fe-monorepo-structure.md`를 따른다(콜로케이션, 폴더 이름 `components`·`hooks`·`libs`·`constants`·`apis`, 파일 하나에 컴포넌트 하나, `apps → packages` 한 방향).
+- 외부 의존성 버전은 `pnpm-workspace.yaml`의 `catalog`에만 적고 `package.json`에는 `"catalog:"`로 쓴다.
 - tide에 있는 UI는 다시 만들지 않는다. tide에 없어서 직접 조립하거나 덮어쓴 것은 `docs/tide-gaps.md`에 적는다.
 - 색은 hex를 쓰지 않고 tide 토큰만 쓴다. 차트도 tide CSS 변수를 넘긴다(ADR 0002).
 - 라이브러리 API는 설치된 버전 기준으로 확인하고 쓴다. tide API는 `node_modules/@tide-design/*`의 타입 선언을 기준으로 한다.
 
 ## 명령
 
+루트에서 실행한다.
+
 ```sh
-pnpm dev          # 개발 서버
+pnpm dev:dashboard   # 대시보드 개발 서버 (localhost:3000)
+pnpm dev:site        # 소개 사이트 개발 서버 (localhost:3001)
 pnpm build
 pnpm typecheck
-pnpm test         # Vitest
-pnpm lint         # oxlint
-pnpm format       # oxfmt
+pnpm test            # Vitest
+pnpm lint            # oxlint (저장소 전체)
+pnpm format          # oxfmt (저장소 전체)
 ```
 
 ## Agent skills

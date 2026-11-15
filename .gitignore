@@ -6,3 +6,16 @@ coverage/
 next-env.d.ts
 .env*.local
 .DS_Store
+.turbo/
+dist/
+
+# design-taste-frontend 검사 산출물. 배정 history(*-history.json, history.json)와 waivers.json은 커밋한다.
+# Tailwind 자동 스캔도 .gitignore를 따르므로, 크롬 프로필 소켓을 읽다가 빌드가 깨지지 않는다.
+**/.taste-skill/chrome-*/
+**/.taste-skill/shots/
+**/.taste-skill/gate/
+**/.taste-skill/*.txt
+**/.taste-skill/build*.json
+**/.taste-skill/gate.json
+**/.taste-skill/gate-blocks.json
+**/.taste-skill/unarmed.json
