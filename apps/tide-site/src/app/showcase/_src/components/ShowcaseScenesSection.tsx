@@ -24,7 +24,7 @@ export function ShowcaseScenesSection() {
           <div className="span-6">
             <GlowStage>
               <SceneCard
-                title="정지 상태 글자 4.5:1, 입력 테두리 3:1"
+                title="정지 상태 글자 4.5:1, 테두리·포커스 링 3:1"
                 source="WCAG 2.2 AA"
                 note="tide 대비 기준, light·dark 모두 CI가 검사"
               />
