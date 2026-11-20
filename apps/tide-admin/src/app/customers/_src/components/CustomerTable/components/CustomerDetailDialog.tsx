@@ -32,7 +32,7 @@ export function CustomerDetailDialog({ customer, onClose }: CustomerDetailDialog
       {customer && (
         <DialogContent>
           <div className="flex items-center gap-3">
-            <Avatar alt="" size="lg" color={customer.avatarColor} />
+            <Avatar src={customer.avatarUrl} alt="" size="lg" color={customer.avatarColor} />
             <div className="flex min-w-0 flex-col gap-0.5">
               <DialogTitle>{customer.name}</DialogTitle>
               <DialogDescription>{customer.email}</DialogDescription>

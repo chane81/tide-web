@@ -1,4 +1,5 @@
 import { seededRandom } from "@/libs/seededRandom";
+import { portraitUrl } from "@/libs/portraitUrl";
 
 import type {
   GetMonthlyOrdersResponse,
@@ -59,24 +60,25 @@ export const purchasesAsOf = new Date(ANCHOR).toISOString();
 
 const minutesAgo = (m: number) => new Date(ANCHOR - m * 60 * 1000).toISOString();
 
+/** 정민준은 사진이 없어 fallback 아이콘이 보인다. */
 export const recentPurchasesMock: Purchase[] = [
   {
     id: "p-1",
-    customer: { name: "박서연" },
+    customer: { name: "박서연", avatarUrl: portraitUrl("women", 44) },
     product: { name: "Pro 플랜 (연간)", href: "/sales#pro-yearly" },
     amount: 1_188,
     purchasedAt: minutesAgo(4),
   },
   {
     id: "p-2",
-    customer: { name: "이도윤" },
+    customer: { name: "이도윤", avatarUrl: portraitUrl("men", 32) },
     product: { name: "추가 좌석 5개", href: "/sales#seats" },
     amount: 250,
     purchasedAt: minutesAgo(18),
   },
   {
     id: "p-3",
-    customer: { name: "최지우" },
+    customer: { name: "최지우", avatarUrl: portraitUrl("women", 65) },
     product: { name: "Team 플랜 (월간)", href: "/sales#team-monthly" },
     amount: 299,
     purchasedAt: minutesAgo(47),
@@ -90,7 +92,7 @@ export const recentPurchasesMock: Purchase[] = [
   },
   {
     id: "p-5",
-    customer: { name: "강하은" },
+    customer: { name: "강하은", avatarUrl: portraitUrl("women", 17) },
     product: { name: "Pro 플랜 (월간)", href: "/sales#pro-monthly" },
     amount: 99,
     purchasedAt: minutesAgo(180),

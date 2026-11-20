@@ -37,7 +37,13 @@ export function CustomerRow({ customer, selected, onToggle, onOpen }: CustomerRo
       </TableCell>
       <TableCell>
         <div className="flex items-center gap-3">
-          <Avatar alt="" size="sm" color={customer.avatarColor} className="hidden sm:inline-flex" />
+          <Avatar
+            src={customer.avatarUrl}
+            alt=""
+            size="sm"
+            color={customer.avatarColor}
+            className="hidden sm:inline-flex"
+          />
           <div className="flex min-w-0 flex-col items-start">
             <div className="flex items-center gap-2">
               <Link
