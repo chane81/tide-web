@@ -11,7 +11,7 @@ export async function RecentPurchases() {
   return (
     <Card
       render={<section aria-labelledby="recent-purchases-title" />}
-      className="flex flex-col p-6"
+      className="flex flex-col p-6 shadow-sm"
     >
       <Typography variant="heading-sm" level={2} id="recent-purchases-title">
         최근 구매

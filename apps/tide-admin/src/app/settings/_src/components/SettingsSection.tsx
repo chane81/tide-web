@@ -17,7 +17,7 @@ export function SettingsSection({ titleId, title, description, children }: Setti
   return (
     <Card
       render={<section aria-labelledby={titleId} />}
-      className="grid gap-6 p-6 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-10"
+      className="grid gap-6 p-6 shadow-sm lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-10"
     >
       <div className="flex flex-col gap-1">
         <Typography variant="heading-sm" level={2} id={titleId}>

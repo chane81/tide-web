@@ -10,6 +10,16 @@ describe("sales apis", () => {
     expect(kpis.orders).toEqual({ current: expect.any(Number), previous: expect.any(Number) });
   });
 
+  it("KPI 시간대별 추이는 24시간 누적이고 마지막 값이 오늘 값과 같다", async () => {
+    const { revenue, orders, hourly } = await getSalesKpis();
+
+    expect(hourly.revenue).toHaveLength(24);
+    expect(hourly.orders).toHaveLength(24);
+    expect(hourly.revenue.at(-1)).toBe(revenue.current);
+    expect(hourly.orders.at(-1)).toBe(orders.current);
+    expect(hourly.revenue).toEqual(hourly.revenue.toSorted((a, b) => a - b));
+  });
+
   it("보고서는 기간마다 점 개수가 맞고, 점마다 이번·지난 값이 있다", async () => {
     const report = await getSalesReport();
 

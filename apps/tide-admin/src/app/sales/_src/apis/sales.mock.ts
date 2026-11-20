@@ -13,9 +13,45 @@ import type {
 const ANCHOR = Date.UTC(2026, 10, 14, 0, 0, 0);
 const DAY = 24 * 60 * 60 * 1000;
 
+/** 오늘 시간대별 추이의 점 개수(0시~23시) */
+const HOURS = 24;
+
+/** 시간별 비중. 낮에 많고 새벽에 적은 곡선을 흔든다. */
+function buildHourlyWeights(seed: number): number[] {
+  const random = seededRandom(seed);
+
+  return Array.from({ length: HOURS }, (_, hour) => {
+    const daytime = Math.max(0, Math.sin(((hour - 6) / 16) * Math.PI));
+    return (0.15 + daytime) * (0.7 + random() * 0.6);
+  });
+}
+
+/** 비중을 누적해 `total`로 맞춘다. 마지막 값이 늘 `total`이라 KPI 숫자와 어긋나지 않는다. */
+function accumulate(weights: number[], total: number): number[] {
+  const sum = weights.reduce((a, b) => a + b, 0);
+  let running = 0;
+
+  return weights.map((weight) => {
+    running += weight;
+    return Math.round((total * running) / sum);
+  });
+}
+
+const revenue = { current: 12_480, previous: 11_215 };
+const orders = { current: 164, previous: 171 };
+
+const revenueWeights = buildHourlyWeights(301);
+const ordersJitter = seededRandom(302);
+/** 주문 수는 매출 비중을 ±10%만 흔든다. 따로 만들면 평균 주문 금액 추이가 크게 튄다. */
+const ordersWeights = revenueWeights.map((weight) => weight * (0.9 + ordersJitter() * 0.2));
+
 export const salesKpisMock: GetSalesKpisResponse = {
-  revenue: { current: 12_480, previous: 11_215 },
-  orders: { current: 164, previous: 171 },
+  revenue,
+  orders,
+  hourly: {
+    revenue: accumulate(revenueWeights, revenue.current),
+    orders: accumulate(ordersWeights, orders.current),
+  },
 };
 
 /** 이번 기간·지난 기간 매출 시계열. 지난 기간은 이번 기간보다 조금 낮게 흔든다. */

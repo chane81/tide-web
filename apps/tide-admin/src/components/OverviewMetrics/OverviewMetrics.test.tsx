@@ -15,6 +15,15 @@ vi.mock("@/components/TrendLineChart", () => ({
   ),
 }));
 
+// 스파크라인도 같은 이유로 이름과 점 개수만 보인다.
+vi.mock("@/components/Sparkline", () => ({
+  Sparkline: ({ title, values }: { title: string; values: number[] }) => (
+    <p>
+      {title}: 점 {values.length}개
+    </p>
+  ),
+}));
+
 describe("OverviewMetrics", () => {
   it("처음에는 12개월 지표를 보인다", () => {
     render(<OverviewMetrics metrics={overviewMetricsMock} />);
@@ -24,6 +33,7 @@ describe("OverviewMetrics", () => {
       screen.getByText(formatCurrency(overviewMetricsMock["12m"].mrr.current)),
     ).toBeInTheDocument();
     expect(screen.getByText("MRR 추이: 점 12개")).toBeInTheDocument();
+    expect(screen.getByText("최근 12개월 전체 회원 추이: 점 12개")).toBeInTheDocument();
   });
 
   it("기간 탭을 바꾸면 증감률·보조 지표와 차트가 바뀐다", async () => {

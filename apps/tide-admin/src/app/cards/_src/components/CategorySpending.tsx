@@ -17,7 +17,7 @@ export function CategorySpending({ transactions }: CategorySpendingProps) {
   return (
     <Card
       render={<section aria-labelledby="category-spending-title" />}
-      className="flex flex-col gap-4 p-6"
+      className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <Typography variant="heading-sm" level={2} id="category-spending-title">
         카테고리별 지출

@@ -10,7 +10,7 @@ export async function MonthlyOrders() {
   return (
     <Card
       render={<section aria-labelledby="monthly-orders-title" />}
-      className="flex flex-col gap-4 p-6"
+      className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <Typography variant="heading-sm" level={2} id="monthly-orders-title">
         월별 주문

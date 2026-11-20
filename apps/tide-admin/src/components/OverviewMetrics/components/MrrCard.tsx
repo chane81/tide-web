@@ -26,7 +26,7 @@ export function MrrCard({ period, metrics, compareLabel }: MrrCardProps) {
   return (
     <Card
       render={<section aria-labelledby={`mrr-${period}`} />}
-      className="flex flex-col gap-4 p-6"
+      className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <div className="flex flex-col gap-1">
         <Typography variant="label-md" id={`mrr-${period}`} className="text-muted">

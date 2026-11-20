@@ -1,4 +1,9 @@
+import { Button } from "@tide-design/components";
+import { ArrowRightIcon } from "@tide-design/icons";
+import NextLink from "next/link";
+
 import { getOverviewMetrics } from "@/apis/overview.api";
+import { MonthlyGoals } from "@/components/MonthlyGoals";
 import { OverviewMetrics } from "@/components/OverviewMetrics";
 import { PageHeader } from "@/components/PageHeader";
 import { QuickActions } from "@/components/QuickActions";
@@ -9,11 +14,22 @@ export default async function Page() {
 
   return (
     <>
-      <PageHeader title="개요" description="핵심 지표와 최근 활동을 한눈에 봅니다." />
+      <PageHeader
+        title="개요"
+        description="핵심 지표와 최근 활동을 한눈에 봅니다."
+        actions={
+          <Button endIcon={<ArrowRightIcon />} render={<NextLink href="/sales" />}>
+            매출 보고서 보기
+          </Button>
+        }
+      />
       <div className="flex flex-col gap-8">
         <OverviewMetrics metrics={metrics} />
         <div className="grid gap-6 xl:grid-cols-[2fr_1fr]">
-          <QuickActions />
+          <div className="flex flex-col gap-6">
+            <QuickActions />
+            <MonthlyGoals />
+          </div>
           <TopMembers />
         </div>
       </div>
