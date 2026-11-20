@@ -55,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <link rel="modulepreload" href="/assets/moments/moments.js" />
         <link rel="modulepreload" href="/assets/moments/lib.js" />
       </head>
-      <body className="bg-canvas text-default">
+      <body className="bg-canvas text-default antialiased">
         {children}
         <KitScripts />
       </body>

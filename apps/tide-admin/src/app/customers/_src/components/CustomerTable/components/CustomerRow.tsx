@@ -72,7 +72,7 @@ export function CustomerRow({ customer, selected, onToggle, onOpen }: CustomerRo
           {status.label}
         </Badge>
       </TableCell>
-      <TableCell className="hidden whitespace-nowrap md:table-cell">
+      <TableCell className="hidden whitespace-nowrap text-muted md:table-cell">
         <time dateTime={customer.joinedAt}>{formatDate(customer.joinedAt)}</time>
       </TableCell>
       <TableCell className="text-end tabular-nums">{formatCurrency(customer.totalSpent)}</TableCell>

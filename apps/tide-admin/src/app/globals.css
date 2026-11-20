@@ -3,3 +3,12 @@
 
 /* 내부 패키지(dist)의 Tailwind class도 스캔한다. */
 @source "../../../../packages/shared/components/dist";
+
+/*
+ * tide 아이콘 선 두께를 2px → 1.5px로 낮춘다.
+ * tide 아이콘은 `non-scaling-stroke`라 크기와 상관없이 늘 2px로 그려져 16~20px 아이콘이 굵어 보인다(docs/tide-gaps.md).
+ * CSS가 SVG 속성(`stroke-width`)보다 우선하므로, 한 아이콘만 다르게 하려면 `strokeWidth` prop이 아니라 `[--icon-stroke:2]` class를 쓴다.
+ */
+:where(svg[viewBox="0 0 24 24"][fill="none"][stroke="currentColor"]) {
+  stroke-width: var(--icon-stroke, 1.5);
+}

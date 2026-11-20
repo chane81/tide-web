@@ -26,7 +26,7 @@ export function TransactionRow({ transaction }: TransactionRowProps) {
           </span>
         </div>
       </TableCell>
-      <TableCell className="hidden whitespace-nowrap sm:table-cell">
+      <TableCell className="hidden whitespace-nowrap text-muted sm:table-cell">
         <time dateTime={transaction.occurredAt}>{formatDate(transaction.occurredAt)}</time>
       </TableCell>
       <TableCell className="text-end tabular-nums">{formatCurrency(transaction.amount)}</TableCell>

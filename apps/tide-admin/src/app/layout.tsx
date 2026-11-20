@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
         />
       </head>
-      <body className="bg-canvas text-default">
+      <body className="bg-canvas text-default antialiased">
         <AppShell
           sidebar={
             <Sidebar
