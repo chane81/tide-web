@@ -8,11 +8,11 @@
 ## 1. 같은 폴더 이름을 모든 깊이에서 반복한다
 
 ```
-❌ apps/tide-dashboard/src/app/cards/_src/utils/formatCardNumber.ts
+❌ apps/tide-admin/src/app/cards/_src/utils/formatCardNumber.ts
 ❌ apps/tide-site/src/helpers/scrollTo.ts
 ❌ packages/shared/common/formatDate.ts
 
-✅ apps/tide-dashboard/src/app/cards/_src/libs/formatCardNumber.ts
+✅ apps/tide-admin/src/app/cards/_src/libs/formatCardNumber.ts
 ✅ apps/tide-site/src/libs/scrollTo.ts
 ✅ packages/shared/libs/src/formatDate.ts
 ```
@@ -24,9 +24,9 @@
 거래 필터 `useTransactionFilter`가 처음에는 `TransactionTable`에서만 쓰인다.
 
 ```
-① 컴포넌트 하나                  apps/tide-dashboard/src/app/cards/_src/components/TransactionTable/hooks/useTransactionFilter.ts
-② 같은 라우트의 SpendingChart도 씀 → apps/tide-dashboard/src/app/cards/_src/hooks/useTransactionFilter.ts
-③ /sales 라우트도 씀              → apps/tide-dashboard/src/hooks/useTransactionFilter.ts
+① 컴포넌트 하나                  apps/tide-admin/src/app/cards/_src/components/TransactionTable/hooks/useTransactionFilter.ts
+② 같은 라우트의 SpendingChart도 씀 → apps/tide-admin/src/app/cards/_src/hooks/useTransactionFilter.ts
+③ /sales 라우트도 씀              → apps/tide-admin/src/hooks/useTransactionFilter.ts
 ④ tide-site도 씀                  → packages/domains/transactions/src/hooks/useTransactionFilter.ts
 ```
 
@@ -39,8 +39,8 @@
 | 코드                    | 쓰는 앱            | 범용?                    | 위치                                                     |
 | ----------------------- | ------------------ | ------------------------ | -------------------------------------------------------- |
 | `createThemeInitScript` | 둘 다              | ✅                       | `packages/shared/libs/src/createThemeInitScript.ts`      |
-| `formatCurrency`        | tide-dashboard만   | ✅                       | `packages/shared/libs`로 올려도 되지만, 지금은 앱에 둠 ↓ |
-| `getTransactions`       | tide-dashboard만   | ❌ (transactions 리소스) | `apps/tide-dashboard/src/app/cards/_src/apis/`           |
+| `formatCurrency`        | tide-admin만       | ✅                       | `packages/shared/libs`로 올려도 되지만, 지금은 앱에 둠 ↓ |
+| `getTransactions`       | tide-admin만       | ❌ (transactions 리소스) | `apps/tide-admin/src/app/cards/_src/apis/`               |
 | `THEME_STORAGE_KEY`     | 둘 다, 값은 앱마다 | ❌ (앱이 정한 키)        | 각 앱 `src/constants/theme.ts` → 인자로 넘김(5번)        |
 
 - 범용 판단: 앱·리소스·화면 이름 없이 설명되고, 다른 앱에 그대로 옮겨도 동작하는가.
@@ -100,7 +100,7 @@ tide에 없는 사이트 헤더·푸터는 tide `Link`·`Button`으로 조립해
 import { LOCALE } from "@/constants/locale"; // packages → apps(@/ alias)
 
 // ❌ apps/tide-site/src/components/Hero.tsx
-import { TrendLineChart } from "../../../tide-dashboard/src/components/TrendLineChart"; // 앱 → 다른 앱
+import { TrendLineChart } from "../../../tide-admin/src/components/TrendLineChart"; // 앱 → 다른 앱
 
 // ✅ 두 앱이 쓰게 되면 packages로 승격한 뒤 패키지 이름으로 import
 import { formatDate } from "@tide-web/libs";
@@ -123,7 +123,7 @@ const { items } = await getTransactions({ page: 1 });
 // ❌ 차트 컴포넌트 안에서 월별 합계를 계산
 const data = transactions.reduce(/* 월별 합산 */);
 
-// ✅ apps/tide-dashboard/src/app/cards/_src/libs/sumByMonth.ts + sumByMonth.test.ts
+// ✅ apps/tide-admin/src/app/cards/_src/libs/sumByMonth.ts + sumByMonth.test.ts
 const data = sumByMonth(transactions);
 ```
 
@@ -132,7 +132,7 @@ const data = sumByMonth(transactions);
 ### 13-1. 보조 컴포넌트는 `_src/components`로 내린다
 
 ```tsx
-// ❌ apps/tide-dashboard/src/app/sales/page.tsx
+// ❌ apps/tide-admin/src/app/sales/page.tsx
 async function SalesKpis() {
   const kpis = await getSalesKpis();
   return <div className="grid grid-cols-3 gap-6">{/* ... */}</div>;
@@ -205,10 +205,10 @@ export async function TopMembers() {
 ## import: `'use client'` 경계는 잎에
 
 ```tsx
-// ❌ apps/tide-dashboard/src/app/sales/page.tsx
+// ❌ apps/tide-admin/src/app/sales/page.tsx
 "use client"; // 페이지 전체가 client 번들로 간다. 차트 하나 때문에.
 
-// ✅ apps/tide-dashboard/src/app/sales/_src/components/SalesChart.tsx
+// ✅ apps/tide-admin/src/app/sales/_src/components/SalesChart.tsx
 "use client";
 import { LineChart, Line } from "recharts";
 ```

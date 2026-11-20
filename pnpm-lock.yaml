@@ -263,7 +263,7 @@ importers:
         specifier: 'catalog:'
         version: 7.0.2
 
-  apps/tide-dashboard:
+  apps/tide-admin:
     dependencies:
       '@tide-design/components':
         specifier: 'catalog:'

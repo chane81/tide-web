@@ -1,4 +1,4 @@
-/** 히어로 창에 그리는 대시보드 견본 값. tide-dashboard 개요·고객 화면을 줄인 것이다. */
+/** 히어로 창에 그리는 대시보드 견본 값. tide-admin 개요·고객 화면을 줄인 것이다. */
 export const SAMPLE_METRICS = [
   { label: "MRR", value: "$48,230", change: "+25%" },
   { label: "유료 회원", value: "2,041", change: "+58.5%" },

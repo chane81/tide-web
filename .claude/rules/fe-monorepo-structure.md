@@ -3,7 +3,7 @@
 tide-web 모노레포(Next.js App Router 앱 여럿 + 내부 패키지)의 **콜로케이션** 구조 규칙. 파일·폴더를 만들거나 옮길 때, 앱·패키지를 추가할 때 따른다.
 [fe-monorepo-architecture](https://github.com/chane81/fe-monorepo-architecture)의 규칙을 이 저장소(oxlint·oxfmt, tide 디자인 시스템, 목업 데이터, 반응형 한 벌)에 맞춘 것이다.
 
-- 스코프 `@tide-web`, 앱 `tide-dashboard`(대시보드) · `tide-site`(tide 소개 사이트)
+- 스코프 `@tide-web`, 앱 `tide-admin`(대시보드) · `tide-site`(tide 소개 사이트)
 - 규칙 번호별 ✅/❌ 예시: `fe-monorepo-structure.examples.md`. 배치가 애매하면 같은 번호 예시부터 본다.
 
 ## 골격
@@ -11,7 +11,7 @@ tide-web 모노레포(Next.js App Router 앱 여럿 + 내부 패키지)의 **콜
 ```
 <root>/
 ├── apps/
-│   ├── tide-dashboard/src/
+│   ├── tide-admin/src/
 │   └── tide-site/src/
 │       ├── app/                        # App Router
 │       │   ├── layout.tsx
@@ -110,7 +110,7 @@ tide-web 모노레포(Next.js App Router 앱 여럿 + 내부 패키지)의 **콜
       └── hooks/useSidebarCollapse.ts
   ```
 - **훅:** `useXxx.ts`. **테스트:** 대상 옆에 `<name>.test.ts(x)`.
-- **앱:** `tide-<역할>`(`tide-dashboard`, `tide-site`). **패키지:** `@tide-web/<name>`(`@tide-web/libs`, `@tide-web/components`, `@tide-web/tsconfig`).
+- **앱:** `tide-<역할>`(`tide-admin`, `tide-site`). **패키지:** `@tide-web/<name>`(`@tide-web/libs`, `@tide-web/components`, `@tide-web/tsconfig`).
 
 ## import와 배럴
 
@@ -153,7 +153,7 @@ tide-web 모노레포(Next.js App Router 앱 여럿 + 내부 패키지)의 **콜
    ```
    - `outBase: './src'`: 없으면 JS와 d.ts 경로가 어긋난다. `dts: { isolated: true }`면 export하는 함수·컴포넌트에 반환 타입을 적는다.
    - `--no-clean`: watch들이 동시에 dist를 비우면 다른 패키지가 잠시 d.ts를 못 찾는다.
-3. **앱:** Tailwind v4는 `globals.css`에 `@source '<packages 경로>';`를 적어 패키지 클래스를 스캔한다. 포트는 앱마다 고정한다(`tide-dashboard` 3000, `tide-site` 3001).
+3. **앱:** Tailwind v4는 `globals.css`에 `@source '<packages 경로>';`를 적어 패키지 클래스를 스캔한다. 포트는 앱마다 고정한다(`tide-admin` 3000, `tide-site` 3001).
 4. **`turbo.json`:** `build`·`dev`·`typecheck`·`test`는 `"dependsOn": ["^build"]`, `dev`는 `"cache": false, "persistent": true`.
 5. **`packages/config/typescript`(`@tide-web/tsconfig`):** `base` / `nextjs`(라이브러리 패키지가 생기면 `react-library`). 앱 `tsconfig.json`은 `extends`하고 `paths`·`types`만 더한다.
 6. **린트·포맷:** 루트 `.oxlintrc.json`·`.oxfmtrc.json` 하나로 저장소 전체를 검사한다(`pnpm lint`, `pnpm format:check`). 범위별 규칙은 `overrides`로 더한다.
