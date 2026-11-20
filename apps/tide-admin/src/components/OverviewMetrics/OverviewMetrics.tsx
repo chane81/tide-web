@@ -42,20 +42,29 @@ export function OverviewMetrics({ metrics }: OverviewMetricsProps) {
               <SecondaryMetricCard
                 label="전체 회원"
                 metric={m.totalMembers}
+                series={m.totalMembersSeries}
+                color="primary"
                 format={formatNumber}
                 compareLabel={period.compareLabel}
+                periodLabel={period.label}
               />
               <SecondaryMetricCard
                 label="유료 회원"
                 metric={m.paidMembers}
+                series={m.paidMembersSeries}
+                color="purple"
                 format={formatNumber}
                 compareLabel={period.compareLabel}
+                periodLabel={period.label}
               />
               <SecondaryMetricCard
                 label="메일 열람률"
                 metric={m.emailOpenRate}
+                series={m.emailOpenRateSeries}
+                color="mint"
                 format={formatRate}
                 compareLabel={period.compareLabel}
+                periodLabel={period.label}
               />
             </div>
           </TabPanel>

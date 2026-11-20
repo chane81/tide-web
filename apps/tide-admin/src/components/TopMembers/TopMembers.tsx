@@ -14,7 +14,8 @@ export async function TopMembers() {
       <Typography variant="heading-sm" level={2} id="top-members-title">
         상위 회원
       </Typography>
-      <Card render={<ul />} className="divide-y divide-default px-5 py-1">
+      {/* flex-1: 왼쪽 열(시작하기 + 이번 달 목표)과 카드 아래 끝을 맞춘다. */}
+      <Card render={<ul />} className="flex-1 divide-y divide-default px-5 py-1 shadow-sm">
         {items.map((member) => (
           <MemberRow key={member.id} member={member} />
         ))}

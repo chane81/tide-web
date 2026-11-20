@@ -37,7 +37,11 @@ export function QuickActions() {
       </Typography>
       <ul className="grid gap-4 sm:grid-cols-2">
         {ACTIONS.map((action) => (
-          <Card key={action.href} render={<li />} className="flex flex-col items-start gap-3 p-5">
+          <Card
+            key={action.href}
+            render={<li />}
+            className="flex flex-col items-start gap-3 p-5 shadow-sm transition-shadow hover:shadow-md"
+          >
             <span className="flex size-10 items-center justify-center rounded-md bg-primary-subtle text-primary">
               {action.icon}
             </span>
