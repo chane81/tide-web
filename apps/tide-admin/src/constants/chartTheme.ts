@@ -12,6 +12,8 @@ export const CHART_THEME = {
   tooltipShadow: "var(--tide-shadow-md)",
   dotFill: "var(--tide-bg-surface)",
   barFill: "var(--tide-bg-primary-solid)",
+  /** 강조하지 않는 막대(지난 기간). 라이트에서 흰 바탕과 구분되는 옅은 primary다. */
+  barFillMuted: "var(--tide-bg-primary-subtle-active)",
   barCursor: "var(--tide-bg-hover)",
   fontFamily: "var(--tide-font-sans)",
   fontSize: 12,

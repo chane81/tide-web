@@ -20,7 +20,7 @@ export function SalesReport({ report }: SalesReportProps) {
   return (
     <Card
       render={<section aria-labelledby="sales-report-title" />}
-      className="flex flex-col gap-4 p-6"
+      className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <Tabs defaultValue="12m" className="flex flex-col gap-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
