@@ -29,7 +29,7 @@ export function CardsWorkspace({ cards, transactions }: CardsWorkspaceProps) {
     <div className="flex flex-col gap-6">
       <CardPicker cards={cards} selectedId={selectedId} onSelect={setSelectedId} />
       <div className="grid gap-6 lg:grid-cols-2">
-        <CardLimit card={card} />
+        <CardLimit card={card} transactions={own} />
         <CategorySpending transactions={own} />
       </div>
       <TransactionTable key={selectedId} transactions={own} />

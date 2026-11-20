@@ -61,7 +61,7 @@ export function CustomerTable({ customers }: CustomerTableProps) {
   return (
     <Card
       render={<section aria-labelledby="customers-title" />}
-      className="flex flex-col gap-4 p-6"
+      className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <div className="flex items-baseline justify-between gap-2">
         <Typography variant="heading-sm" level={2} id="customers-title">

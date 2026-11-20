@@ -31,7 +31,7 @@ export function TransactionTable({ transactions }: TransactionTableProps) {
   return (
     <Card
       render={<section aria-labelledby="transactions-title" />}
-      className="flex flex-col gap-4 p-6"
+      className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <div className="flex items-baseline justify-between gap-2">
         <Typography variant="heading-sm" level={2} id="transactions-title">
