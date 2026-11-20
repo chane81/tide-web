@@ -45,13 +45,7 @@
                 "message": "packages는 앱의 @/ alias를 import하지 않는다(.claude/rules/fe-monorepo-structure.md 9번)."
               },
               {
-                "group": [
-                  "tide-dashboard",
-                  "tide-dashboard/*",
-                  "tide-site",
-                  "tide-site/*",
-                  "**/apps/**"
-                ],
+                "group": ["tide-admin", "tide-admin/*", "tide-site", "tide-site/*", "**/apps/**"],
                 "message": "packages는 앱을 import하지 않는다(9번)."
               }
             ]
@@ -60,7 +54,7 @@
       }
     },
     {
-      "files": ["apps/tide-dashboard/**"],
+      "files": ["apps/tide-admin/**"],
       "rules": {
         "no-restricted-imports": [
           "error",
@@ -83,7 +77,7 @@
           {
             "patterns": [
               {
-                "group": ["**/tide-dashboard/**", "tide-dashboard"],
+                "group": ["**/tide-admin/**", "tide-admin"],
                 "message": "앱끼리 import하지 않는다. 함께 쓰면 packages로 승격한다(9번)."
               }
             ]

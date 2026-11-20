@@ -10,7 +10,7 @@
 
 ## 결정
 
-- 앱은 `apps/tide-dashboard`(기존 대시보드), `apps/tide-site`(tide 소개 사이트)에 둔다.
+- 앱은 `apps/tide-admin`(기존 대시보드), `apps/tide-site`(tide 소개 사이트)에 둔다.
 - pnpm workspace + Turborepo. 외부 의존성 버전은 `pnpm-workspace.yaml`의 `catalog`에서만 정한다(`catalogMode: strict`).
 - 구조 규칙은 [fe-monorepo-architecture](https://github.com/chane81/fe-monorepo-architecture)의 규칙을 이 저장소에 맞춘 `.claude/rules/fe-monorepo-structure.md`를 따른다.
 - 참고 저장소와 다른 점:

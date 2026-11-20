@@ -28,7 +28,7 @@ export function HeroWindow() {
           <i />
           <i />
         </span>
-        <span className="text-label-sm text-muted">tide-dashboard · 고객</span>
+        <span className="text-label-sm text-muted">tide-admin · 고객</span>
       </div>
       <div className="hero-win__body">
         <ul className="hero-win__side">

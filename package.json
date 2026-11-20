@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "turbo run dev",
-    "dev:dashboard": "turbo run dev --filter=tide-dashboard...",
+    "dev:admin": "turbo run dev --filter=tide-admin...",
     "dev:site": "turbo run dev --filter=tide-site...",
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",

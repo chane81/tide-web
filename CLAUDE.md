@@ -3,7 +3,7 @@
 npm에 배포된 tide 디자인 시스템(`@tide-design/components`, `@tide-design/icons`)으로 웹을 만든다. 디자인 시스템을 실제 화면에 썼을 때 어떻게 보이는지, 무엇이 부족한지 확인하는 것이 목적이다.
 
 - 구조: pnpm workspace + Turborepo 모노레포(ADR 0003).
-  - `apps/tide-dashboard`: 대시보드. 공통 셸(사이드바·헤더·다크 테마 전환) + `/`(개요) · `/sales` · `/cards` · `/customers` · `/settings`. 데이터는 목업이다.
+  - `apps/tide-admin`: 대시보드. 공통 셸(사이드바·헤더·다크 테마 전환) + `/`(개요) · `/sales` · `/cards` · `/customers` · `/settings`. 데이터는 목업이다.
   - `apps/tide-site`: tide 디자인 시스템 소개(마케팅) 사이트.
   - `packages/shared/*`: 두 앱이 함께 쓰는 범용 코드. `packages/config/typescript`: `@tide-web/tsconfig`.
 - 테크 스택: Next.js(App Router, Turbopack), pnpm, Turborepo, TypeScript, Tailwind CSS v4, oxlint, oxfmt, Vitest + React Testing Library, Recharts
@@ -19,7 +19,7 @@ npm에 배포된 tide 디자인 시스템(`@tide-design/components`, `@tide-desi
 루트에서 실행한다.
 
 ```sh
-pnpm dev:dashboard   # 대시보드 개발 서버 (localhost:3000)
+pnpm dev:admin       # 대시보드 개발 서버 (localhost:3000)
 pnpm dev:site        # 소개 사이트 개발 서버 (localhost:3001)
 pnpm build
 pnpm typecheck
