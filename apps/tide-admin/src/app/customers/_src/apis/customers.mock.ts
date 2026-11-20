@@ -1,5 +1,6 @@
 import type { ColorFamilyName } from "@tide-design/components";
 
+import { portraitUrl, type PortraitGender } from "@/libs/portraitUrl";
 import { seededRandom } from "@/libs/seededRandom";
 
 import type { Customer, CustomerStatus } from "./customers.types";
@@ -34,6 +35,21 @@ const ROMAN: Record<string, string> = {
   지아: "jia",
   주원: "juwon",
 };
+/** 이름별 사진 성별. 지우는 중성 이름이라 여성으로 둔다. */
+const GENDER: Record<string, PortraitGender> = {
+  서연: "women",
+  도윤: "men",
+  지우: "women",
+  민준: "men",
+  하은: "women",
+  시우: "men",
+  수아: "women",
+  예준: "men",
+  지아: "women",
+  주원: "men",
+};
+/** 이 간격마다 한 명은 사진 없이 둬서 fallback 아이콘을 보여 준다. */
+const NO_PHOTO_EVERY = 6;
 const COLORS: ColorFamilyName[] = ["blue", "purple", "mint", "amber", "cyan", "green", "red"];
 
 /** 고객 수. 한 페이지 10명이라 다섯 페이지가 된다. */
@@ -65,6 +81,10 @@ function buildCustomers(): Customer[] {
       lastSeenAt: new Date(Math.max(joinedAt, ANCHOR - Math.round(idleDays * DAY))).toISOString(),
       orders,
       totalSpent: Math.round(orders * (20 + random() * 120)),
+      avatarUrl:
+        i % NO_PHOTO_EVERY === NO_PHOTO_EVERY - 1
+          ? undefined
+          : portraitUrl(GENDER[given] as PortraitGender, i),
       avatarColor: COLORS[i % COLORS.length] as ColorFamilyName,
     };
   });

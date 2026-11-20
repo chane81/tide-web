@@ -17,6 +17,8 @@ export interface Customer {
   orders: number;
   /** 누적 결제 금액(달러) */
   totalSpent: number;
+  /** 프로필 사진 주소. 없으면 Avatar가 fallback 아이콘을 보여 준다. */
+  avatarUrl?: string;
   /** 이미지가 없을 때 Avatar fallback 색 */
   avatarColor: ColorFamilyName;
 }
