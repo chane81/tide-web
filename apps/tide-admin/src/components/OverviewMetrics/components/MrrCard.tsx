@@ -1,55 +1,46 @@
-import { Card, Typography } from "@tide-design/components";
+import { Card, Tab, TabList, TabPanel, Typography } from "@tide-design/components";
 
-import type { OverviewPeriod, OverviewPeriodMetrics } from "@/apis/overview.types";
-import { ChangeBadge } from "@/components/ChangeBadge";
-import { TrendLineChart } from "@/components/TrendLineChart";
-import { formatCurrency } from "@/libs/formatCurrency";
-import { formatSeriesLabel } from "@/libs/formatSeriesLabel";
+import type { GetOverviewMetricsResponse } from "@/apis/overview.types";
 
-import { PERIOD_UNIT } from "../constants/periods";
+import { OVERVIEW_PERIODS } from "../constants/periods";
+import { MrrSummary } from "./MrrSummary";
 
 export interface MrrCardProps {
-  period: OverviewPeriod;
-  metrics: OverviewPeriodMetrics;
-  compareLabel: string;
+  /** 기간별 지표 전체. 기간마다 패널 하나를 둔다. */
+  metrics: GetOverviewMetricsResponse;
 }
 
-const formatAxis = (value: number) => formatCurrency(value, { compact: true });
-
-/** 핵심 지표 MRR: 큰 숫자, 증감률, 추이 차트 */
-export function MrrCard({ period, metrics, compareLabel }: MrrCardProps) {
-  const data = metrics.mrrSeries.map((point) => ({
-    label: formatSeriesLabel(point.at, PERIOD_UNIT[period]),
-    mrr: point.value,
-  }));
-
+/**
+ * 핵심 지표 MRR 카드. 머리 오른쪽에 기간 탭을 두고, 본문은 고른 기간의 패널이다.
+ * 바깥 `Tabs` 안에 있어야 한다(탭 상태는 보조 지표와 함께 쓴다).
+ */
+export function MrrCard({ metrics }: MrrCardProps) {
   return (
     <Card
-      render={<section aria-labelledby={`mrr-${period}`} />}
+      render={<section aria-labelledby="mrr-title" />}
       className="flex flex-col gap-4 p-6 shadow-sm"
     >
-      <div className="flex flex-col gap-1">
-        <Typography variant="label-md" id={`mrr-${period}`} className="text-muted">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <Typography variant="label-md" id="mrr-title" className="text-muted">
           MRR
         </Typography>
-        <div className="flex flex-wrap items-center gap-3">
-          <Typography variant="display-md" render={<p />}>
-            {formatCurrency(metrics.mrr.current)}
-          </Typography>
-          <ChangeBadge current={metrics.mrr.current} previous={metrics.mrr.previous} />
-          <Typography variant="body-sm" className="text-muted">
-            {compareLabel}
-          </Typography>
-        </div>
+        <TabList aria-label="기간">
+          {OVERVIEW_PERIODS.map((period) => (
+            <Tab key={period.value} value={period.value}>
+              {period.label}
+            </Tab>
+          ))}
+        </TabList>
       </div>
-      <TrendLineChart
-        title="MRR 추이"
-        data={data}
-        xKey="label"
-        series={[{ dataKey: "mrr", name: "MRR" }]}
-        formatValue={formatCurrency}
-        formatAxisValue={formatAxis}
-      />
+      {OVERVIEW_PERIODS.map((period) => (
+        <TabPanel key={period.value} value={period.value}>
+          <MrrSummary
+            period={period.value}
+            metrics={metrics[period.value]}
+            compareLabel={period.compareLabel}
+          />
+        </TabPanel>
+      ))}
     </Card>
   );
 }
