@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <!--
-    tide-web 대표 아이콘. 사이드바 BrandMark(src/components/Sidebar/components/BrandMark.tsx)와 같은 그림이다.
+    tide-web 대표 아이콘. BrandMark(src/components/BrandMark.tsx)와 같은 그림이다.
     파비콘은 페이지 CSS 변수를 못 읽어 tide 토큰 값을 옮겨 적는다(docs/tide-gaps.md).
     tide 색 토큰: 바탕 blue-500 → blue-700(primary-solid는 blue-600), 작은 물방울 blue-200. 두 물방울 사이는 큰 물방울을 파낸 틈이라 바탕이 비친다.
   -->

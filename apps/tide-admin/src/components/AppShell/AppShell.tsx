@@ -1,4 +1,4 @@
-import { DropletsIcon } from "@tide-design/icons";
+import { BrandMark } from "@/components/BrandMark";
 import NextLink from "next/link";
 import type { ReactNode } from "react";
 
@@ -25,7 +25,7 @@ export function AppShell({ sidebar, children }: AppShellProps) {
             href="/"
             className="flex items-center gap-2 rounded-md px-1 text-heading-xs focus-visible:focus-ring"
           >
-            <DropletsIcon size={20} className="text-primary" />
+            <BrandMark size={24} />
             tide-web
           </NextLink>
         </header>

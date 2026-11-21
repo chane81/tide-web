@@ -2,7 +2,7 @@ import { Separator } from "@tide-design/components";
 import NextLink from "next/link";
 import type { ReactNode } from "react";
 
-import { BrandMark } from "./components/BrandMark";
+import { BrandMark } from "@/components/BrandMark";
 import { SidebarAnnouncement } from "./components/SidebarAnnouncement";
 import { SidebarNavItem } from "./components/SidebarNavItem";
 import { SidebarSearch } from "./components/SidebarSearch";
