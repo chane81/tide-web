@@ -22,7 +22,7 @@ export function SalesReport({ report }: SalesReportProps) {
       render={<section aria-labelledby="sales-report-title" />}
       className="flex flex-col gap-4 p-6 shadow-sm"
     >
-      <Tabs defaultValue="12m" className="flex flex-col gap-4">
+      <Tabs defaultValue="12m" shape="box" className="flex flex-col gap-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Typography variant="heading-sm" level={2} id="sales-report-title">
             매출 보고서
