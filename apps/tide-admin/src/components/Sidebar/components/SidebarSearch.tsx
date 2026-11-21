@@ -1,15 +1,28 @@
-import { Input } from "@tide-design/components";
+"use client";
+
+import { Button } from "@tide-design/components";
 import { SearchIcon } from "@tide-design/icons";
 
-/** 검색 입력과 ⌘K 표시. 동작은 없다(명령 팔레트는 범위 밖). */
+import { useCommandPaletteContext } from "@/components/CommandPalette/hooks/useCommandPaletteContext";
+
+/** 페이지 이동 팔레트를 여는 검색 모양 버튼. ⌘K(Ctrl+K)로도 열린다. */
 export function SidebarSearch() {
+  const { openPalette } = useCommandPaletteContext();
+
   return (
-    <div className="relative">
-      <SearchIcon className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted" />
-      <Input type="search" size="sm" aria-label="검색" placeholder="검색" className="ps-9 pe-12" />
-      <kbd className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 rounded-sm border border-default px-1.5 text-caption text-muted">
-        ⌘K
-      </kbd>
-    </div>
+    <Button
+      variant="outline"
+      color="neutral"
+      size="sm"
+      noPressScale
+      startIcon={<SearchIcon />}
+      aria-haspopup="dialog"
+      aria-keyshortcuts="Meta+K Control+K"
+      onClick={openPalette}
+      className="w-full justify-start text-muted"
+    >
+      <span className="flex-1 text-start">검색</span>
+      <kbd className="rounded-sm border border-default px-1.5 text-caption text-muted">⌘K</kbd>
+    </Button>
   );
 }

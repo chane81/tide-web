@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import { getCurrentUser } from "@/apis/currentUser.api";
 import { AppShell } from "@/components/AppShell";
+import { CommandPalette } from "@/components/CommandPalette";
 import { Sidebar } from "@/components/Sidebar";
 import { FOOTER_NAV_ITEMS, NAV_ITEMS } from "@/constants/navItems";
 import { THEME_STORAGE_KEY } from "@/constants/theme";
@@ -30,18 +31,20 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="bg-canvas text-default antialiased">
-        <AppShell
-          sidebar={
-            <Sidebar
-              items={NAV_ITEMS}
-              footerItems={FOOTER_NAV_ITEMS}
-              user={user}
-              footerActions={<ThemeToggle storageKey={THEME_STORAGE_KEY} />}
-            />
-          }
-        >
-          {children}
-        </AppShell>
+        <CommandPalette items={[...NAV_ITEMS, ...FOOTER_NAV_ITEMS]}>
+          <AppShell
+            sidebar={
+              <Sidebar
+                items={NAV_ITEMS}
+                footerItems={FOOTER_NAV_ITEMS}
+                user={user}
+                footerActions={<ThemeToggle storageKey={THEME_STORAGE_KEY} />}
+              />
+            }
+          >
+            {children}
+          </AppShell>
+        </CommandPalette>
       </body>
     </html>
   );
