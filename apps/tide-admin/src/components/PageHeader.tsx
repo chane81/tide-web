@@ -8,7 +8,7 @@ import {
 import NextLink from "next/link";
 import type { ReactNode } from "react";
 
-/** Breadcrumb 한 칸. `href`가 없으면 현재 페이지다. */
+/** Breadcrumb 한 칸. `href`가 없으면 마지막 칸은 현재 페이지, 중간 칸은 페이지 없는 묶음이다. */
 export interface PageHeaderCrumb {
   label: string;
   href?: string;
@@ -29,14 +29,16 @@ export function PageHeader({ title, description, breadcrumbs, actions }: PageHea
     <header className="mb-6 flex flex-col gap-3">
       {breadcrumbs && breadcrumbs.length > 0 && (
         <Breadcrumb>
-          {breadcrumbs.map((crumb) => (
+          {breadcrumbs.map((crumb, index) => (
             <BreadcrumbItem key={crumb.label}>
               {crumb.href ? (
                 <BreadcrumbLink render={<NextLink href={crumb.href} />}>
                   {crumb.label}
                 </BreadcrumbLink>
-              ) : (
+              ) : index === breadcrumbs.length - 1 ? (
                 <BreadcrumbCurrent>{crumb.label}</BreadcrumbCurrent>
+              ) : (
+                <span className="text-muted">{crumb.label}</span>
               )}
             </BreadcrumbItem>
           ))}

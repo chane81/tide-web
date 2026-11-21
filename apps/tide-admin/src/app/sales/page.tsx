@@ -21,7 +21,7 @@ export default async function Page() {
       <PageHeader
         title="매출"
         description="오늘 매출과 기간별 매출 추이를 봅니다."
-        breadcrumbs={[{ label: "개요", href: "/" }, { label: "매출" }]}
+        breadcrumbs={[{ label: "분석" }, { label: "매출" }]}
         actions={
           <>
             {/* tide에 DatePicker가 없어 모양만 둔다(docs/tide-gaps.md). */}

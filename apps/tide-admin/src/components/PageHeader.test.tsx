@@ -21,4 +21,11 @@ describe("PageHeader", () => {
     expect(screen.getByText("매출", { selector: "[aria-current=page]" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "보고서 내보내기" })).toBeInTheDocument();
   });
+
+  it("href 없는 중간 칸은 현재 페이지로 표시하지 않는다", () => {
+    render(<PageHeader title="매출" breadcrumbs={[{ label: "분석" }, { label: "매출" }]} />);
+
+    expect(screen.getByText("분석")).not.toHaveAttribute("aria-current");
+    expect(screen.getByText("매출", { selector: "[aria-current=page]" })).toBeInTheDocument();
+  });
 });

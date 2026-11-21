@@ -19,7 +19,7 @@ export default async function Page() {
       <PageHeader
         title="카드"
         description="내 카드와 거래 내역을 봅니다."
-        breadcrumbs={[{ label: "개요", href: "/" }, { label: "카드" }]}
+        breadcrumbs={[{ label: "분석" }, { label: "카드" }]}
         actions={<AddCardDialog />}
       />
       <CardsWorkspace cards={cards} transactions={transactions} />
