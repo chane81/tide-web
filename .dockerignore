@@ -1,0 +1,14 @@
+**/node_modules
+**/.next
+**/.turbo
+**/dist
+**/out
+**/coverage
+**/*.tsbuildinfo
+**/.taste-skill
+.git
+.vscode
+.claude
+docs
+.DS_Store
+.env*.local
