@@ -186,11 +186,11 @@ catalogs:
       specifier: 14.6.10
       version: 14.6.10
     '@tide-design/components':
-      specifier: 0.15.0
-      version: 0.15.0
+      specifier: 0.18.0
+      version: 0.18.0
     '@tide-design/icons':
-      specifier: 0.15.0
-      version: 0.15.0
+      specifier: 0.18.0
+      version: 0.18.0
     '@types/node':
       specifier: 26.6.6
       version: 26.6.6
@@ -267,10 +267,10 @@ importers:
     dependencies:
       '@tide-design/components':
         specifier: 'catalog:'
-        version: 0.15.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)
+        version: 0.18.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)
       '@tide-design/icons':
         specifier: 'catalog:'
-        version: 0.15.0(react@19.3.1)
+        version: 0.18.0(react@19.3.1)
       '@tide-web/components':
         specifier: workspace:*
         version: link:../../packages/shared/components
@@ -346,10 +346,10 @@ importers:
     dependencies:
       '@tide-design/components':
         specifier: 'catalog:'
-        version: 0.15.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)
+        version: 0.18.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)
       '@tide-design/icons':
         specifier: 'catalog:'
-        version: 0.15.0(react@19.3.1)
+        version: 0.18.0(react@19.3.1)
       '@tide-web/components':
         specifier: workspace:*
         version: link:../../packages/shared/components
@@ -443,7 +443,7 @@ importers:
         version: 14.6.10(@testing-library/dom@10.4.2)
       '@tide-design/components':
         specifier: 'catalog:'
-        version: 0.15.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)
+        version: 0.18.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)
       '@tide-web/tsconfig':
         specifier: workspace:*
         version: link:../../config/typescript
@@ -1511,15 +1511,15 @@ packages:
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
 
-  '@tide-design/components@0.15.0':
-    resolution: {integrity: sha512-VmuXTKYqKd3m7j6jJDLjzYva7fu/ac1RC27mE8lcxY7DfYnd+WxvFOZVpiJwQ2vDlxYByKs5KMpoA5GuVfMQgg==}
+  '@tide-design/components@0.18.0':
+    resolution: {integrity: sha512-pNIS1HlUv7t1Sw89r0drM4mFK0x2ffnLYP0dCt+m2U1JVJZfrPFZuMXllR2K7c0BvqdnEq4KNCqOgNymW2s5OA==}
     peerDependencies:
       react: ^19
       react-dom: ^19
       tailwindcss: ^4.3
 
-  '@tide-design/foundation@0.15.0':
-    resolution: {integrity: sha512-xuQskVsRfX61OGitvkm2lTaPCiENw7qr2x30fDxaD6KVjSwzsxHaK/XCdIaamdD4Li8De0adRa861OqSnUacuQ==}
+  '@tide-design/foundation@0.18.0':
+    resolution: {integrity: sha512-lI+IOb0XEhpx4zEGUv9d5sQL69WHbWdmwY3CVocd4XH2dTn+YwrlYeNTzLEGP8w7iAbczZAqAAUm+p/Ebi69yA==}
     hasBin: true
     peerDependencies:
       tailwind-merge: ^3
@@ -1527,8 +1527,8 @@ packages:
       tailwind-merge:
         optional: true
 
-  '@tide-design/icons@0.15.0':
-    resolution: {integrity: sha512-C/6sfUt73hrhN4GtXClmglXhKv3QGlpAD1TEzZqcZp8hhGJQ1+wJqA+85jyPd3cr01rWZI+aAxr3LBo7tkaMBA==}
+  '@tide-design/icons@0.18.0':
+    resolution: {integrity: sha512-eows5CUtxYH/k0ohlq217GRAJuQDM2JyMe2CjWnspDxkanw3gXdBa0YVJxBhN+O+5GKmnHNJrBi4B3DGTzCD1Q==}
     peerDependencies:
       react: ^19
 
@@ -3133,10 +3133,10 @@ snapshots:
     dependencies:
       '@testing-library/dom': 10.4.2
 
-  '@tide-design/components@0.15.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)':
+  '@tide-design/components@0.18.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)':
     dependencies:
-      '@tide-design/foundation': 0.15.0(tailwind-merge@3.7.0)
-      '@tide-design/icons': 0.15.0(react@19.3.1)
+      '@tide-design/foundation': 0.18.0(tailwind-merge@3.7.0)
+      '@tide-design/icons': 0.18.0(react@19.3.1)
       clsx: 2.1.1
       react: 19.3.1
       react-aria: 3.53.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -3145,11 +3145,11 @@ snapshots:
       tailwind-merge: 3.7.0
       tailwindcss: 4.3.5
 
-  '@tide-design/foundation@0.15.0(tailwind-merge@3.7.0)':
+  '@tide-design/foundation@0.18.0(tailwind-merge@3.7.0)':
     optionalDependencies:
       tailwind-merge: 3.7.0
 
-  '@tide-design/icons@0.15.0(react@19.3.1)':
+  '@tide-design/icons@0.18.0(react@19.3.1)':
     dependencies:
       react: 19.3.1
 
