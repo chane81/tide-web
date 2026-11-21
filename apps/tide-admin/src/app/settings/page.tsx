@@ -12,11 +12,7 @@ export default async function Page() {
 
   return (
     <>
-      <PageHeader
-        title="설정"
-        description="프로필, 알림, 보안 설정을 바꿉니다."
-        breadcrumbs={[{ label: "개요", href: "/" }, { label: "설정" }]}
-      />
+      <PageHeader title="설정" description="프로필, 알림, 보안 설정을 바꿉니다." />
       <SettingsTabs initialSettings={settings} />
     </>
   );
