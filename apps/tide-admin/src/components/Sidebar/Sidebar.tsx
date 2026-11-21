@@ -1,8 +1,8 @@
 import { Separator } from "@tide-design/components";
-import { DropletsIcon } from "@tide-design/icons";
 import NextLink from "next/link";
 import type { ReactNode } from "react";
 
+import { BrandMark } from "./components/BrandMark";
 import { SidebarAnnouncement } from "./components/SidebarAnnouncement";
 import { SidebarNavItem } from "./components/SidebarNavItem";
 import { SidebarSearch } from "./components/SidebarSearch";
@@ -31,7 +31,7 @@ export function Sidebar({ items, footerItems, user, footerActions }: SidebarProp
         href="/"
         className="flex items-center gap-2 rounded-md px-2 py-1 text-heading-xs focus-visible:focus-ring"
       >
-        <DropletsIcon size={24} className="text-primary" />
+        <BrandMark />
         tide-web
       </NextLink>
 
