@@ -2,7 +2,7 @@
 
 /* oxlint-disable jsx-a11y/prefer-tag-over-role -- 네이티브 select·datalist는 아이콘이 있는 행과 활성 표시를 그릴 수 없다. */
 
-import { Input } from "@tide-design/components";
+import { DialogHeader, Input } from "@tide-design/components";
 import { SearchIcon } from "@tide-design/icons";
 import { cn } from "@tide-web/libs";
 import { useRouter } from "next/navigation";
@@ -64,27 +64,29 @@ export function CommandPaletteSearch({ commands, onClose }: CommandPaletteSearch
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="relative me-9">
-        <SearchIcon className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted" />
-        <Input
-          ref={inputRef}
-          role="combobox"
-          aria-label="이동할 페이지 검색"
-          aria-autocomplete="list"
-          aria-expanded={results.length > 0}
-          aria-controls={listId}
-          aria-activedescendant={active ? `${listId}-${activeIndex}` : undefined}
-          autoComplete="off"
-          placeholder="페이지 검색"
-          value={query}
-          onChange={(event) => {
-            setQuery(event.target.value);
-            setActiveIndex(0);
-          }}
-          onKeyDown={handleKeyDown}
-          className="ps-9"
-        />
-      </div>
+      <DialogHeader align="center">
+        <div className="relative">
+          <SearchIcon className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted" />
+          <Input
+            ref={inputRef}
+            role="combobox"
+            aria-label="이동할 페이지 검색"
+            aria-autocomplete="list"
+            aria-expanded={results.length > 0}
+            aria-controls={listId}
+            aria-activedescendant={active ? `${listId}-${activeIndex}` : undefined}
+            autoComplete="off"
+            placeholder="페이지 검색"
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setActiveIndex(0);
+            }}
+            onKeyDown={handleKeyDown}
+            className="ps-9"
+          />
+        </div>
+      </DialogHeader>
       <div
         id={listId}
         role="listbox"
