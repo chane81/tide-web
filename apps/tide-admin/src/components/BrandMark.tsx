@@ -1,3 +1,8 @@
+"use client";
+
+// client인 이유: 서버가 사이드바를 한 번 렌더해 데스크톱 aside와 모바일 dialog 두 자리에 끼우므로,
+// 서버 컴포넌트면 useId가 같아 그라디언트·마스크 id가 겹치고 숨은 쪽 정의를 참조해 그림이 빠진다.
+// client 컴포넌트는 놓인 자리마다 따로 만들어져 id가 갈린다.
 import { useId } from "react";
 
 export interface BrandMarkProps {
