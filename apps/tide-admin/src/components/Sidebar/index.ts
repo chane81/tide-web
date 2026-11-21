@@ -1,3 +1,3 @@
 export { Sidebar } from "./Sidebar";
 export type { SidebarProps } from "./Sidebar";
-export type { NavItem, SidebarUser } from "./types";
+export type { NavGroupItem, NavItem, NavLinkItem, SidebarUser } from "./types";

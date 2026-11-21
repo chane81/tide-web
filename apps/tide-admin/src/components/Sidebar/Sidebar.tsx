@@ -40,7 +40,7 @@ export function Sidebar({ items, footerItems, user, footerActions }: SidebarProp
       <nav aria-label="주 메뉴">
         <ul className="flex flex-col gap-1">
           {items.map((item) => (
-            <SidebarNavItem key={item.href} item={item} />
+            <SidebarNavItem key={item.label} item={item} />
           ))}
         </ul>
       </nav>
@@ -49,7 +49,7 @@ export function Sidebar({ items, footerItems, user, footerActions }: SidebarProp
         <nav aria-label="보조 메뉴">
           <ul className="flex flex-col gap-1">
             {footerItems.map((item) => (
-              <SidebarNavItem key={item.href} item={item} />
+              <SidebarNavItem key={item.label} item={item} />
             ))}
           </ul>
         </nav>
