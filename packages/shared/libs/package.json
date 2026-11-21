@@ -19,6 +19,11 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
+  "dependencies": {
+    "@tide-design/foundation": "catalog:",
+    "clsx": "catalog:",
+    "tailwind-merge": "catalog:"
+  },
   "devDependencies": {
     "@rsbuild/plugin-react": "catalog:",
     "@rslib/core": "catalog:",

@@ -188,6 +188,9 @@ catalogs:
     '@tide-design/components':
       specifier: 0.18.0
       version: 0.18.0
+    '@tide-design/foundation':
+      specifier: 0.18.0
+      version: 0.18.0
     '@tide-design/icons':
       specifier: 0.18.0
       version: 0.18.0
@@ -203,6 +206,9 @@ catalogs:
     '@vitejs/plugin-react':
       specifier: 6.3.0
       version: 6.3.0
+    clsx:
+      specifier: 2.1.1
+      version: 2.1.1
     jsdom:
       specifier: 31.0.1
       version: 31.0.1
@@ -230,6 +236,9 @@ catalogs:
     recharts:
       specifier: 3.10.1
       version: 3.10.1
+    tailwind-merge:
+      specifier: 3.7.0
+      version: 3.7.0
     tailwindcss:
       specifier: 4.3.5
       version: 4.3.5
@@ -476,6 +485,16 @@ importers:
         version: 5.1.0(@types/node@26.6.6)(jsdom@31.0.1)(vite@8.3.8(@types/node@26.6.6)(jiti@2.7.0))
 
   packages/shared/libs:
+    dependencies:
+      '@tide-design/foundation':
+        specifier: 'catalog:'
+        version: 0.18.0(tailwind-merge@3.7.0)
+      clsx:
+        specifier: 'catalog:'
+        version: 2.1.1
+      tailwind-merge:
+        specifier: 'catalog:'
+        version: 3.7.0
     devDependencies:
       '@rsbuild/plugin-react':
         specifier: 'catalog:'
