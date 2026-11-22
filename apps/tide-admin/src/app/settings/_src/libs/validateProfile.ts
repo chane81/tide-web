@@ -1,4 +1,4 @@
-import type { ProfileSettings } from "../apis/settings.types";
+import type { ProfileSettings } from "../apis/settings/settings.types";
 
 export type ProfileErrors = Partial<Record<"name" | "email", string>>;
 

@@ -1,4 +1,4 @@
-import type { Customer } from "../../../_src/apis/customers.types";
+import type { Customer } from "../../../_src/apis/customers/customers.types";
 import { LOYAL_MIN_ORDERS, SEGMENTS, VIP_MIN_SPENT } from "../constants/segments";
 import type { Segment, SegmentId } from "../constants/segments";
 

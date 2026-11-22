@@ -4,7 +4,7 @@ import NextLink from "next/link";
 
 import { PageHeader } from "@/components/PageHeader";
 
-import { getOverviewMetrics } from "./_src/apis/overview.api";
+import { getOverviewMetrics } from "./_src/apis/overview/overview.api";
 import { MonthlyGoals } from "./_src/components/MonthlyGoals";
 import { OverviewMetrics } from "./_src/components/OverviewMetrics";
 import { QuickActions } from "./_src/components/QuickActions";

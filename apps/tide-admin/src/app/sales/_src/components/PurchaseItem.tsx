@@ -3,7 +3,7 @@ import NextLink from "next/link";
 
 import { formatCurrency } from "@/libs/formatCurrency";
 
-import type { Purchase } from "../apis/sales.types";
+import type { Purchase } from "../apis/sales/sales.types";
 import { formatRelativeTime } from "../libs/formatRelativeTime";
 
 export interface PurchaseItemProps {

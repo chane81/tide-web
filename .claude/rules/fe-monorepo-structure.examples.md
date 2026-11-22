@@ -110,10 +110,10 @@ import { formatDate } from "@tide-web/libs";
 
 ```tsx
 // ❌ 컴포넌트가 목업을 직접 import
-import { transactions } from "../apis/transactions.mock";
+import { transactions } from "../apis/transactions/transactions.mock";
 
 // ✅ apis 함수를 거친다
-import { getTransactions } from "../apis/transactions.api";
+import { getTransactions } from "../apis/transactions/transactions.api";
 const { items } = await getTransactions({ page: 1 });
 ```
 

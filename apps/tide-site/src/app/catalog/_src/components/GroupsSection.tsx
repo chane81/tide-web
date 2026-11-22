@@ -1,7 +1,7 @@
 import { Badge } from "@tide-design/components";
 import type { CSSProperties } from "react";
 
-import { getComponentGroups } from "../apis/componentGroups.api";
+import { getComponentGroups } from "../apis/componentGroups/componentGroups.api";
 
 /**
  * 3번 화면: Component 35종을 네 묶음으로(moment pinned-chapters, 두 화면). 구역이 두 화면 동안 멈춰 있고

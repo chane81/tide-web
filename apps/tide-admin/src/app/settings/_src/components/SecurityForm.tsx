@@ -1,7 +1,7 @@
 import { Button, Field, Radio, RadioGroup } from "@tide-design/components";
 import { type FormEvent, useState } from "react";
 
-import type { SecuritySettings, TwoFactorMethod } from "../apis/settings.types";
+import type { SecuritySettings, TwoFactorMethod } from "../apis/settings/settings.types";
 import { TWO_FACTOR_OPTIONS } from "../constants/settingsOptions";
 import { useMockSave } from "../hooks/useMockSave";
 import { DeleteAccountDialog } from "./DeleteAccountDialog";

@@ -1,4 +1,4 @@
-import type { Customer, CustomerStatus } from "../apis/customers.types";
+import type { Customer, CustomerStatus } from "../apis/customers/customers.types";
 
 /** 상태 필터. `all`은 거르지 않는다. */
 export type CustomerStatusFilter = CustomerStatus | "all";

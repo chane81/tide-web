@@ -1,4 +1,4 @@
-import { getTopMembers } from "./members.api";
+import { getTopMembers } from "../members/members.api";
 import { getOverviewMetrics } from "./overview.api";
 
 vi.mock("next/cache", () => ({ cacheLife: () => {} }));

@@ -2,7 +2,7 @@ import { Card, Progress, Typography } from "@tide-design/components";
 
 import { formatCurrency } from "@/libs/formatCurrency";
 
-import type { Transaction } from "../apis/cards.types";
+import type { Transaction } from "../apis/cards/cards.types";
 import { CATEGORY_LABELS } from "../constants/transactions";
 import { sumByCategory } from "../libs/sumByCategory";
 

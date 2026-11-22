@@ -1,6 +1,6 @@
 import type { SeriesUnit } from "@/libs/formatSeriesLabel";
 
-import type { SalesPeriod } from "../apis/sales.types";
+import type { SalesPeriod } from "../apis/sales/sales.types";
 
 /** 매출 보고서 기간 탭 순서·이름·x축 단위 */
 export const SALES_PERIODS: {

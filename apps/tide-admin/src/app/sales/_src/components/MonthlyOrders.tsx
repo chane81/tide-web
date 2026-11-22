@@ -1,6 +1,6 @@
 import { Card, Typography } from "@tide-design/components";
 
-import { getMonthlyOrders } from "../apis/sales.api";
+import { getMonthlyOrders } from "../apis/sales/sales.api";
 import { MonthlyOrdersChart } from "./MonthlyOrdersChart";
 
 /** 월별 주문 카드. 데이터를 읽어 client 차트에 넘긴다. */

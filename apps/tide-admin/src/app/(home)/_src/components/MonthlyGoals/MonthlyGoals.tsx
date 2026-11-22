@@ -2,7 +2,7 @@ import { Card, Typography } from "@tide-design/components";
 
 import { formatDate } from "@/libs/formatDate";
 
-import { getGoals } from "../../apis/goals.api";
+import { getGoals } from "../../apis/goals/goals.api";
 import { GoalItem } from "./components/GoalItem";
 
 /** 「이번 달 목표」: 목표마다 현재 값과 달성률을 진행 막대로 보인다. 데이터를 직접 읽는 async 서버 컴포넌트다. */

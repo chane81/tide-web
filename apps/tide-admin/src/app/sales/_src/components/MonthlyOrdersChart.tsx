@@ -15,7 +15,7 @@ import { CHART_THEME } from "@/constants/chartTheme";
 import { formatNumber } from "@/libs/formatNumber";
 import { formatSeriesLabel } from "@/libs/formatSeriesLabel";
 
-import type { GetMonthlyOrdersResponse } from "../apis/sales.types";
+import type { GetMonthlyOrdersResponse } from "../apis/sales/sales.types";
 
 export interface MonthlyOrdersChartProps {
   items: GetMonthlyOrdersResponse["items"];

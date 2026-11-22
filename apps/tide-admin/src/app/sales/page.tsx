@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/PageHeader";
 
-import { getSalesReport } from "./_src/apis/sales.api";
+import { getSalesReport } from "./_src/apis/sales/sales.api";
 import { ExportReportButton } from "./_src/components/ExportReportButton";
 import { MonthlyOrders } from "./_src/components/MonthlyOrders";
 import { RecentPurchases } from "./_src/components/RecentPurchases";

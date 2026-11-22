@@ -1,7 +1,7 @@
 import { formatCurrency } from "@/libs/formatCurrency";
 import { formatNumber } from "@/libs/formatNumber";
 
-import { getSalesKpis } from "../apis/sales.api";
+import { getSalesKpis } from "../apis/sales/sales.api";
 import { getAverageOrderTrend } from "../libs/getAverageOrderTrend";
 import { getAverageOrderValue } from "../libs/getAverageOrderValue";
 import { SalesKpiCard } from "./SalesKpiCard";

@@ -3,7 +3,7 @@ import { Badge, TableCell, TableRow } from "@tide-design/components";
 import { formatCurrency } from "@/libs/formatCurrency";
 import { formatDate } from "@/libs/formatDate";
 
-import type { Transaction } from "../apis/cards.types";
+import type { Transaction } from "../apis/cards/cards.types";
 import { CATEGORY_LABELS, TRANSACTION_STATUS } from "../constants/transactions";
 
 export interface TransactionRowProps {

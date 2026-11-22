@@ -5,7 +5,7 @@ import { Sparkline } from "@/components/Sparkline";
 import type { SeriesColor } from "@/constants/chartTheme";
 import type { MetricValue } from "@/types/metric";
 
-import type { SeriesPoint } from "../../../apis/overview.types";
+import type { SeriesPoint } from "../../../apis/overview/overview.types";
 
 export interface SecondaryMetricCardProps {
   label: string;

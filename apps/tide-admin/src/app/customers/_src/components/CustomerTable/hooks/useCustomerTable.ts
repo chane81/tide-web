@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { paginate } from "@/libs/paginate";
 
-import type { Customer } from "../../../apis/customers.types";
+import type { Customer } from "../../../apis/customers/customers.types";
 import { CUSTOMERS_PAGE_SIZE } from "../../../constants/customers";
 import { type CustomerStatusFilter, filterCustomers } from "../../../libs/filterCustomers";
 import {

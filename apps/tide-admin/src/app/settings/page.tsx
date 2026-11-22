@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/PageHeader";
 
-import { getSettings } from "./_src/apis/settings.api";
+import { getSettings } from "./_src/apis/settings/settings.api";
 import { SettingsTabs } from "./_src/components/SettingsTabs";
 
 export const metadata: Metadata = { title: "설정" };

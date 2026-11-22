@@ -11,7 +11,7 @@ import { formatCurrency } from "@/libs/formatCurrency";
 import { formatDate } from "@/libs/formatDate";
 import { formatNumber } from "@/libs/formatNumber";
 
-import type { Customer } from "../../../apis/customers.types";
+import type { Customer } from "../../../apis/customers/customers.types";
 import { CUSTOMER_STATUS } from "../../../constants/customers";
 
 export interface CustomerDetailDialogProps {

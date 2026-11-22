@@ -1,6 +1,6 @@
 import type { Role } from "@tide-design/components";
 
-import type { CustomerStatus } from "../apis/customers.types";
+import type { CustomerStatus } from "../apis/customers/customers.types";
 
 /** 고객 표 한 페이지 행 수 */
 export const CUSTOMERS_PAGE_SIZE = 10;

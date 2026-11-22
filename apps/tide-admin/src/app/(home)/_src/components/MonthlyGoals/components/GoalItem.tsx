@@ -2,7 +2,7 @@ import { Progress, Typography } from "@tide-design/components";
 
 import { formatPercent } from "@/libs/formatPercent";
 
-import type { Goal } from "../../../apis/goals.types";
+import type { Goal } from "../../../apis/goals/goals.types";
 import { formatGoalValue } from "../../../libs/formatGoalValue";
 import { getGoalProgress } from "../../../libs/getGoalProgress";
 

@@ -1,4 +1,4 @@
-import type { Customer } from "../apis/customers.types";
+import type { Customer } from "../apis/customers/customers.types";
 
 /** 정렬할 수 있는 열 */
 export type CustomerSortKey = "name" | "joinedAt" | "totalSpent";

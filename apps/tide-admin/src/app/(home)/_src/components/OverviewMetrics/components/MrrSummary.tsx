@@ -5,7 +5,7 @@ import { TrendLineChart } from "@/components/TrendLineChart";
 import { formatCurrency } from "@/libs/formatCurrency";
 import { formatSeriesLabel } from "@/libs/formatSeriesLabel";
 
-import type { OverviewPeriod, OverviewPeriodMetrics } from "../../../apis/overview.types";
+import type { OverviewPeriod, OverviewPeriodMetrics } from "../../../apis/overview/overview.types";
 import { PERIOD_UNIT } from "../constants/periods";
 
 export interface MrrSummaryProps {

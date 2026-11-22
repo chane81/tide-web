@@ -1,4 +1,4 @@
-import type { Transaction } from "../apis/cards.types";
+import type { Transaction } from "../apis/cards/cards.types";
 
 export interface DailySpending {
   /** 날짜(UTC, `YYYY-MM-DD`) */

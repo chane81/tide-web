@@ -10,7 +10,7 @@ import {
 } from "@tide-design/components";
 import { type FormEvent, useState } from "react";
 
-import type { MemberRole, ProfileSettings } from "../apis/settings.types";
+import type { MemberRole, ProfileSettings } from "../apis/settings/settings.types";
 import { ROLE_OPTIONS, TIMEZONE_OPTIONS } from "../constants/settingsOptions";
 import { useMockSave } from "../hooks/useMockSave";
 import { type ProfileErrors, validateProfile } from "../libs/validateProfile";

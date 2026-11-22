@@ -1,6 +1,6 @@
 import { connection } from "next/server";
 
-import { TIDE_PACKAGES } from "../constants/packages";
+import { TIDE_PACKAGES } from "../../constants/packages";
 import type { GetNpmPackagesResponse, NpmPackage } from "./npmPackages.types";
 
 const REGISTRY_URL = "https://registry.npmjs.org";

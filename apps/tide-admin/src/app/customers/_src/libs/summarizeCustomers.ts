@@ -1,4 +1,4 @@
-import type { Customer, CustomerStatus } from "../apis/customers.types";
+import type { Customer, CustomerStatus } from "../apis/customers/customers.types";
 
 export interface CustomerSummary {
   /** 전체 고객 수 */

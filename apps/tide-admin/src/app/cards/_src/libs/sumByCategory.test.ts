@@ -1,4 +1,4 @@
-import type { Transaction } from "../apis/cards.types";
+import type { Transaction } from "../apis/cards/cards.types";
 import { sumByCategory } from "./sumByCategory";
 
 function tx(overrides: Partial<Transaction>): Transaction {

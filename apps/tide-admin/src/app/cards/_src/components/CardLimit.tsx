@@ -3,7 +3,7 @@ import { Card, Progress, Separator, Typography } from "@tide-design/components";
 import { Sparkline } from "@/components/Sparkline";
 import { formatCurrency } from "@/libs/formatCurrency";
 
-import type { PaymentCard, Transaction } from "../apis/cards.types";
+import type { PaymentCard, Transaction } from "../apis/cards/cards.types";
 import { getLimitUsage } from "../libs/getLimitUsage";
 import { sumByDay } from "../libs/sumByDay";
 

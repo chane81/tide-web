@@ -15,7 +15,7 @@ import { useState } from "react";
 import { PageNavigation } from "@/components/PageNavigation";
 import { toasts } from "@/libs/toasts";
 
-import type { Customer } from "../../apis/customers.types";
+import type { Customer } from "../../apis/customers/customers.types";
 import type { CustomerSortKey } from "../../libs/sortCustomers";
 import { BulkActions } from "./components/BulkActions";
 import { CustomerDetailDialog } from "./components/CustomerDetailDialog";

@@ -1,4 +1,4 @@
-import type { Customer } from "../apis/customers.types";
+import type { Customer } from "../apis/customers/customers.types";
 
 /** 테스트용 고객. 필요한 값만 덮어쓴다. */
 export function customerFixture(overrides: Partial<Customer> & Pick<Customer, "id">): Customer {

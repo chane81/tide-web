@@ -1,4 +1,4 @@
-import { getPackages } from "../../apis/packages.api";
+import { getPackages } from "../../apis/packages/packages.api";
 import { PackageCard } from "./components/PackageCard";
 
 /**
