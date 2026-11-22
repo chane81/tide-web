@@ -9,7 +9,7 @@ import { PackagesSection } from "./_src/components/PackagesSection";
 export const metadata = createPageMetadata({
   title: "패키지: tide components·icons·foundation",
   description:
-    "tide 디자인 시스템의 npm 패키지 세 개와 Component 35종을 쓰임새 네 묶음으로 보여 줍니다.",
+    "tide 디자인 시스템의 npm 패키지 세 개와 Component 34종을 쓰임새 네 묶음으로 보여 줍니다.",
 });
 
 /*

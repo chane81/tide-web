@@ -12,7 +12,7 @@ import { createPageMetadata } from "@/libs/createPageMetadata";
 export const metadata = createPageMetadata({
   title: "tide: Next.js 앱을 위한 React 디자인 시스템",
   description:
-    "Component 35종과 아이콘 2,029개를 토큰 하나로 칠하고, light·dark 대비를 WCAG 2.2 AA로 검사하는 React 디자인 시스템입니다.",
+    "Component 34종과 아이콘 2,029개를 토큰 하나로 칠하고, light·dark 대비를 WCAG 2.2 AA로 검사하는 React 디자인 시스템입니다.",
 });
 
 /*

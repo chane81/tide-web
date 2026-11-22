@@ -1,4 +1,4 @@
-import { Card, Typography } from "@tide-design/components";
+import { Card } from "@tide-design/components";
 
 import { ChangeBadge } from "@/components/ChangeBadge";
 import { Sparkline } from "@/components/Sparkline";
@@ -33,19 +33,13 @@ export function SecondaryMetricCard({
 }: SecondaryMetricCardProps) {
   return (
     <Card className="flex flex-col gap-2 p-5 shadow-sm">
-      <Typography variant="label-md" className="text-muted">
-        {label}
-      </Typography>
+      <span className="text-label-md text-muted">{label}</span>
       <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
         <div className="flex flex-col gap-2">
-          <Typography variant="heading-md" render={<p />}>
-            {format(metric.current)}
-          </Typography>
+          <p className="text-heading-md">{format(metric.current)}</p>
           <div className="flex flex-wrap items-center gap-2">
             <ChangeBadge current={metric.current} previous={metric.previous} />
-            <Typography variant="body-sm" className="text-muted">
-              {compareLabel}
-            </Typography>
+            <p className="text-body-sm text-muted">{compareLabel}</p>
           </div>
         </div>
         {/* 숫자 옆 빈자리를 추이로 채운다. 좁으면 아래 줄로 내려가 폭을 다 쓴다. */}

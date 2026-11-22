@@ -24,7 +24,7 @@ export function Hero() {
               위한 React 디자인 시스템
             </h1>
             <p className="hero__lead">
-              버튼부터 표·대화상자까지 Component 35종과 아이콘 2,029개를 tide 토큰으로 칠합니다.
+              버튼부터 표·대화상자까지 Component 34종과 아이콘 2,029개를 tide 토큰으로 칠합니다.
               light·dark 대비는 WCAG 2.2 AA 기준으로 CI가 검사합니다.
             </p>
             <div className="btn-row">

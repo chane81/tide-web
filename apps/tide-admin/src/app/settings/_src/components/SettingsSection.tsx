@@ -1,4 +1,4 @@
-import { Card, Typography } from "@tide-design/components";
+import { Card } from "@tide-design/components";
 import type { ReactNode } from "react";
 
 export interface SettingsSectionProps {
@@ -20,12 +20,10 @@ export function SettingsSection({ titleId, title, description, children }: Setti
       className="grid gap-6 p-6 shadow-sm lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-10"
     >
       <div className="flex flex-col gap-1">
-        <Typography variant="heading-sm" level={2} id={titleId}>
+        <h2 className="text-heading-sm" id={titleId}>
           {title}
-        </Typography>
-        <Typography variant="body-sm" className="text-muted">
-          {description}
-        </Typography>
+        </h2>
+        <p className="text-body-sm text-muted">{description}</p>
       </div>
       {children}
     </Card>

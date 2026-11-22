@@ -1,4 +1,4 @@
-import { Progress, Typography } from "@tide-design/components";
+import { Progress } from "@tide-design/components";
 
 import { formatPercent } from "@/libs/formatPercent";
 
@@ -17,16 +17,12 @@ export function GoalItem({ goal }: GoalItemProps) {
 
   return (
     <li className="flex flex-col gap-2">
-      <Typography variant="label-md" id={labelId} className="text-muted">
+      <span className="text-label-md text-muted" id={labelId}>
         {goal.label}
-      </Typography>
+      </span>
       <p className="flex flex-wrap items-baseline gap-1">
-        <Typography variant="heading-xs" render={<span />}>
-          {formatGoalValue(goal.current, goal.unit)}
-        </Typography>
-        <Typography variant="body-sm" render={<span />} className="text-muted">
-          / {formatGoalValue(goal.target, goal.unit)}
-        </Typography>
+        <span className="text-heading-xs">{formatGoalValue(goal.current, goal.unit)}</span>
+        <span className="text-body-sm text-muted">/ {formatGoalValue(goal.target, goal.unit)}</span>
       </p>
       <Progress
         value={goal.current}
@@ -35,10 +31,10 @@ export function GoalItem({ goal }: GoalItemProps) {
         color={achieved ? "success" : "primary"}
         aria-labelledby={labelId}
       />
-      <Typography variant="caption" className="text-muted">
+      <p className="text-caption text-muted">
         {formatPercent(rate)} 달성
         {achieved ? "" : ` · ${formatGoalValue(remaining, goal.unit)} 남음`}
-      </Typography>
+      </p>
     </li>
   );
 }

@@ -1,4 +1,4 @@
-import { Badge, Card, Typography } from "@tide-design/components";
+import { Badge, Card } from "@tide-design/components";
 import type { ReactElement } from "react";
 
 import type { TidePackage } from "../../../apis/packages/packages.types";
@@ -34,9 +34,7 @@ export function PackageCard({ pkg }: PackageCardProps) {
         </div>
       ) : null}
       <span className="flex items-center justify-between gap-3">
-        <Typography variant="heading-sm" level={3}>
-          {pkg.id}
-        </Typography>
+        <h3 className="text-heading-sm">{pkg.id}</h3>
         <Badge color="neutral" variant="faint">
           MIT
         </Badge>

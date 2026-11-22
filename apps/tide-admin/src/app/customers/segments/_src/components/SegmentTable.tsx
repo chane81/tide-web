@@ -8,7 +8,6 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-  Typography,
 } from "@tide-design/components";
 
 import { formatCurrency } from "@/libs/formatCurrency";
@@ -25,9 +24,9 @@ export interface SegmentTableProps {
 export function SegmentTable({ segments }: SegmentTableProps) {
   return (
     <Card className="flex flex-col gap-4 p-5">
-      <Typography id="segments-title" variant="heading-xs" level={2}>
+      <h2 className="text-heading-xs" id="segments-title">
         세그먼트별 현황
-      </Typography>
+      </h2>
       <Table aria-labelledby="segments-title">
         <TableHead>
           <TableRow>

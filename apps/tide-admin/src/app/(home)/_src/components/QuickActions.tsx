@@ -1,4 +1,4 @@
-import { Button, Card, Typography } from "@tide-design/components";
+import { Button, Card } from "@tide-design/components";
 import { ArrowRightIcon, FileChartLineIcon, UserPlusIcon } from "@tide-design/icons";
 import NextLink from "next/link";
 import type { ReactNode } from "react";
@@ -32,9 +32,9 @@ const ACTIONS: QuickAction[] = [
 export function QuickActions() {
   return (
     <section aria-labelledby="quick-actions-title" className="flex flex-col gap-3">
-      <Typography variant="heading-sm" level={2} id="quick-actions-title">
+      <h2 className="text-heading-sm" id="quick-actions-title">
         시작하기
-      </Typography>
+      </h2>
       <ul className="grid gap-4 sm:grid-cols-2">
         {ACTIONS.map((action) => (
           <Card
@@ -46,12 +46,8 @@ export function QuickActions() {
               {action.icon}
             </span>
             <div className="flex flex-col gap-1">
-              <Typography variant="heading-xs" level={3}>
-                {action.title}
-              </Typography>
-              <Typography variant="body-sm" className="text-muted">
-                {action.description}
-              </Typography>
+              <h3 className="text-heading-xs">{action.title}</h3>
+              <p className="text-body-sm text-muted">{action.description}</p>
             </div>
             <Button
               variant="outline"

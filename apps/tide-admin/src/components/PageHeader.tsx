@@ -3,7 +3,6 @@ import {
   BreadcrumbCurrent,
   BreadcrumbItem,
   BreadcrumbLink,
-  Typography,
 } from "@tide-design/components";
 import NextLink from "next/link";
 import type { ReactNode } from "react";
@@ -46,10 +45,8 @@ export function PageHeader({ title, description, breadcrumbs, actions }: PageHea
       )}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="flex min-w-0 flex-col gap-1">
-          <Typography variant="heading-md" level={1}>
-            {title}
-          </Typography>
-          {description && <Typography className="text-muted">{description}</Typography>}
+          <h1 className="text-heading-md">{title}</h1>
+          {description && <p className="text-body-md text-muted">{description}</p>}
         </div>
         {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
       </div>

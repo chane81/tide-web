@@ -4,13 +4,13 @@ import { getComponentGroups } from "./componentGroups.api";
 vi.mock("next/cache", () => ({ cacheLife: () => {} }));
 
 describe("getComponentGroups", () => {
-  it("네 묶음이 Component 35종을 한 번씩 담는다", async () => {
+  it("네 묶음이 Component 34종을 한 번씩 담는다", async () => {
     const { groups } = await getComponentGroups();
     const names = groups.flatMap((group) => group.components);
 
     expect(groups).toHaveLength(4);
-    expect(names).toHaveLength(35);
-    expect(new Set(names).size).toBe(35);
+    expect(names).toHaveLength(34);
+    expect(new Set(names).size).toBe(34);
   });
 
   it("묶음 제목의 개수가 실제 Component 수와 같다", async () => {

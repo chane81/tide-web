@@ -42,7 +42,7 @@
     "vitest": "catalog:"
   },
   "peerDependencies": {
-    "@tide-design/components": "0.15.0",
+    "@tide-design/components": "catalog:",
     "react": "^19"
   }
 }

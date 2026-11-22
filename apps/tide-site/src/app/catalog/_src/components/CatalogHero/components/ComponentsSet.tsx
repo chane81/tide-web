@@ -1,4 +1,4 @@
-import { Alert, Badge, Progress, Typography } from "@tide-design/components";
+import { Alert, Badge, Progress } from "@tide-design/components";
 
 import { CollagePiece } from "./CollagePiece";
 import { CountPiece } from "./CountPiece";
@@ -8,9 +8,7 @@ export function ComponentsSet() {
   return (
     <div className="ly-collage__set is-on">
       <CollagePiece x="4%" y="6%" w="52%">
-        <Typography variant="heading-xs" render={<span />}>
-          배포 준비
-        </Typography>
+        <span className="text-heading-xs">배포 준비</span>
         <Progress value={72} aria-label="배포 준비" />
         <span className="flex flex-wrap gap-2">
           <Badge color="success">통과</Badge>
@@ -23,7 +21,7 @@ export function ComponentsSet() {
           초안 세 개가 남았습니다.
         </Alert>
       </CollagePiece>
-      <CountPiece count="35종" label="React Component" />
+      <CountPiece count="34종" label="React Component" />
       <CollagePiece x="36%" y="70%" w="60%" h="26%">
         <span className="font-mono text-body-sm">
           {'import { Card } from "@tide-design/components";'}

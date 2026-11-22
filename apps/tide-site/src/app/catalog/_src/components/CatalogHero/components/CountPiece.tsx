@@ -1,7 +1,7 @@
 import { CollagePiece } from "./CollagePiece";
 
 export interface CountPieceProps {
-  /** 큰 숫자(「35종」) */
+  /** 큰 숫자(「34종」) */
   count: string;
   /** 숫자 아래 한 줄 */
   label: string;

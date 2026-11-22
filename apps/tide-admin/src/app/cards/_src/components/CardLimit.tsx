@@ -1,4 +1,4 @@
-import { Card, Progress, Separator, Typography } from "@tide-design/components";
+import { Card, Progress, Separator } from "@tide-design/components";
 
 import { Sparkline } from "@/components/Sparkline";
 import { formatCurrency } from "@/libs/formatCurrency";
@@ -25,16 +25,14 @@ export function CardLimit({ card, transactions }: CardLimitProps) {
       className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <div className="flex flex-col gap-1">
-        <Typography variant="heading-sm" level={2} id="card-limit-title">
+        <h2 className="text-heading-sm" id="card-limit-title">
           이번 달 사용액
-        </Typography>
-        <Typography variant="body-sm" className="text-muted">
+        </h2>
+        <p className="text-body-sm text-muted">
           {card.nickname} 카드 · 끝자리 {card.last4}
-        </Typography>
+        </p>
       </div>
-      <Typography variant="heading-lg" render={<p />}>
-        {formatCurrency(card.balance)}
-      </Typography>
+      <p className="text-heading-lg">{formatCurrency(card.balance)}</p>
       <div className="flex flex-col gap-2">
         <Progress
           aria-label="한도 사용률"
@@ -52,12 +50,8 @@ export function CardLimit({ card, transactions }: CardLimitProps) {
         <div className="mt-auto flex flex-col gap-3">
           <Separator decorative />
           <div className="flex items-baseline justify-between gap-2">
-            <Typography variant="heading-xs" level={3}>
-              이번 달 일별 사용
-            </Typography>
-            <Typography variant="body-sm" className="text-muted tabular-nums">
-              최고 {formatCurrency(peak)}
-            </Typography>
+            <h3 className="text-heading-xs">이번 달 일별 사용</h3>
+            <p className="text-body-sm text-muted tabular-nums">최고 {formatCurrency(peak)}</p>
           </div>
           <Sparkline
             values={daily.map((day) => day.amount)}

@@ -18,7 +18,7 @@ export function CatalogHero() {
           <div className="span-3">
             <h1 id="hero-h">React 디자인 시스템 tide, 패키지 세 개</h1>
             <p className="hero__lead">
-              tide는 Component 35종, 아이콘 2,029개, Token을 세 npm 패키지로 나눠 냅니다. MIT
+              tide는 Component 34종, 아이콘 2,029개, Token을 세 npm 패키지로 나눠 냅니다. MIT
               라이선스입니다.
             </p>
           </div>

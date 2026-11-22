@@ -8,7 +8,6 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-  Typography,
 } from "@tide-design/components";
 
 import { SAMPLE_CUSTOMERS, SAMPLE_METRICS, SAMPLE_NAV } from "../constants/windowSample";
@@ -44,9 +43,7 @@ export function HeroWindow() {
               <Card key={metric.label} className="flex flex-col gap-1">
                 <span className="text-label-sm text-muted">{metric.label}</span>
                 <span className="flex items-center gap-2">
-                  <Typography variant="heading-sm" render={<span />}>
-                    {metric.value}
-                  </Typography>
+                  <span className="text-heading-sm">{metric.value}</span>
                   <Badge size="sm" variant="faint" color="success">
                     {metric.change}
                   </Badge>

@@ -1,7 +1,7 @@
 import type { ComponentGroup } from "./componentGroups.types";
 
 /**
- * Component 35종을 쓰임새로 나눈 네 묶음. 묶음 이름은 이 사이트가 붙였고, Component 이름은 타입 선언 그대로다.
+ * Component 34종을 쓰임새로 나눈 네 묶음. 묶음 이름은 이 사이트가 붙였고, Component 이름은 타입 선언 그대로다.
  * 설명의 사실 출처: 24×24px(tide 접근성 기준, 소개 페이지 #access), Field·Dialog 동작(docs/tide-gaps.md 「잘 맞았던 점」),
  * 서버 컴포넌트 import(소개 페이지 질문).
  */
@@ -38,14 +38,13 @@ export const componentGroupsMock: ComponentGroup[] = [
   },
   {
     id: "display",
-    title: "보여 주고 기다리는 11종",
-    body: "Card, Badge, Typography처럼 상태가 없는 Component는 서버 컴포넌트에서 바로 씁니다.",
+    title: "보여 주고 기다리는 10종",
+    body: "Card, Badge처럼 상태가 없는 Component는 서버 컴포넌트에서 바로 씁니다.",
     components: [
       "Card",
       "Table",
       "Badge",
       "Avatar",
-      "Typography",
       "Separator",
       "Accordion",
       "Progress",

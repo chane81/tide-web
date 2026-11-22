@@ -1,4 +1,4 @@
-import { Card, Tab, TabList, TabPanel, Typography } from "@tide-design/components";
+import { Card, Tab, TabList, TabPanel } from "@tide-design/components";
 
 import type { GetOverviewMetricsResponse } from "../../../apis/overview/overview.types";
 import { OVERVIEW_PERIODS } from "../constants/periods";
@@ -20,9 +20,9 @@ export function MrrCard({ metrics }: MrrCardProps) {
       className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <Typography variant="label-md" id="mrr-title" className="text-muted">
+        <span className="text-label-md text-muted" id="mrr-title">
           MRR
-        </Typography>
+        </span>
         <TabList aria-label="기간">
           {OVERVIEW_PERIODS.map((period) => (
             <Tab key={period.value} value={period.value}>

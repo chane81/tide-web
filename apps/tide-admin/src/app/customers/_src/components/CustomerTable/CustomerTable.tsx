@@ -8,7 +8,6 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-  Typography,
 } from "@tide-design/components";
 import { useState } from "react";
 
@@ -64,14 +63,14 @@ export function CustomerTable({ customers }: CustomerTableProps) {
       className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <div className="flex items-baseline justify-between gap-2">
-        <Typography variant="heading-sm" level={2} id="customers-title">
+        <h2 className="text-heading-sm" id="customers-title">
           고객 목록
-        </Typography>
-        <Typography variant="body-sm" className="text-muted">
+        </h2>
+        <p className="text-body-sm text-muted">
           {table.resultCount === table.totalCount
             ? `총 ${table.totalCount}명`
             : `${table.totalCount}명 중 ${table.resultCount}명`}
-        </Typography>
+        </p>
       </div>
       <CustomerToolbar
         query={table.query}
