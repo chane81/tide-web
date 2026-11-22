@@ -1,4 +1,4 @@
-import { Badge, Card, Progress, Typography } from "@tide-design/components";
+import { Badge, Card, Progress } from "@tide-design/components";
 
 import { SAMPLE_MRR_GOAL } from "../constants/windowSample";
 
@@ -17,9 +17,7 @@ export function HeroOverCard() {
             {SAMPLE_MRR_GOAL.change}
           </Badge>
         </span>
-        <Typography variant="heading-sm" render={<span />}>
-          {SAMPLE_MRR_GOAL.value}
-        </Typography>
+        <span className="text-heading-sm">{SAMPLE_MRR_GOAL.value}</span>
         <Progress value={SAMPLE_MRR_GOAL.percent} size="sm" aria-label="MRR 목표 달성률" />
         <span className="text-label-sm text-muted">
           목표 {SAMPLE_MRR_GOAL.goal}의 {SAMPLE_MRR_GOAL.percent}%

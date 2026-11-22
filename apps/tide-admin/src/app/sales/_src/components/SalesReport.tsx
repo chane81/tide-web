@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, Tab, TabList, TabPanel, Tabs, Typography } from "@tide-design/components";
+import { Card, Tab, TabList, TabPanel, Tabs } from "@tide-design/components";
 
 import { TrendLineChart } from "@/components/TrendLineChart";
 import { formatCurrency } from "@/libs/formatCurrency";
@@ -24,9 +24,9 @@ export function SalesReport({ report }: SalesReportProps) {
     >
       <Tabs defaultValue="12m" shape="box" className="flex flex-col gap-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <Typography variant="heading-sm" level={2} id="sales-report-title">
+          <h2 className="text-heading-sm" id="sales-report-title">
             매출 보고서
-          </Typography>
+          </h2>
           <TabList aria-label="보고서 기간">
             {SALES_PERIODS.map((period) => (
               <Tab key={period.value} value={period.value}>

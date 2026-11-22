@@ -1,4 +1,4 @@
-import { Card, Typography } from "@tide-design/components";
+import { Card } from "@tide-design/components";
 
 import { getRecentPurchases } from "../apis/sales/sales.api";
 import { PurchaseItem } from "./PurchaseItem";
@@ -13,9 +13,9 @@ export async function RecentPurchases() {
       render={<section aria-labelledby="recent-purchases-title" />}
       className="flex flex-col p-6 shadow-sm"
     >
-      <Typography variant="heading-sm" level={2} id="recent-purchases-title">
+      <h2 className="text-heading-sm" id="recent-purchases-title">
         최근 구매
-      </Typography>
+      </h2>
       <ul className="divide-y divide-default">
         {items.map((purchase) => (
           <PurchaseItem key={purchase.id} purchase={purchase} now={now} />

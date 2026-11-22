@@ -7,7 +7,6 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-  Typography,
 } from "@tide-design/components";
 import { useState } from "react";
 
@@ -34,12 +33,10 @@ export function TransactionTable({ transactions }: TransactionTableProps) {
       className="flex flex-col gap-4 p-6 shadow-sm"
     >
       <div className="flex items-baseline justify-between gap-2">
-        <Typography variant="heading-sm" level={2} id="transactions-title">
+        <h2 className="text-heading-sm" id="transactions-title">
           거래 내역
-        </Typography>
-        <Typography variant="body-sm" className="text-muted">
-          총 {current.total}건
-        </Typography>
+        </h2>
+        <p className="text-body-sm text-muted">총 {current.total}건</p>
       </div>
       <div className="overflow-x-auto">
         <Table aria-labelledby="transactions-title">

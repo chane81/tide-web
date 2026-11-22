@@ -1,4 +1,4 @@
-import { Button, TableCell, TableRow, Typography } from "@tide-design/components";
+import { Button, TableCell, TableRow } from "@tide-design/components";
 import { SearchXIcon } from "@tide-design/icons";
 
 export interface CustomerEmptyStateProps {
@@ -15,10 +15,8 @@ export function CustomerEmptyState({ colSpan, onReset }: CustomerEmptyStateProps
         <div className="flex flex-col items-center gap-3 py-10 text-center">
           <SearchXIcon className="size-6 text-muted" />
           <div className="flex flex-col gap-1">
-            <Typography variant="label-md">조건에 맞는 고객이 없습니다</Typography>
-            <Typography variant="body-sm" className="text-muted">
-              검색어를 바꾸거나 상태 필터를 풀어 보세요.
-            </Typography>
+            <span className="text-label-md">조건에 맞는 고객이 없습니다</span>
+            <p className="text-body-sm text-muted">검색어를 바꾸거나 상태 필터를 풀어 보세요.</p>
           </div>
           <Button variant="outline" color="neutral" size="sm" onClick={onReset}>
             검색 초기화

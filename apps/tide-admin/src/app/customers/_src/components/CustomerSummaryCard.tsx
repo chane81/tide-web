@@ -1,4 +1,4 @@
-import { Card, Typography, type Color } from "@tide-design/components";
+import { Card, type Color } from "@tide-design/components";
 import type { ReactNode } from "react";
 
 export interface CustomerSummaryCardProps {
@@ -24,15 +24,9 @@ export function CustomerSummaryCard({ label, value, hint, icon, color }: Custome
         {icon}
       </span>
       <div className="flex min-w-0 flex-col gap-1">
-        <Typography variant="label-md" className="text-muted">
-          {label}
-        </Typography>
-        <Typography variant="heading-md" render={<p />} className="tabular-nums">
-          {value}
-        </Typography>
-        <Typography variant="body-sm" className="text-muted">
-          {hint}
-        </Typography>
+        <span className="text-label-md text-muted">{label}</span>
+        <p className="text-heading-md tabular-nums">{value}</p>
+        <p className="text-body-sm text-muted">{hint}</p>
       </div>
     </Card>
   );

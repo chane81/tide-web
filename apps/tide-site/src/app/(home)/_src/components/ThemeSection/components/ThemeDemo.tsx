@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Input, Field, Typography } from "@tide-design/components";
+import { Badge, Button, Card, Input, Field } from "@tide-design/components";
 import { ThemeToggle } from "@tide-web/components";
 
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from "@/constants/theme";
@@ -18,9 +18,7 @@ export function ThemeDemo() {
         label="이 페이지를 어둡게"
       />
       <Card className="flex flex-col gap-4">
-        <Typography variant="heading-xs" level={3}>
-          알림 설정
-        </Typography>
+        <h3 className="text-heading-xs">알림 설정</h3>
         <Field label="받을 메일 주소">
           <Input defaultValue="haneul.kim@example.com" />
         </Field>

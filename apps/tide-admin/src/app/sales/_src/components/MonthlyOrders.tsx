@@ -1,4 +1,4 @@
-import { Card, Typography } from "@tide-design/components";
+import { Card } from "@tide-design/components";
 
 import { getMonthlyOrders } from "../apis/sales/sales.api";
 import { MonthlyOrdersChart } from "./MonthlyOrdersChart";
@@ -12,9 +12,9 @@ export async function MonthlyOrders() {
       render={<section aria-labelledby="monthly-orders-title" />}
       className="flex flex-col gap-4 p-6 shadow-sm"
     >
-      <Typography variant="heading-sm" level={2} id="monthly-orders-title">
+      <h2 className="text-heading-sm" id="monthly-orders-title">
         월별 주문
-      </Typography>
+      </h2>
       <MonthlyOrdersChart items={items} />
     </Card>
   );

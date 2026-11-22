@@ -1,4 +1,4 @@
-import { Card, Progress, Typography } from "@tide-design/components";
+import { Card, Progress } from "@tide-design/components";
 
 import { formatCurrency } from "@/libs/formatCurrency";
 
@@ -19,13 +19,11 @@ export function CategorySpending({ transactions }: CategorySpendingProps) {
       render={<section aria-labelledby="category-spending-title" />}
       className="flex flex-col gap-4 p-6 shadow-sm"
     >
-      <Typography variant="heading-sm" level={2} id="category-spending-title">
+      <h2 className="text-heading-sm" id="category-spending-title">
         카테고리별 지출
-      </Typography>
+      </h2>
       {items.length === 0 ? (
-        <Typography variant="body-sm" className="text-muted">
-          지출이 없습니다.
-        </Typography>
+        <p className="text-body-sm text-muted">지출이 없습니다.</p>
       ) : (
         <ul className="flex flex-col gap-3">
           {items.map((item) => {

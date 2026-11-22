@@ -1,4 +1,4 @@
-import { Card, Typography } from "@tide-design/components";
+import { Card } from "@tide-design/components";
 
 import { ChangeBadge } from "@/components/ChangeBadge";
 import { Sparkline } from "@/components/Sparkline";
@@ -19,21 +19,15 @@ export function SalesKpiCard({ label, metric, format, trend }: SalesKpiCardProps
   return (
     <Card render={<li />} className="flex flex-col gap-3 p-5 shadow-sm">
       <div className="flex items-center justify-between gap-2">
-        <Typography variant="label-md" className="text-muted">
-          {label}
-        </Typography>
+        <span className="text-label-md text-muted">{label}</span>
         <SalesKpiMenu label={label} />
       </div>
       <div className="flex items-end justify-between gap-4">
         <div className="flex flex-col gap-3">
-          <Typography variant="heading-lg" render={<p />}>
-            {format(metric.current)}
-          </Typography>
+          <p className="text-heading-lg">{format(metric.current)}</p>
           <div className="flex items-center gap-2">
             <ChangeBadge current={metric.current} previous={metric.previous} />
-            <Typography variant="body-sm" className="text-muted">
-              어제 대비
-            </Typography>
+            <p className="text-body-sm text-muted">어제 대비</p>
           </div>
         </div>
         {/* Sparkline은 부모 폭을 따라 늘어나므로 폭을 정해 준다. */}

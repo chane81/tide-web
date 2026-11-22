@@ -1,5 +1,3 @@
-import { Typography } from "@tide-design/components";
-
 import { ChangeBadge } from "@/components/ChangeBadge";
 import { TrendLineChart } from "@/components/TrendLineChart";
 import { formatCurrency } from "@/libs/formatCurrency";
@@ -26,13 +24,9 @@ export function MrrSummary({ period, metrics, compareLabel }: MrrSummaryProps) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-3">
-        <Typography variant="display-md" render={<p />}>
-          {formatCurrency(metrics.mrr.current)}
-        </Typography>
+        <p className="text-display-md">{formatCurrency(metrics.mrr.current)}</p>
         <ChangeBadge current={metrics.mrr.current} previous={metrics.mrr.previous} />
-        <Typography variant="body-sm" className="text-muted">
-          {compareLabel}
-        </Typography>
+        <p className="text-body-sm text-muted">{compareLabel}</p>
       </div>
       <TrendLineChart
         title="MRR 추이"
