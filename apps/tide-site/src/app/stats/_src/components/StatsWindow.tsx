@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@tide-design/components";
 
-import { getNpmPackages } from "../apis/npmPackages.api";
+import { getNpmPackages } from "../apis/npmPackages/npmPackages.api";
 import { summarizeNpmPackages } from "../libs/summarizeNpmPackages";
 import { StatsFrame } from "./StatsFrame";
 import { StatsNote } from "./StatsNote";

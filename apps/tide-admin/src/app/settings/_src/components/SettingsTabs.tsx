@@ -3,7 +3,7 @@
 import { Tab, TabList, TabPanel, Tabs } from "@tide-design/components";
 import { useState } from "react";
 
-import type { GetSettingsResponse } from "../apis/settings.types";
+import type { GetSettingsResponse } from "../apis/settings/settings.types";
 import { NotificationsForm } from "./NotificationsForm";
 import { ProfileForm } from "./ProfileForm";
 import { SecurityForm } from "./SecurityForm";

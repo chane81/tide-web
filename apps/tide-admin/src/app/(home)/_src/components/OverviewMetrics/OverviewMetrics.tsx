@@ -3,10 +3,13 @@
 import { Tabs } from "@tide-design/components";
 import { useState } from "react";
 
-import type { GetOverviewMetricsResponse, OverviewPeriod } from "@/apis/overview.types";
 import { formatNumber } from "@/libs/formatNumber";
 import { formatPercent } from "@/libs/formatPercent";
 
+import type {
+  GetOverviewMetricsResponse,
+  OverviewPeriod,
+} from "../../apis/overview/overview.types";
 import { MrrCard } from "./components/MrrCard";
 import { SecondaryMetricCard } from "./components/SecondaryMetricCard";
 import { OVERVIEW_PERIODS } from "./constants/periods";

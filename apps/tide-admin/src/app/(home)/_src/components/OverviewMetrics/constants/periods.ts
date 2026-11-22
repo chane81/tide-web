@@ -1,5 +1,6 @@
-import type { OverviewPeriod } from "@/apis/overview.types";
 import type { SeriesUnit } from "@/libs/formatSeriesLabel";
+
+import type { OverviewPeriod } from "../../../apis/overview/overview.types";
 
 /** 기간 탭 순서와 이름 */
 export const OVERVIEW_PERIODS: { value: OverviewPeriod; label: string; compareLabel: string }[] = [

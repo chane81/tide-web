@@ -2,7 +2,7 @@ import { InlineScript, ThemeToggle } from "@tide-web/components";
 import { createThemeInitScript } from "@tide-web/libs";
 import type { Metadata } from "next";
 
-import { getCurrentUser } from "@/apis/currentUser.api";
+import { getCurrentUser } from "@/apis/currentUser/currentUser.api";
 import { AppShell } from "@/components/AppShell";
 import { CommandPalette } from "@/components/CommandPalette";
 import { Sidebar } from "@/components/Sidebar";

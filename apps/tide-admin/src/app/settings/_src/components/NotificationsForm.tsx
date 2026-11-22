@@ -1,7 +1,7 @@
 import { Button, Checkbox, CheckboxGroup, Field, Switch } from "@tide-design/components";
 import { type FormEvent, useState } from "react";
 
-import type { NotificationSettings, NotificationTopic } from "../apis/settings.types";
+import type { NotificationSettings, NotificationTopic } from "../apis/settings/settings.types";
 import { CHANNEL_OPTIONS, TOPIC_OPTIONS } from "../constants/settingsOptions";
 import { useMockSave } from "../hooks/useMockSave";
 import { SettingsSection } from "./SettingsSection";

@@ -1,4 +1,4 @@
-import type { NpmPackage } from "../apis/npmPackages.types";
+import type { NpmPackage } from "../apis/npmPackages/npmPackages.types";
 
 /** 표 한 줄 */
 export interface NpmPackageRow {

@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { overviewMetricsMock } from "@/apis/overview.mock";
 import { formatCurrency } from "@/libs/formatCurrency";
 
+import { overviewMetricsMock } from "../../apis/overview/overview.mock";
 import { OverviewMetrics } from "./OverviewMetrics";
 
 // Recharts는 jsdom에서 크기를 잴 수 없어 그림 대신 받은 점 개수만 보인다(차트 그림은 테스트하지 않는다).

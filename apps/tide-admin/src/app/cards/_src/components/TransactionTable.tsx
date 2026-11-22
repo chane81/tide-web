@@ -14,7 +14,7 @@ import { useState } from "react";
 import { PageNavigation } from "@/components/PageNavigation";
 import { paginate } from "@/libs/paginate";
 
-import type { Transaction } from "../apis/cards.types";
+import type { Transaction } from "../apis/cards/cards.types";
 import { TRANSACTIONS_PAGE_SIZE } from "../constants/transactions";
 import { TransactionRow } from "./TransactionRow";
 

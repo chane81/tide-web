@@ -1,6 +1,6 @@
 import type { Role } from "@tide-design/components";
 
-import type { CardBrand, SpendingCategory, TransactionStatus } from "../apis/cards.types";
+import type { CardBrand, SpendingCategory, TransactionStatus } from "../apis/cards/cards.types";
 
 /** 거래 표 한 페이지 행 수 */
 export const TRANSACTIONS_PAGE_SIZE = 8;

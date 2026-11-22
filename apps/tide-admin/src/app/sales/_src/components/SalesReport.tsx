@@ -6,7 +6,7 @@ import { TrendLineChart } from "@/components/TrendLineChart";
 import { formatCurrency } from "@/libs/formatCurrency";
 import { formatSeriesLabel } from "@/libs/formatSeriesLabel";
 
-import type { GetSalesReportResponse } from "../apis/sales.types";
+import type { GetSalesReportResponse } from "../apis/sales/sales.types";
 import { SALES_PERIODS } from "../constants/salesPeriods";
 
 export interface SalesReportProps {

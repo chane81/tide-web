@@ -1,6 +1,6 @@
 import { NfcIcon } from "@tide-design/icons";
 
-import type { PaymentCard } from "../apis/cards.types";
+import type { PaymentCard } from "../apis/cards/cards.types";
 import { BRAND_LABELS } from "../constants/transactions";
 import { formatCardExpiry } from "../libs/formatCardExpiry";
 

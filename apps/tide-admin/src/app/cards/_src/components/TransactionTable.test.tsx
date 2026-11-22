@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import type { Transaction } from "../apis/cards.types";
+import type { Transaction } from "../apis/cards/cards.types";
 import { TRANSACTIONS_PAGE_SIZE } from "../constants/transactions";
 import { TransactionTable } from "./TransactionTable";
 

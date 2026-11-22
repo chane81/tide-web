@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import type { PaymentCard, Transaction } from "../apis/cards.types";
+import type { PaymentCard, Transaction } from "../apis/cards/cards.types";
 import { CardLimit } from "./CardLimit";
 import { CardPicker } from "./CardPicker";
 import { CategorySpending } from "./CategorySpending";

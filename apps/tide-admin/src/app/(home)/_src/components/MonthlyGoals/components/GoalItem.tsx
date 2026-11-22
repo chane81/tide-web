@@ -1,9 +1,10 @@
 import { Progress, Typography } from "@tide-design/components";
 
-import type { Goal } from "@/apis/goals.types";
-import { formatGoalValue } from "@/libs/formatGoalValue";
 import { formatPercent } from "@/libs/formatPercent";
-import { getGoalProgress } from "@/libs/getGoalProgress";
+
+import type { Goal } from "../../../apis/goals/goals.types";
+import { formatGoalValue } from "../../../libs/formatGoalValue";
+import { getGoalProgress } from "../../../libs/getGoalProgress";
 
 export interface GoalItemProps {
   goal: Goal;

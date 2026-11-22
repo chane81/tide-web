@@ -4,7 +4,7 @@ import { formatCurrency } from "@/libs/formatCurrency";
 import { formatNumber } from "@/libs/formatNumber";
 import { formatPercent } from "@/libs/formatPercent";
 
-import type { Customer } from "../apis/customers.types";
+import type { Customer } from "../apis/customers/customers.types";
 import { summarizeCustomers } from "../libs/summarizeCustomers";
 import { CustomerSummaryCard } from "./CustomerSummaryCard";
 

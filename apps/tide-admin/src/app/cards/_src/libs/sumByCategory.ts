@@ -1,4 +1,4 @@
-import type { SpendingCategory, Transaction } from "../apis/cards.types";
+import type { SpendingCategory, Transaction } from "../apis/cards/cards.types";
 
 export interface CategorySpending {
   category: SpendingCategory;

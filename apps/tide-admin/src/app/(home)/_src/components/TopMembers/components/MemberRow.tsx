@@ -1,7 +1,8 @@
 import { Avatar, Badge } from "@tide-design/components";
 
-import type { Member } from "@/apis/members.types";
 import { formatDate } from "@/libs/formatDate";
+
+import type { Member } from "../../../apis/members/members.types";
 
 export interface MemberRowProps {
   member: Member;

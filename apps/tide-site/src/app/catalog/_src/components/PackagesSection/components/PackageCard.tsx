@@ -1,7 +1,7 @@
 import { Badge, Card, Typography } from "@tide-design/components";
 import type { ReactElement } from "react";
 
-import type { TidePackage } from "../../../apis/packages.types";
+import type { TidePackage } from "../../../apis/packages/packages.types";
 import { ComponentsVisual } from "./ComponentsVisual";
 import { IconsVisual } from "./IconsVisual";
 import { TokensVisual } from "./TokensVisual";

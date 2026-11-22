@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import type { PaymentCard, Transaction } from "../apis/cards.types";
+import type { PaymentCard, Transaction } from "../apis/cards/cards.types";
 import { CardsWorkspace } from "./CardsWorkspace";
 
 const base = { holder: "KIM HANEUL", expMonth: 8, expYear: 2029, color: "blue" } as const;

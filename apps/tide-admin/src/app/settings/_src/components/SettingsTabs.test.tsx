@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { ToastRegion } from "@tide-design/components";
 import { toasts } from "@/libs/toasts";
 
-import type { GetSettingsResponse } from "../apis/settings.types";
+import type { GetSettingsResponse } from "../apis/settings/settings.types";
 import { SettingsTabs } from "./SettingsTabs";
 
 const settings: GetSettingsResponse = {

@@ -3,7 +3,7 @@ import type {
   NotificationChannel,
   NotificationTopic,
   TwoFactorMethod,
-} from "../apis/settings.types";
+} from "../apis/settings/settings.types";
 
 export const ROLE_OPTIONS: { value: MemberRole; label: string }[] = [
   { value: "admin", label: "관리자" },

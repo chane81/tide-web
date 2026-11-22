@@ -1,4 +1,4 @@
-import type { NpmPackage } from "../apis/npmPackages.types";
+import type { NpmPackage } from "../apis/npmPackages/npmPackages.types";
 import { MISSING, formatDay, summarizeNpmPackages } from "./summarizeNpmPackages";
 
 const pkg = (name: string, over: Partial<NpmPackage> = {}): NpmPackage => ({

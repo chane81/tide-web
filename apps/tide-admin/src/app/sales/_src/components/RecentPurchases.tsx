@@ -1,6 +1,6 @@
 import { Card, Typography } from "@tide-design/components";
 
-import { getRecentPurchases } from "../apis/sales.api";
+import { getRecentPurchases } from "../apis/sales/sales.api";
 import { PurchaseItem } from "./PurchaseItem";
 
 /** 최근 구매 활동 피드 */

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/PageHeader";
 
-import { getCustomers } from "../_src/apis/customers.api";
+import { getCustomers } from "../_src/apis/customers/customers.api";
 import { SegmentTable } from "./_src/components/SegmentTable";
 import { summarizeSegments } from "./_src/libs/summarizeSegments";
 

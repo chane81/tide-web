@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/PageHeader";
 
-import { getCards, getTransactions } from "./_src/apis/cards.api";
+import { getCards, getTransactions } from "./_src/apis/cards/cards.api";
 import { AddCardDialog } from "./_src/components/AddCardDialog";
 import { CardsWorkspace } from "./_src/components/CardsWorkspace";
 
