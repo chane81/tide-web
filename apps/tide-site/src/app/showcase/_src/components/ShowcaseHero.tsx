@@ -19,7 +19,7 @@ export function ShowcaseHero() {
             <h1 id="hero-h">화면 조각으로 보는 React 디자인 시스템</h1>
             <p className="hero__lead">
               tide Component로 그린 화면 조각과 tide가 지키는 기준을 카드 한 장씩 모았습니다.
-              Component는 35종이고, 대비는 WCAG 2.2 AA로 검사합니다.
+              Component는 34종이고, 대비는 WCAG 2.2 AA로 검사합니다.
             </p>
             <div className="btn-row">
               <ButtonLink size="lg" href={MAIN_ACTION.href}>

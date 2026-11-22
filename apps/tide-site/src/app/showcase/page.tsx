@@ -9,7 +9,7 @@ import { ShowcaseScenesSection } from "./_src/components/ShowcaseScenesSection";
 export const metadata = createPageMetadata({
   title: "쇼케이스: 화면 조각으로 보는 React 디자인 시스템 tide",
   description:
-    "tide Component로 그린 화면 조각과 대비·색 기준을 빛 바탕 위 카드로 모았습니다. Component 35종, WCAG 2.2 AA.",
+    "tide Component로 그린 화면 조각과 대비·색 기준을 빛 바탕 위 카드로 모았습니다. Component 34종, WCAG 2.2 AA.",
 });
 
 /*

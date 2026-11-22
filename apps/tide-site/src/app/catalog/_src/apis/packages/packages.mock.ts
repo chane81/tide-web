@@ -6,7 +6,7 @@ export const packagesMock: TidePackage[] = [
     id: "components",
     name: "@tide-design/components",
     summary:
-      "React Component 35종과 앱이 불러올 styles.css가 들어 있습니다. react-aria 위에 만들었습니다.",
+      "React Component 34종과 앱이 불러올 styles.css가 들어 있습니다. react-aria 위에 만들었습니다.",
     install: "pnpm add @tide-design/components",
     note: null,
   },

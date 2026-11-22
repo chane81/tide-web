@@ -22,7 +22,7 @@ const FAQ = [
   {
     icon: ServerIcon,
     q: "React 서버 컴포넌트에서 import할 수 있나요?",
-    a: "네. Card, Badge, Typography처럼 상태가 없는 Component는 서버 컴포넌트에서 바로 씁니다.",
+    a: "네. Card, Badge처럼 상태가 없는 Component는 서버 컴포넌트에서 바로 씁니다.",
   },
   {
     icon: ChartLineIcon,

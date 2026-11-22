@@ -21,7 +21,7 @@ export function ComponentsSet() {
           초안 세 개가 남았습니다.
         </Alert>
       </CollagePiece>
-      <CountPiece count="35종" label="React Component" />
+      <CountPiece count="34종" label="React Component" />
       <CollagePiece x="36%" y="70%" w="60%" h="26%">
         <span className="font-mono text-body-sm">
           {'import { Card } from "@tide-design/components";'}
