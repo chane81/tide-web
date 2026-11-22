@@ -2,12 +2,13 @@ import { Button } from "@tide-design/components";
 import { ArrowRightIcon } from "@tide-design/icons";
 import NextLink from "next/link";
 
-import { getOverviewMetrics } from "@/apis/overview.api";
-import { MonthlyGoals } from "@/components/MonthlyGoals";
-import { OverviewMetrics } from "@/components/OverviewMetrics";
 import { PageHeader } from "@/components/PageHeader";
-import { QuickActions } from "@/components/QuickActions";
-import { TopMembers } from "@/components/TopMembers";
+
+import { getOverviewMetrics } from "./_src/apis/overview.api";
+import { MonthlyGoals } from "./_src/components/MonthlyGoals";
+import { OverviewMetrics } from "./_src/components/OverviewMetrics";
+import { QuickActions } from "./_src/components/QuickActions";
+import { TopMembers } from "./_src/components/TopMembers";
 
 export default async function Page() {
   const metrics = await getOverviewMetrics();

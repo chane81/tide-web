@@ -1,7 +1,6 @@
 import { Card, Tab, TabList, TabPanel, Typography } from "@tide-design/components";
 
-import type { GetOverviewMetricsResponse } from "@/apis/overview.types";
-
+import type { GetOverviewMetricsResponse } from "../../../apis/overview.types";
 import { OVERVIEW_PERIODS } from "../constants/periods";
 import { MrrSummary } from "./MrrSummary";
 

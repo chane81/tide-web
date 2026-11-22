@@ -1,7 +1,6 @@
 import { Card, Typography } from "@tide-design/components";
 
-import { getTopMembers } from "@/apis/members.api";
-
+import { getTopMembers } from "../../apis/members.api";
 import { MemberRow } from "./components/MemberRow";
 
 /** 상위 회원 목록. 데이터를 직접 읽는 async 서버 컴포넌트다. */
