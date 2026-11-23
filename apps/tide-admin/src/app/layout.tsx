@@ -6,6 +6,7 @@ import { getCurrentUser } from "@/apis/currentUser/currentUser.api";
 import { AppShell } from "@/components/AppShell";
 import { CommandPalette } from "@/components/CommandPalette";
 import { Sidebar } from "@/components/Sidebar";
+import { criticalFont } from "@/constants/fonts/criticalFont";
 import { FOOTER_NAV_ITEMS, NAV_ITEMS } from "@/constants/navItems";
 import { THEME_STORAGE_KEY } from "@/constants/theme";
 
@@ -21,14 +22,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 
   return (
     // 인라인 스크립트가 hydration 전에 data-theme을 붙이므로 <html> 속성 차이는 경고하지 않는다.
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko" className={criticalFont.variable} suppressHydrationWarning>
       <head>
         <InlineScript html={createThemeInitScript(THEME_STORAGE_KEY)} />
-        {/* Pretendard 가변 동적 subset(tide 「폰트 로드」 안내). 페이지에 쓰인 글자 조각만 내려받는다. 버전은 고정한다. */}
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-        />
       </head>
       <body className="bg-canvas text-default antialiased">
         <CommandPalette items={[...NAV_ITEMS, ...FOOTER_NAV_ITEMS]}>

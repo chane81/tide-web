@@ -3,9 +3,21 @@
 
 @import "tailwindcss";
 @import "@tide-design/components/styles.css";
+@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 
 /* 내부 패키지(dist)의 Tailwind class도 스캔한다. */
 @source "../../../../packages/shared/components/dist";
+
+/*
+ * 첫 화면 글자는 앱별 critical 폰트(block)로 그려 글꼴 교체로 글자가 움찔하지 않게 한다.
+ * 없는 글자는 공식 동적 subset(swap)으로 넘어간다. 나머지 순서는 tide 토큰과 같다(docs/research/webfont-fout.md).
+ */
+:root {
+  --tide-font-sans:
+    "Tide Critical", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
 
 /* design-taste-frontend 검사 산출물(크롬 프로필 소켓 등)은 스캔하지 않는다. 소켓 파일을 읽으려다 빌드가 깨진다. */
 @source not "../../.taste-skill";
