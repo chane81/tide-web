@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   // 새 Cache Components 앱은 Partial Prefetching을 함께 켠다(Next.js 16.4 안내).
   partialPrefetching: true,
+  // public 파일은 기본 캐시가 max-age=0이다. 폰트는 파일명에 버전이 있어 오래 캐시해도 안전하다.
+  async headers() {
+    return [
+      {
+        source: "/fonts/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

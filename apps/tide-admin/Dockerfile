@@ -29,6 +29,8 @@ ENV HOSTNAME=0.0.0.0
 # 모노레포 standalone은 루트 기준 경로(apps/tide-admin/server.js)로 나온다.
 COPY --from=builder --chown=node:node /app/apps/tide-admin/.next/standalone ./
 COPY --from=builder --chown=node:node /app/apps/tide-admin/.next/static ./apps/tide-admin/.next/static
+# standalone은 public을 복사하지 않는다. 폰트가 여기 있다.
+COPY --from=builder --chown=node:node /app/apps/tide-admin/public ./apps/tide-admin/public
 
 USER node
 EXPOSE 3000
