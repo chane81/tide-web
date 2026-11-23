@@ -12,7 +12,8 @@
     "test": "turbo run test",
     "lint": "oxlint --deny-warnings",
     "format": "oxfmt",
-    "format:check": "oxfmt --check"
+    "format:check": "oxfmt --check",
+    "fonts:critical": "python3 scripts/generate-critical-font.py"
   },
   "devDependencies": {
     "oxfmt": "catalog:",

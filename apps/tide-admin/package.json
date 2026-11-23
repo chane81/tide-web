@@ -17,6 +17,7 @@
     "@tide-web/components": "workspace:*",
     "@tide-web/libs": "workspace:*",
     "next": "catalog:",
+    "pretendard": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-is": "catalog:",
