@@ -3,7 +3,6 @@ import { createThemeInitScript } from "@tide-web/libs";
 import type { Metadata, Viewport } from "next";
 
 import { KitScripts } from "@/components/KitScripts";
-import { criticalFont } from "@/constants/fonts/criticalFont";
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from "@/constants/theme";
 
 import "./globals.css";
@@ -35,7 +34,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // data-type·data-radius·data-buttons·data-motion: design-taste-frontend 키트가 읽는 페이지 설정
     <html
       lang="ko"
-      className={criticalFont.variable}
       data-type="software"
       data-radius="soft"
       data-buttons="solid"
@@ -45,6 +43,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <InlineScript html={createThemeInitScript(THEME_STORAGE_KEY, DEFAULT_THEME)} />
         <InlineScript html={KIT_HEAD_SCRIPT} />
+        {/* Pretendard 가변 동적 subset(tide 「폰트 로드」 안내). 대시보드와 같은 버전이다. */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
         {/* 키트 CSS(public/kit.css)는 public/assets를 layer(kit)로 @import하는 파일 그대로 읽는다. 키트 파일은 번들하거나 고치지 않는다. */}
         {/* oxlint-disable-next-line nextjs/no-css-tags */}
         <link rel="stylesheet" href="/kit.css" />
