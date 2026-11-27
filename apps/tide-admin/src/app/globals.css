@@ -51,6 +51,55 @@
 }
 
 @layer components {
+  /*
+   * 카드 목록. 넓은 화면(xl 이상)은 가로 카드 세 장을 한 줄로 둔다.
+   * 그보다 좁으면 카드를 세로로 세워 한 묶음으로 겹친다. 고른 카드가 맨 앞(`--deck-pos: 0`)이고,
+   * 뒤 카드는 오른쪽으로 비어져 나오며 작아진다. 묶음은 가운데에 두고 살짝 기울인다.
+   */
+  .pay-card-deck {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (width < 80rem) {
+    .pay-card-deck {
+      --deck-peek: 2.25rem;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "deck";
+      gap: 0;
+      padding-block: 0.5rem 1.5rem;
+      transform: perspective(1400px) rotateY(-12deg) rotateX(4deg);
+    }
+    .pay-card-deck__item {
+      grid-area: deck;
+      justify-self: center;
+      width: min(15rem, calc(100% - 2 * var(--deck-peek)));
+      transform-origin: right center;
+      /* 묶음 전체가 가운데 오도록 맨 앞 카드를 비어져 나온 폭만큼 왼쪽으로 민다 */
+      transform: translateX(calc((var(--deck-pos) - 1) * var(--deck-peek)))
+        scale(calc(1 - var(--deck-pos) * 0.1));
+      /* 뒤 카드일수록 어둡게 해 깊이감을 낸다 */
+      filter: brightness(calc(1 - var(--deck-pos) * 0.08));
+      transition:
+        transform var(--tide-duration-normal) var(--tide-ease-out),
+        filter var(--tide-duration-normal) var(--tide-ease-out);
+    }
+    /*
+     * 겹칠 때는 선택 강조용 크기(고른 카드 103%·나머지 95%)와 떠오름을 끈다.
+     * 켜 두면 앞 카드는 커지고 바로 뒤 카드는 줄어 첫 간격만 좁아지고, 앞 카드가 떠서 뒤 카드와 아래 선이 맞아 보인다.
+     * 크기·위치는 위 `--deck-pos` 하나로만 정해, 뒤 카드가 위아래로 고르게 안쪽으로 들어가 보이게 한다.
+     * (hover 규칙보다 앞서도록 선택자를 길게 쓴다)
+     */
+    .pay-card-deck .pay-card-deck__item .pay-card-button[aria-pressed] .pay-card-stage {
+      --pay-card-scale: 1;
+      --pay-card-lift: 0px;
+    }
+    .pay-card-deck .pay-card {
+      aspect-ratio: 1 / 1.586;
+    }
+  }
+
   .pay-card-stage {
     position: relative;
     perspective: 900px;
@@ -374,6 +423,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .pay-card-deck__item,
     .pay-card-stage,
     .pay-card,
     .pay-card-stage::before,
