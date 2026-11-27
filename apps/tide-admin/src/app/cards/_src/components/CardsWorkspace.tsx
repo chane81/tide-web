@@ -15,11 +15,12 @@ export interface CardsWorkspaceProps {
 }
 
 /**
- * 카드 화면 본문. 고른 카드를 상태로 들고, 사용액·카테고리 지출·거래 내역을 그 카드로 바꾼다.
+ * 카드 화면 본문. 고른 카드(처음에는 가운데 카드)를 상태로 들고, 사용액·카테고리 지출·거래 내역을 그 카드로 바꾼다.
  * 카드 전환은 미리 받은 데이터를 client에서 거른다.
  */
 export function CardsWorkspace({ cards, transactions }: CardsWorkspaceProps) {
-  const [selectedId, setSelectedId] = useState(cards[0]?.id ?? "");
+  // 처음에는 가운데 카드를 고른다(개수가 짝수면 가운데 둘 중 왼쪽).
+  const [selectedId, setSelectedId] = useState(cards[Math.floor((cards.length - 1) / 2)]?.id ?? "");
   const card = cards.find((c) => c.id === selectedId);
   const own = transactions.filter((tx) => tx.cardId === selectedId);
 
