@@ -41,6 +41,12 @@
       --deck-peek: 2.25rem;
       padding-block: 0.5rem 1.5rem;
     }
+    /* 폰 폭에서는 비어져 나온 폭을 줄여 맨 앞 카드를 넓힌다. 카드가 좁으면 높이도 낮아져 아래 줄이 잘린다 */
+    @media (width < 30rem) {
+      .pay-card-deck {
+        --deck-peek: 1.5rem;
+      }
+    }
     .pay-card-deck__item {
       width: min(22rem, calc(100% - (var(--deck-count) - 1) * var(--deck-peek)));
       /* 묶음 전체가 가운데 오도록 비어져 나온 폭의 절반만큼 왼쪽으로 민다 */

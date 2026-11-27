@@ -29,7 +29,7 @@ export function CardVisual({ card }: CardVisualProps) {
         <span className="pay-card__holo" />
         <span className="pay-card__glare" />
         <span className="pay-card__sweep" />
-        <div className="pay-card__content flex h-full flex-col justify-between p-5 text-start">
+        <div className="pay-card__content flex h-full flex-col justify-between p-4 text-start @xs:p-5">
           <div className="flex items-center justify-between">
             <span className="flex items-center text-label-md">
               <span className="pay-card__check">
@@ -39,17 +39,17 @@ export function CardVisual({ card }: CardVisualProps) {
             </span>
             <NfcIcon className="opacity-80" />
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2 @xs:gap-3">
             <CardChip />
             <p className="pay-card__number font-mono text-label-lg tracking-wider whitespace-nowrap @xs:text-heading-sm">
               •••• •••• •••• {card.last4}
             </p>
           </div>
           <div className="flex items-end justify-between gap-2">
-            <div className="flex gap-4 @xs:gap-6">
-              <div className="flex flex-col">
-                <span className="text-caption opacity-75">CARD HOLDER</span>
-                <span className="text-label-md">{card.holder}</span>
+            <div className="flex min-w-0 gap-4 whitespace-nowrap @xs:gap-6">
+              <div className="flex min-w-0 flex-col">
+                <span className="truncate text-caption opacity-75">CARD HOLDER</span>
+                <span className="truncate text-label-md">{card.holder}</span>
               </div>
               <div className="flex flex-col">
                 <span className="text-caption opacity-75">VALID THRU</span>
