@@ -9,8 +9,8 @@ export function CardBrandMark({ brand }: CardBrandMarkProps) {
   if (brand === "mastercard") {
     return (
       <span className="flex items-center">
-        <span className="size-7 rounded-full bg-(--tide-color-red-500)" />
-        <span className="-ms-3 size-7 rounded-full bg-(--tide-color-amber-400) opacity-85" />
+        <span className="size-7 rounded-full bg-red-500" />
+        <span className="-ms-3 size-7 rounded-full bg-amber-400 opacity-85" />
       </span>
     );
   }
