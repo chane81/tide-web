@@ -7,6 +7,7 @@ import { formatCardExpiry } from "../../libs/formatCardExpiry";
 import { CardBrandMark } from "./components/CardBrandMark";
 import { CardChip } from "./components/CardChip";
 import { useCardTilt } from "./hooks/useCardTilt";
+import "./CardVisual.css";
 
 export interface CardVisualProps {
   card: PaymentCard;
@@ -14,7 +15,7 @@ export interface CardVisualProps {
 
 /**
  * 실물 카드 모양(신용카드 비율 1.586:1). tide에 없어 직접 조립했다(docs/tide-gaps.md).
- * 바탕·광택·물결은 `data-color` accent 토큰을 섞어 그려 테마를 따라간다(`globals.css .pay-card`).
+ * 바탕·광택·물결은 `data-color` accent 토큰을 섞어 그려 테마를 따라간다(`CardVisual.css`).
  * 마우스를 올리면 기울고 빛이 따라 움직인다. 고른 상태 모양은 감싼 버튼의 `aria-pressed`를 CSS가 읽어 그린다.
  * 읽는 이름은 이것을 감싼 요소가 준다.
  */

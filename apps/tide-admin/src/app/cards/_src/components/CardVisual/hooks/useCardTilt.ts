@@ -6,7 +6,7 @@ const MAX_TILT = 10;
 
 /**
  * 마우스 위치를 따라 카드를 기울이고 빛 반사 위치를 옮긴다.
- * 값은 CSS 변수(`--pay-card-px`·`--pay-card-py`: 0~1)로만 넘기고, 각도·반사 모양은 CSS(`globals.css .pay-card`)가 정한다.
+ * 값은 CSS 변수(`--pay-card-px`·`--pay-card-py`: 0~1)로만 넘기고, 각도·반사 모양은 CSS(`CardVisual.css`)가 정한다.
  * 터치·펜에서는 움직이지 않는다. 움직임 줄이기 설정이면 CSS가 기울기를 끈다.
  */
 export function useCardTilt<T extends HTMLElement>() {
