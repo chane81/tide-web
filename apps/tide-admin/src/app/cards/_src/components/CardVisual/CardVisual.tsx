@@ -13,7 +13,7 @@ export interface CardVisualProps {
 }
 
 /**
- * 실물 카드 모양(신용카드 비율 1.586:1, xl 미만에서는 세로로 세운다). tide에 없어 직접 조립했다(docs/tide-gaps.md).
+ * 실물 카드 모양(신용카드 비율 1.586:1). tide에 없어 직접 조립했다(docs/tide-gaps.md).
  * 바탕·광택·물결은 `data-color` accent 토큰을 섞어 그려 테마를 따라간다(`globals.css .pay-card`).
  * 마우스를 올리면 기울고 빛이 따라 움직인다. 고른 상태 모양은 감싼 버튼의 `aria-pressed`를 CSS가 읽어 그린다.
  * 읽는 이름은 이것을 감싼 요소가 준다.
@@ -40,13 +40,12 @@ export function CardVisual({ card }: CardVisualProps) {
           </div>
           <div className="flex flex-col gap-3">
             <CardChip />
-            {/* 세로 카드(xl 미만)는 폭이 좁아 마지막 묶음만 보인다 */}
-            <p className="font-mono text-label-lg tracking-wider whitespace-nowrap @xs:text-heading-sm max-xl:text-heading-sm">
-              <span className="max-xl:hidden">•••• •••• </span>•••• {card.last4}
+            <p className="pay-card__number font-mono text-label-lg tracking-wider whitespace-nowrap @xs:text-heading-sm">
+              •••• •••• •••• {card.last4}
             </p>
           </div>
           <div className="flex items-end justify-between gap-2">
-            <div className="flex gap-4 @xs:gap-6 max-xl:flex-col max-xl:gap-2">
+            <div className="flex gap-4 @xs:gap-6">
               <div className="flex flex-col">
                 <span className="text-caption opacity-75">CARD HOLDER</span>
                 <span className="text-label-md">{card.holder}</span>

@@ -52,38 +52,51 @@
 
 @layer components {
   /*
-   * 카드 목록. 넓은 화면(xl 이상)은 가로 카드 세 장을 한 줄로 둔다.
-   * 그보다 좁으면 카드를 세로로 세워 한 묶음으로 겹친다. 고른 카드가 맨 앞(`--deck-pos: 0`)이고,
-   * 뒤 카드는 오른쪽으로 비어져 나오며 작아진다. 묶음은 가운데에 두고 살짝 기울인다.
+   * 카드 목록. 두 배치 모두 카드를 한 칸(grid-area)에 겹쳐 두고 transform으로만 자리를 잡는다.
+   * 그래서 화면 폭이 xl(80rem)을 넘나들 때 grid가 다시 짜이지 않고, 폭·위치·기울기가 transition으로 이어진다.
+   * - xl 이상: 원래 순서(`--deck-index`)대로 한 줄에 늘어놓는다.
+   * - xl 미만: 고른 카드가 맨 앞(`--deck-pos: 0`)이고 뒤 카드는 오른쪽으로 비어져 나오며 작고 어두워진다. 묶음은 살짝 기울인다.
+   * `--deck-count`·`--deck-index`·`--deck-pos`는 CardPicker가 넘긴다.
    */
   .pay-card-deck {
+    --deck-gap: 1.5rem;
+    --deck-center: calc((var(--deck-count) - 1) / 2);
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "deck";
+    transform: perspective(1400px) rotateY(0deg) rotateX(0deg);
+    transition:
+      transform var(--tide-duration-normal) var(--tide-ease-out),
+      padding var(--tide-duration-normal) var(--tide-ease-out);
+  }
+  .pay-card-deck__item {
+    grid-area: deck;
+    justify-self: center;
+    width: calc((100% - (var(--deck-count) - 1) * var(--deck-gap)) / var(--deck-count));
+    transform-origin: right center;
+    /* translate의 %는 카드 자신의 폭이다. 한 칸 = 카드 폭 + 간격 */
+    transform: translateX(calc((var(--deck-index) - var(--deck-center)) * (100% + var(--deck-gap))))
+      scale(1);
+    filter: brightness(1);
+    transition:
+      width var(--tide-duration-normal) var(--tide-ease-out),
+      transform var(--tide-duration-normal) var(--tide-ease-out),
+      filter var(--tide-duration-normal) var(--tide-ease-out);
   }
 
   @media (width < 80rem) {
     .pay-card-deck {
       --deck-peek: 2.25rem;
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-areas: "deck";
-      gap: 0;
       padding-block: 0.5rem 1.5rem;
       transform: perspective(1400px) rotateY(-12deg) rotateX(4deg);
     }
     .pay-card-deck__item {
-      grid-area: deck;
-      justify-self: center;
-      width: min(15rem, calc(100% - 2 * var(--deck-peek)));
-      transform-origin: right center;
-      /* 묶음 전체가 가운데 오도록 맨 앞 카드를 비어져 나온 폭만큼 왼쪽으로 민다 */
-      transform: translateX(calc((var(--deck-pos) - 1) * var(--deck-peek)))
+      width: min(22rem, calc(100% - (var(--deck-count) - 1) * var(--deck-peek)));
+      /* 묶음 전체가 가운데 오도록 비어져 나온 폭의 절반만큼 왼쪽으로 민다 */
+      transform: translateX(calc((var(--deck-pos) - var(--deck-center)) * var(--deck-peek)))
         scale(calc(1 - var(--deck-pos) * 0.1));
       /* 뒤 카드일수록 어둡게 해 깊이감을 낸다 */
       filter: brightness(calc(1 - var(--deck-pos) * 0.08));
-      transition:
-        transform var(--tide-duration-normal) var(--tide-ease-out),
-        filter var(--tide-duration-normal) var(--tide-ease-out);
     }
     /*
      * 겹칠 때는 선택 강조용 크기(고른 카드 103%·나머지 95%)와 떠오름을 끈다.
@@ -95,8 +108,12 @@
       --pay-card-scale: 1;
       --pay-card-lift: 0px;
     }
-    .pay-card-deck .pay-card {
-      aspect-ratio: 1 / 1.586;
+    /* 뒤 카드는 오른쪽 끝만 비어져 나와 번호 끝자리가 잘려 보이므로 번호를 감춘다 */
+    .pay-card-deck .pay-card__number {
+      transition: opacity var(--tide-duration-normal) var(--tide-ease-out);
+    }
+    .pay-card-deck .pay-card-button[aria-pressed="false"] .pay-card__number {
+      opacity: 0;
     }
   }
 
@@ -423,7 +440,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .pay-card-deck,
     .pay-card-deck__item,
+    .pay-card-deck .pay-card__number,
     .pay-card-stage,
     .pay-card,
     .pay-card-stage::before,
