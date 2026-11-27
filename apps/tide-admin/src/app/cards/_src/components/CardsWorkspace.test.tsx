@@ -34,7 +34,7 @@ function tx(id: string, cardId: string, merchant: string): Transaction {
 const transactions = [tx("1", "a", "블루보틀"), tx("2", "b", "대한항공")];
 
 describe("CardsWorkspace", () => {
-  it("처음에는 첫 카드를 고른 상태다", () => {
+  it("카드가 두 장이면 처음에는 가운데 둘 중 왼쪽(첫) 카드를 고른 상태다", () => {
     render(<CardsWorkspace cards={cards} transactions={transactions} />);
 
     expect(screen.getByRole("button", { name: /개인 VISA 끝자리 1111/ })).toHaveAttribute(
@@ -46,6 +46,31 @@ describe("CardsWorkspace", () => {
       "1000",
     );
     expect(screen.getByRole("cell", { name: /블루보틀/ })).toBeInTheDocument();
+  });
+
+  it("카드가 세 장이면 처음에는 가운데 카드를 고른 상태다", () => {
+    const three: PaymentCard[] = [
+      ...cards,
+      {
+        ...base,
+        id: "c",
+        brand: "mastercard",
+        nickname: "업무용",
+        last4: "3333",
+        balance: 0,
+        limit: 3_000,
+      },
+    ];
+    render(<CardsWorkspace cards={three} transactions={transactions} />);
+
+    expect(screen.getByRole("button", { name: /여행 AMEX 끝자리 2222/ })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(screen.getByRole("button", { name: /개인 VISA 끝자리 1111/ })).toHaveAttribute(
+      "aria-pressed",
+      "false",
+    );
   });
 
   it("다른 카드를 고르면 사용액·한도 사용률·거래 내역이 그 카드로 바뀐다", async () => {
