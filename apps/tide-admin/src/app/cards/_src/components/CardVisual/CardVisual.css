@@ -33,23 +33,25 @@
   inherits: true;
   initial-value: 0px;
 }
-@property --pay-card-scale {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 1;
-}
 
 @layer components {
+  /*
+   * 고른 카드는 크게(103%), 나머지는 작게(95%) 보인다. scale 대신 margin으로 실제 폭을 바꾼다.
+   * scale은 Chrome이 글자를 비트맵째 늘려 그려 글자·체크가 흐려진다. margin은 다시 그려 또렷하다.
+   * 위아래 margin은 좌우를 카드 비율(1.586)로 나눈 값이라, 카드 바깥 크기는 늘 같아 옆 카드·아래 줄이 움직이지 않는다.
+   */
   .pay-card-stage {
+    --pay-card-inset: 0%;
     position: relative;
+    margin: calc(var(--pay-card-inset) / 1.586) var(--pay-card-inset);
     perspective: 900px;
     transition:
+      margin var(--tide-duration-normal) var(--tide-ease-out),
       --pay-card-px var(--tide-duration-fast) var(--tide-ease-out),
       --pay-card-py var(--tide-duration-fast) var(--tide-ease-out),
       --pay-card-rx var(--tide-duration-fast) var(--tide-ease-out),
       --pay-card-ry var(--tide-duration-fast) var(--tide-ease-out),
-      --pay-card-lift var(--tide-duration-normal) var(--tide-ease-out),
-      --pay-card-scale var(--tide-duration-normal) var(--tide-ease-out);
+      --pay-card-lift var(--tide-duration-normal) var(--tide-ease-out);
   }
 
   /* 고른 카드 아래 빛무리: 카드 색을 흐리게 퍼뜨린다(카드 밖 층이라 사각형이 비치지 않는다) */
@@ -101,8 +103,8 @@
       inset 0 1px 0 color-mix(in oklab, var(--tide-color-white) 30%, transparent),
       0 18px 32px -16px color-mix(in oklab, var(--tide-accent-solid) 70%, transparent),
       var(--tide-shadow-md);
-    transform: translateY(var(--pay-card-lift)) scale(var(--pay-card-scale))
-      rotateX(var(--pay-card-rx)) rotateY(var(--pay-card-ry));
+    transform: translateY(var(--pay-card-lift)) rotateX(var(--pay-card-rx))
+      rotateY(var(--pay-card-ry));
     backface-visibility: hidden;
     transition:
       box-shadow var(--tide-duration-normal) var(--tide-ease-out),
@@ -282,10 +284,12 @@
     opacity: 0.85;
   }
 
-  /* 고른 카드: 떠오르고, 아래에 빛무리, 빛이 한 번 훑고, 이름 앞에 체크. 나머지보다 앞으로 튀어나와 보이게 크기·높이·그림자를 키운다 */
+  /*
+   * 고른 카드: 떠오르고, 아래에 빛무리, 빛이 한 번 훑고, 이름 앞에 체크. 나머지보다 앞으로 튀어나와 보이게 크기(위 `--pay-card-inset`)·높이·그림자를 키운다.
+   */
   .pay-card-button[aria-pressed="true"] .pay-card-stage {
     --pay-card-lift: -10px;
-    --pay-card-scale: 1.03;
+    --pay-card-inset: -1.5%;
   }
   .pay-card-button[aria-pressed="true"] .pay-card {
     box-shadow:
@@ -316,13 +320,13 @@
 
   /* 고르지 않은 카드: 조금 작고 흐리게. 마우스를 올리면 되살아난다 */
   .pay-card-button[aria-pressed="false"] .pay-card-stage {
-    --pay-card-scale: 0.95;
+    --pay-card-inset: 2.5%;
+  }
+  .pay-card-button[aria-pressed="false"]:hover .pay-card-stage {
+    --pay-card-inset: 0%;
   }
   .pay-card-button[aria-pressed="false"] .pay-card {
     filter: saturate(0.7) brightness(0.92);
-  }
-  .pay-card-button[aria-pressed="false"]:hover .pay-card-stage {
-    --pay-card-scale: 1;
   }
   .pay-card-button[aria-pressed="false"]:hover .pay-card {
     filter: none;
