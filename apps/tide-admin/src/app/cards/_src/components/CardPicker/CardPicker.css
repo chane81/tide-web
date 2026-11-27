@@ -7,9 +7,10 @@
 @layer components {
   /*
    * 카드 목록. 두 배치 모두 카드를 한 칸(grid-area)에 겹쳐 두고 transform으로만 자리를 잡는다.
-   * 그래서 화면 폭이 xl(80rem)을 넘나들 때 grid가 다시 짜이지 않고, 폭·위치·기울기가 transition으로 이어진다.
+   * 그래서 화면 폭이 xl(80rem)을 넘나들 때 grid가 다시 짜이지 않고, 폭·위치·크기가 transition으로 이어진다.
    * - xl 이상: 원래 순서(`--deck-index`)대로 한 줄에 늘어놓는다.
-   * - xl 미만: 고른 카드가 맨 앞(`--deck-pos: 0`)이고 뒤 카드는 오른쪽으로 비어져 나오며 작고 어두워진다. 묶음은 살짝 기울인다.
+   * - xl 미만: 고른 카드가 맨 앞(`--deck-pos: 0`)이고 뒤 카드는 오른쪽으로 비어져 나오며 작고 어두워진다.
+   *   묶음은 기울이지 않는다. 3D로 기울이면 Chrome이 묶음을 비트맵째 비틀어 그려 맨 앞 카드 글자까지 흐려진다.
    * `--deck-count`·`--deck-index`·`--deck-pos`는 CardPicker가 넘긴다.
    */
   .pay-card-deck {
@@ -18,10 +19,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "deck";
-    transform: perspective(1400px) rotateY(0deg) rotateX(0deg);
-    transition:
-      transform var(--tide-duration-normal) var(--tide-ease-out),
-      padding var(--tide-duration-normal) var(--tide-ease-out);
+    transition: padding var(--tide-duration-normal) var(--tide-ease-out);
   }
   .pay-card-deck__item {
     grid-area: deck;
@@ -42,7 +40,6 @@
     .pay-card-deck {
       --deck-peek: 2.25rem;
       padding-block: 0.5rem 1.5rem;
-      transform: perspective(1400px) rotateY(-12deg) rotateX(4deg);
     }
     .pay-card-deck__item {
       width: min(22rem, calc(100% - (var(--deck-count) - 1) * var(--deck-peek)));
