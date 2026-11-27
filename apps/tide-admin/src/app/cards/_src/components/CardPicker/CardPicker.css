@@ -53,14 +53,14 @@
       filter: brightness(calc(1 - var(--deck-pos) * 0.08));
     }
     /*
-     * 겹칠 때는 선택 강조용 크기(고른 카드 103%·나머지 95%)와 떠오름을 끈다.
-     * 켜 두면 앞 카드는 커지고 바로 뒤 카드는 줄어 첫 간격만 좁아지고, 앞 카드가 떠서 뒤 카드와 아래 선이 맞아 보인다.
-     * 크기·위치는 위 `--deck-pos` 하나로만 정해, 뒤 카드가 위아래로 고르게 안쪽으로 들어가 보이게 한다.
+     * 겹칠 때는 선택·hover의 크기 차이와 떠오름을 끈다. 켜 두면 앞 카드는 커지고 바로 뒤 카드는 줄어 첫 간격만 좁아지고,
+     * 앞 카드가 떠서 뒤 카드와 아래 선이 맞아 보인다.
+     * 위치는 위 `--deck-pos` 하나로만 정해, 뒤 카드가 위아래로 고르게 안쪽으로 들어가 보이게 한다.
      * (hover 규칙보다 앞서도록 선택자를 길게 쓴다)
      */
     .pay-card-deck .pay-card-deck__item .pay-card-button[aria-pressed] .pay-card-stage {
-      --pay-card-scale: 1;
       --pay-card-lift: 0px;
+      --pay-card-inset: 0%;
     }
     /* 뒤 카드는 오른쪽 끝만 비어져 나와 번호 끝자리가 잘려 보이므로 번호를 감춘다 */
     .pay-card-deck .pay-card__number {
