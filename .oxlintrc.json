@@ -24,14 +24,7 @@
       }
     ]
   },
-  "ignorePatterns": [
-    "**/.next/**",
-    "**/coverage/**",
-    "**/dist/**",
-    "**/out/**",
-    "apps/tide-site/public/assets/**",
-    "next-env.d.ts"
-  ],
+  "ignorePatterns": ["**/.next/**", "**/coverage/**", "**/dist/**", "**/out/**", "next-env.d.ts"],
   "overrides": [
     {
       "files": ["packages/**"],
