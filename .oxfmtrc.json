@@ -7,7 +7,6 @@
     "**/dist/**",
     "**/out/**",
     ".taste-skill/**",
-    "apps/tide-site/public/assets/**",
     "next-env.d.ts",
     "pnpm-lock.yaml"
   ]

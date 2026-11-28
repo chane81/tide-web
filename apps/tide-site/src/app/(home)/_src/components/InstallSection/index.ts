@@ -1,1 +1,0 @@
-export { InstallSection } from "./InstallSection";
